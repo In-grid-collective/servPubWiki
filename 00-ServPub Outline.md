@@ -1,7 +1,11 @@
-# About
-ServPub.net is an experimental site for research and practice on experimental and computational publishing, thinking collectively about affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints.
-	
-It is run and operated by artists, coders, activists, collectives, scholars, researchers using FOSS, who share feminist values and practices. We aim to build shared knowledge and resources which operate at small scale and as part of grassroots community networks to explore alternatives to the big tech cloud (what's the opposite of outsourcing?).
+
+## About
+ServPub is an experimental site for research and practice on experimental and computational publishing, thinking collectively about affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints. It is run and operated by artists, coders, activists, collectives, scholars, researchers using FOSS, who share feminist values and practices. We aim to build shared knowledge and resources which operate at small scale and as part of grassroots community networks to explore alternatives to the big tech cloud (what's the opposite of outsourcing?).
+
+
+![[Rosa-tinc-down.jpg]]
+
+
 
 # People Involved
 ##### Main Organisers: 
@@ -80,5 +84,5 @@ ____
 - [Summary and links](https://docs.google.com/presentation/d/1m1J-HiPSScsK1SCGkv2AxnTBzS0ndEjmL4P4djtEkY0/edit?usp=sharing)
 
 # Local Config guide:
-- [[01-Local Config]]
+- [[01-Set up Pi for local Network Access]]
 

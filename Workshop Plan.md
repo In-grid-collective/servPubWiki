@@ -37,8 +37,8 @@ ACTION: Reminder if you are on Windows download Git for Windows so you can follo
 	- nano file -> edit a file with nano 
 - Intro tmux -> join tmux session
 ##### Tinc: mount the 2nd Pi (50 mins)
-- We have installed Tinc -> we did aptget & installed [[03-Web Server Setup#Tinc]] for linux
-- Configuring the pi for Tinc [[03-Web Server Setup#Configuration]]
+- We have installed Tinc -> we did aptget & installed [[02-Web Server Setup on Pi#Tinc]] for linux
+- Configuring the pi for Tinc [[02-Web Server Setup on Pi#Configuration]]
 - Watch us on Jean add the 2nd Pi
 - Someone pings Jean from the 2nd Pi using the local VPN IP
 ##### To-do:
@@ -55,7 +55,7 @@ ACTION: Reminder if you are on Windows download Git for Windows so you can follo
 To-do:
 - [ ] Documentation of ServPub pending completion:
 	- [ ] Becky: NginX and automation
-	- [ ] Batool: Creating users here: [[02-Analog Interlude]]
-	- [ ] certification [[04-Domain basic setup]]
-	- [ ] missing steps of getting certificates [[04-Domain basic setup]]
-	- [ ] redirecting http to https [[04-Domain basic setup]]
+	- [ ] Batool: Creating users here: [[03-Analog Interlude]]
+	- [ ] certification [[04-Static IP & Domain Setup]]
+	- [ ] missing steps of getting certificates [[04-Static IP & Domain Setup]]
+	- [ ] redirecting http to https [[04-Static IP & Domain Setup]]
