@@ -2,40 +2,39 @@
 The next step is to setup the software needed to make this local server into a web server. 
 # "Stack"
 
-It seems like we'll need the following:
-- Webserver (Apache or NginX)
+We will need the following:
+- Webserver (NginX)
 - VPN ([tinc](https://www.cyberciti.biz/faq/ubuntu-install-tinc-and-set-up-a-basic-vpn/))
 - [Tmux](https://tmuxcheatsheet.com/quick-start/)
-- Ufw (Uncomplicated firewall)
+
 # Webserver Software
 
 Apache and NginX seem to be the two main competitors for web server software. There main pros and cons are outlined in [this article](https://www.hostinger.co.uk/tutorials/nginx-vs-apache-what-to-use/#:~:text=The%20main%20difference%20between%20NGINX,to%20have%20generally%20better%20performance) and [this article](https://www.hostinger.co.uk/tutorials/nginx-vs-apache-what-to-use/#:~:text=The%20main%20difference%20between%20NGINX,to%20have%20generally%20better%20performance.).
 
-The gist is that NginX seems to be "better" in terms of performance and speed, but it doesn't seem to have full support on windows computers and needs an external processor for dynamic websites (not sure if we need that though). Basically NginX is faster because it does less out of the box.
+The gist is that NginX seems to be "better" in terms of performance and speed, but it doesn't seem to have full support on windows computers and needs an external processor for dynamic websites (not sure if we need that though). Basically NginX is faster because it does less out of the box, which is why we will be using it now.
 
 # NginX
 
-We will put NginX on our server! though it seems that we may need Apache too, later.
+We will put NginX on our server! To do this we will need to be working on our pi. To enter the pi we will use ssh [[01-Local Config#Security via SSH Keys]].
+
+Once in the pi, we will install nginx from the command line using apt. apt is a tool which allows you to download and install packages onto your device.
 
 ``` shell
 apt install nginx
 ```
 
-Note: it is saved by default in the /home directory. To find the HTML index page go to: /home/var/www/html. 
+Note: packages are saved by default in the /home directory. NginX will then create your html files, which will then become your website.
+
+**IMPORTANT** To find the HTML index page go to: /home/var/www/html. 
 
 The document will be named by default as "index.nginx-debian.html"
 
-Before doing anything else, consider whether to relocate nginx and how to name the documents. 
-
-_currently, the file still needs editing and renaming_
-
-(more soon)
-
+Before doing anything else, consider whether to relocate nginx and how to name the documents. We would advise you not necessarily move nginx but you may find it easier in the long run to rename the files it creates so you can more easily understand i.e. we have changed "index.nginx-debian.html" to "index.servpub.html"
 # Tmux installation
 
-Tmux is a terminal multiplexer, for collective editing in a terminal. Install this on the server machine. To use it you must be SSHed into the server.
+Tmux is a terminal multiplexer, for collective editing in a terminal. Again, we are going to install this on the server (the pi). To use it you must be SSHed into the server as above  [[01-Local Config#Security via SSH Keys]].
 
-So, assuming you are not SSHed into your server, follow these steps.
+So, assuming you are SSHed into your server, follow these steps.
 
 To install:
 
@@ -43,33 +42,43 @@ To install:
 apt-get install tmux
 ```
 
-To create a new session:
+To create a new tmux session sign into the user under which you would like the session to be registered (in our case sudo). We would do this by executing the command:
+
+``` shell
+sudo su
+```
+
+A tmux session is a shared terminal session where all those connected can input and execute commands synchronously. Below name your session, by replacing `[name]` with a name of your choice :
 
 ``` shell
 tmux new -s [name]  
 ```
 
-example: tmux new -s pretest
+example:` tmux new -s mySession
 
-To connect (or reconnect) to a session by anyone who is sshed into the server:
+To join the session when on a server use the following command replacing `[name]` with the name of the session:
 
 ``` shell
 tmux a -t [name] 
 ```
 
-example: tmux a -t pretest
+example: `tmux a -t mySession`
 
-Note: Everyone in a Tmux session is acting as the same user, but we can create split screens and multiple panes within Tmux so potentially different people can work on different things. 
+Note: Everyone in a Tmux session is acting as the same user. However we can create split screens and multiple panes within Tmux so different people can work on different things. 
 
 Reference and troubleshooting: https://www.howtogeek.com/devops/how-to-get-started-and-use-tmux/
 
 # Tinc
 
-## on Linux:
-The tinc instructions in this guide zine work well [https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) 
+tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Find out [more](https://www.tinc-vpn.org/) 
+## Install instructions for Linux:
+The tinc install instructions in this guide zine work well. This is what we have used to install tinc on a pi. [https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) 
 
-## on Mac:
-We had to combine several instructions guides with the Rosa zine guide (Above). The reason it is a bit tricky on Mac is that we need ***tinc version 1.1*** and macs default installers (like homebrew) will always download the next latest version instead. 
+## Windows
+We are currently unable to get a working version of tinc on windows, but we are working on it!
+
+## Install instructions on Mac:
+We combined several instructions guides with the Rosa zine guide (Above). The reason being is it is a bit tricky on Mac and we need ***tinc version 1.1*** and macs default installers (like homebrew) will always download the next latest version instead. 
 
 ### Prerequisites: 
 - [Xcode](https://developer.apple.com/xcode/) (requires free online ADC Membership it can also be obtained from original OSX installation DVD. 
@@ -88,9 +97,10 @@ To install tinc-devel using macports run this command found at the link below:
 sudo port install tinc-devel
 ```
 
-Configuration files will be located in /opt/local/etc/tinc
+Configuration files will be located in `/opt/local/etc/tinc`
 
 Tinc can now be configured and executed.
+
 ### Configuration:
 To create a configuration file, you must join the tinc service through an invite link generated on the server machine running the service, in our case, Jean. Once you have generated your invite code, run:
 ``` shell
