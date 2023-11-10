@@ -9,17 +9,17 @@ ServPub is an experimental site for research and practice on experimental and co
 
 ## Index of Pages
 General project outline: 
-- [[01_ServPub Outline]]
+- [[00-ServPub Outline]]
 
 Workshop notes: 
-- [[Servpub Workshop UaL CCI]]
+- [[Meeting Notes_Workshop UaL CCI]]
 
 Documentation of process:
-- [[Documentation_01-Local Config]]
+- [[01-Local Config]]
 - [[Documentation_00-ServPub Account Details]]
-- [[Documentation_02-Analog Interlude]]
-- [[Documentation_03-Web Server]]
-- [[Documentation_04-Domain basic setup]]
+- [[02-Analog Interlude]]
+- [[03-Web Server Setup]]
+- [[04-Domain basic setup]]
 ## To Dos:
 ### For Workshop:
 #### Intro:
@@ -32,10 +32,10 @@ Documentation of process:
 #### Collective Documentation
 - [ ] Documentation of ServPub pending completion:
 	- [ ] Becky: NginX and automation
-	- [ ] Batool: Creating users here: [[Documentation_02-Analog Interlude]]
-	- [ ] certification [[Documentation_04-Domain basic setup]]
-	- [ ] missing steps of getting certificates [[Documentation_04-Domain basic setup]]
-	- [ ] redirecting http to https [[Documentation_04-Domain basic setup]]
+	- [ ] Batool: Creating users here: [[02-Analog Interlude]]
+	- [ ] certification [[04-Domain basic setup]]
+	- [ ] missing steps of getting certificates [[04-Domain basic setup]]
+	- [ ] redirecting http to https [[04-Domain basic setup]]
 - [ ] Put documentation (even as draft) on Systerservers Git
 - [x] redirect http to https
 - [x] Compile and edit notes from both work sessions

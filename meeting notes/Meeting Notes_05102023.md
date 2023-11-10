@@ -8,4 +8,3 @@
 
 ## Suggestions of things to host
 - Writefreely
-- 

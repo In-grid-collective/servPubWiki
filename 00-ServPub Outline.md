@@ -68,7 +68,7 @@ CCI has invited In-Grid, SysterServer, Autonomic to a session of exchanging know
 Note: there will be some CCI students present at the workshop.
 
 #### Workshop notes:
-[[Servpub Workshop UaL CCI]]
+[[Meeting Notes_Workshop UaL CCI]]
 
 # Resources:
 #### Server Guides:
@@ -85,5 +85,5 @@ ____
 - [Summary and links](https://docs.google.com/presentation/d/1m1J-HiPSScsK1SCGkv2AxnTBzS0ndEjmL4P4djtEkY0/edit?usp=sharing)
 
 # Local Config guide:
-- [[Documentation_01-Local Config]]
+- [[01-Local Config]]
 

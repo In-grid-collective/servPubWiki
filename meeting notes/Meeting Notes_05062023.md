@@ -1,9 +1,3 @@
----
-type: Meeting notes
-created: 5th June 2023 
-project: ServPub
----
-
 # Questions for project:
 How many in-grid members can come to Workshop?
 Expectations from In-Grid before Workshop, do we need to setup webserver?

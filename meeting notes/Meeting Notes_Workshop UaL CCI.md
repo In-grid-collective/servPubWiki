@@ -1,10 +1,4 @@
----
-type: Notes
-alias: workshop notes servpub
-created: Wednesday 28th June 2023 21:45
-project: Workshop Servpub
----
-_these notes are still unedited_
+_these notes are unedited_
 # Notes:
 ____
 # Intros
