@@ -21,6 +21,12 @@ Documentation of process:
 - [[03-Web Server Setup]]
 - [[04-Domain basic setup]]
 ## To Dos:
+#### Meeting with Mara:
+- [ ] Prep diagrams with Mara (Monday 13 Nov)
+- [ ] Discuss credits/captions
+- [ ] Brainstorm some workshop logistics 
+	- how long to spend for tech steps
+	- etc.
 ### For Workshop:
 #### Intro:
 - [ ] make visual material describing project & network relations
