@@ -203,7 +203,7 @@ ls
 cat authorized_key
 ```
 
-## More then one SSH KEY
+## More than one SSH KEY
 
 If you machine already has an SSH key, or you'd like to generate more for different servers you can do that by customising the name of the file of the public key. So instead of "id_rsa.pub" the file name can another name. 
 
@@ -277,3 +277,31 @@ Then restart the SSH connection:
 ``` shell
 sudo service ssh restart
 ```
+
+## Forgotten your ssh pass phrase???? 
+(Like George did . . . )
+
+ooooops, that was silly. Maybe get a password manager (like George did after).
+
+### Find a friend who has access. 
+
+Find someone who can get access to the server and has **sudo** permissions.
+
+Then ask them if they can help for a minute. 
+
+### Create a new set of ssh keys
+
+Maybe see [[Documentation_01-Local Config#Security via SSH Keys]] for more info, but you can also just follow the steps below.
+
+Create a new key:
+
+``` shell
+ssh-keygen -t rsa
+```
+
+### Copy over the new key
+
+Send the `id_rsa.pub` (however you named it) file to your friend with access, do not send the private key (a.k.a. `id_rsa`) . They will then copy over the new public key to the server.  
+
+They will need to log in via ssh in:
+
