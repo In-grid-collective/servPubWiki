@@ -1,8 +1,3 @@
----
-type: Project outline
-created: Sunday 4th June 2023 20:51
-project: ServPub
----
 # About
 ServPub.net is an experimental site for research and practice on experimental and computational publishing, thinking collectively about affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints.
 	

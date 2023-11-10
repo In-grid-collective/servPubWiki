@@ -1,7 +1,3 @@
----
-type: index
-project: ServPub
----
 ![[Rosa-tinc-down.jpg]]
 fig by Mara from Systerserver
 ## About

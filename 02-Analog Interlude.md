@@ -1,8 +1,3 @@
----
-type: Documentation
-created: Saturday 5 August 2023
-project: ServPub
----
 # Analog Interlude
 _you do not need to be at your machine for this bit_
 

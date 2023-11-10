@@ -1,8 +1,3 @@
----
-type: Documentation
-created: Tuesday 6th June 2023 21:13
-project: ServPub
----
 
 The next step is to setup the software needed to make this local server into a web server. 
 # "Stack"
