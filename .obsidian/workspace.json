@@ -1,0 +1,206 @@
+{
+  "main": {
+    "id": "277a18e7bbaacba7",
+    "type": "split",
+    "children": [
+      {
+        "id": "ecc88f14d856dfab",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2aa665b8a149cfdb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "repo/ServPubMarkDown/00_ServPub Index.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bf77246f73bfe121",
+    "type": "split",
+    "children": [
+      {
+        "id": "6d42b4c80302decf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f770c6b48f1c8cc4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "15a1babf6c0aa40b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "50478ddc312a81ce",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 503.5
+  },
+  "right": {
+    "id": "a9b944ac673ff499",
+    "type": "split",
+    "children": [
+      {
+        "id": "83fba2391540ee8a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7e1236f07654ae5e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "repo/ServPubMarkDown/Servpub Workshop UaL CCI.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "363e07f6f9f86fda",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "repo/ServPubMarkDown/Servpub Workshop UaL CCI.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6c2ea75432183c28",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "4aafe2fe8cf1953b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "repo/ServPubMarkDown/Servpub Workshop UaL CCI.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "webpage-html-export:Export Vault to HTML": false
+    }
+  },
+  "floating": {
+    "id": "8af8b00c43952917",
+    "type": "floating",
+    "children": [
+      {
+        "id": "ed88d064702c76cd",
+        "type": "window",
+        "children": [
+          {
+            "id": "6c6a67aad559ca62",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "8bf68b3f9faac628",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "repo/ServPubMarkDown/Servpub Workshop UaL CCI.md",
+                    "mode": "preview",
+                    "source": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 306,
+        "y": 457,
+        "width": 800,
+        "height": 400,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "8bf68b3f9faac628",
+  "lastOpenFiles": [
+    "repo/ServPubMarkDown/Meeting Notes_05102023.md",
+    "repo/ServPubMarkDown/Meeting Notes_05062023.md",
+    "repo/ServPubMarkDown/Documentation_NA-Local hotspot setup.md",
+    "repo/ServPubMarkDown/Documentation_NA-host something.md",
+    "repo/ServPubMarkDown/Documentation_04-Domain basic setup.md",
+    "repo/ServPubMarkDown/Documentation_03-Web Server.md",
+    "repo/ServPubMarkDown/Documentation_02-Analog Interlude.md",
+    "repo/ServPubMarkDown/Documentation_01-Local Config.md",
+    "repo/ServPubMarkDown/Documentation_00-ServPub Account Details.md",
+    "repo/ServPubMarkDown/01_ServPub Outline.md",
+    "repo/ServPubMarkDown/00_ServPub Index.md",
+    "repo/docs",
+    "repo/README.md",
+    "repo",
+    "repo/ServPubMarkDown/Servpub Workshop UaL CCI.md",
+    "repo/ServPubMarkDown"
+  ]
+}
