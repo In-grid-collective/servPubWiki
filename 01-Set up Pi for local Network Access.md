@@ -203,11 +203,11 @@ ls
 cat authorized_key
 ```
 
-## More then one SSH KEY
+## More than one SSH KEY
 
 If you machine already has an SSH key, or you'd like to generate more for different servers you can do that by customising the name of the file of the public key. So instead of "id_rsa.pub" the file name can another name. 
 
-Ideally this name would match the server you want to use that key for. eg: "id_rsa_jean.pub". To do this use only the first half of the keygen command:
+Ideally this name would match the server you want to use that key for. eg: "id_rsa_server_name.pub". To do this use only the first half of the keygen command:
 
 ``` shell
 ssh-keygen
@@ -219,10 +219,10 @@ This will tell you that it is generating a key, but will then also ask you to sp
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/Admin/.ssh/id_rsa):
 ```
-the second line already gives you the path, copy/paste that and add to it the file name. Here we are giving it the name "jean":
+the second line already gives you the path, copy/paste that and add to it the file name. Here we are giving it the name "id_rsa_server_name":
 
 ``` shell
-/Users/Admin/.ssh/id_rsa_jean
+/Users/Admin/.ssh/id_rsa_server_name
 ```
 
 The next steps are the same: enter a passphrase and you will have the path of your key. 
@@ -238,7 +238,7 @@ ssh-copy-id -i <path/to/id_rsa.pub> user@<ip address of pi>
 When SSHing into the server from a machine that has several keys, you have to specify which key you want to use to ssh. To do this, you should include the directory path to your PRIVATE key:
 
 ``` shell
-ssh -i <path/id_rsa_jean> user@jean.mur.at
+ssh -i <path/id_rsa_anotherkey.pub> <user>@<server address>
 ```
 You should now be prompted for your personal password. 
 
@@ -277,3 +277,71 @@ Then restart the SSH connection:
 ``` shell
 sudo service ssh restart
 ```
+
+## Forgotten your ssh pass phrase???? 
+(Like George did . . . )
+
+ooooops, that was silly. Maybe get a password manager (like George did after).
+
+### Find a friend who has access. 
+
+Find someone who can get access to the server and has **sudo** permissions.
+
+Then ask them if they can help for a minute. 
+
+### Create a new set of ssh keys
+
+Maybe see [[Documentation_01-Local Config#Security via SSH Keys]] for more info, but you can also just follow the steps below.
+
+Create a new key:
+
+``` shell
+ssh-keygen -t rsa
+```
+
+### Copy over the new key
+
+Send the `id_rsa.pub` (however you named it) file to your friend with access, do not send the private key (a.k.a. `id_rsa`) . They will then copy over the new public key to the server.  
+
+They will need to log in via ssh in:
+
+
+
+# Tmux installation
+
+Tmux is a terminal multiplexer, for collective editing in a terminal. Again, we are going to install this on the server (the pi). To use it you must be SSHed into the server as above  [[01-Set up Pi for local Network Access#Security via SSH Keys]].
+
+So, assuming you are SSHed into your server, follow these steps.
+
+To install:
+
+``` shell
+apt-get install tmux
+```
+
+To create a new tmux session sign into the user under which you would like the session to be registered (in our case sudo). We would do this by executing the command:
+
+``` shell
+sudo su
+```
+
+A tmux session is a shared terminal session where all those connected can input and execute commands synchronously. Below name your session, by replacing `[name]` with a name of your choice :
+
+``` shell
+tmux new -s [name]  
+```
+
+example:` tmux new -s mySession
+
+To join the session when on a server use the following command replacing `[name]` with the name of the session:
+
+``` shell
+tmux a -t [name] 
+```
+
+example: `tmux a -t mySession`
+
+Note: Everyone in a Tmux session is acting as the same user. However we can create split screens and multiple panes within Tmux so different people can work on different things. 
+
+Reference and troubleshooting: https://www.howtogeek.com/devops/how-to-get-started-and-use-tmux/
+
