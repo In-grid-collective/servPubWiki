@@ -16,7 +16,7 @@ _this guide is a work in progress compiled from research on setting up local ser
 - Server = the SBC/Pi
 - Client = your laptop
 
-## Armbian
+## Armbian 
 
 After flashing the Armbian disk image on the SD card, plug the Pi in and then just follow the prompts on screen.
 

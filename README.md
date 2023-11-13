@@ -28,9 +28,9 @@ Documentation of process:
 - [ ] make visual material describing project & network relations
 - [ ] path diagram of what we will learn
 #### Technical prep for Work Session:
-- [ ] Prep 2nd pi: flashing SSD card + Install OS
+- [ ] Prep 2nd pi: flashing SD card + Install OS
 - [ ] Prep 2nd pi: maybe create one public user for participants & give it a fun password
-- [ ] Decide what parts of tech setup to do in workshop & make steps
+- [x] Decide what parts of tech setup to do in workshop & make steps
 #### Collective Documentation
 - [ ] Documentation of ServPub pending completion:
 	- [ ] Becky: NginX and automation
