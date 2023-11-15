@@ -58,6 +58,7 @@ Going forward, we will also have to name:
 
 We discussed several options of naming systems: notes here: https://pad.riseup.net/p/un-Named_Server_CCI-keep
 
+
 ### Creating Users
 ##### DOCUMENTATION NEEDED HERE:
 please document the steps of creating user accounts

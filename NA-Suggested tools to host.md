@@ -3,7 +3,7 @@
 
 #### Install
 
-I am testing write freely on here as it is fairly easy to get started and is a markdown blog program (handy)
+I am testing writefreely on here as it is fairly easy to get started and is a markdown blog program (handy)
 
 following tutorial [HERE](https://writefreely.org/start) but making sure to use ARM7 as this is what the pi runs on. 
 
