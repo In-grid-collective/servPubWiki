@@ -114,6 +114,9 @@ Reverse Proxy Configuration
 
 
 
+You should be able to find information about errors and traffic here:
+`/var/log/nginx/access.log`
+`/var/log/nginx/error.log`
 
 http conf setup 
 

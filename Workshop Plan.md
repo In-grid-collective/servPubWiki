@@ -63,8 +63,11 @@ ACTION: Reminder if you are on Windows download Git for Windows so you can follo
 
 To-do:
 - [ ] Documentation of ServPub pending completion:
-	- [ ] Becky: NginX and automation
+	- [ ] Becky: NginX (ongoing) and automation
 	- [ ] Batool: Creating users here: [[03-Analog Interlude]]
 	- [ ] certification [[04-Static IP & Domain Setup]]
 	- [ ] missing steps of getting certificates [[04-Static IP & Domain Setup]]
 	- [ ] redirecting http to https [[04-Static IP & Domain Setup]]
+	- [ ] Add proper / full credits for Rosa Manual.
+	- [ ] Draft a "this is what you need to do before the workshop if you want to follow along with the terminal activity"
+	- [ ] Proof read / add to the Terminal commands cheat sheet, nano user in particular please [[NA-Terminal Unix Commands Cheat Sheet]]
