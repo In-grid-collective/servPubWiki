@@ -26,6 +26,7 @@ in this example the user is called "pubdoc"
 The following commands will help us get started, but are just the tip of the [iceberg](https://www.geeksforgeeks.org/linux-commands/?ref=lbp)
 
 Change directory to a directory using the "path" to that folder/directory:
+
 ```shell
 cd /directoryname/anotherdirectory
 ```
@@ -36,7 +37,7 @@ Change directory to root :
 cd 
 ```
 
-Change directory to  the directory above the one from you are currently in:
+Change directory to the directory above the one you are currently in:
 
 ```shell
 cd ..
@@ -44,6 +45,7 @@ cd ..
 
 
 List current directory contents:
+
 ``` shell
 ls
 ```
@@ -78,12 +80,14 @@ If you want to enter into sudo mode to run all commands as a super user, run:
 
 
 Make new file:
+
 ```shell
 touch <example.txt>
 ```
 
 
 A quick way to print contents of a file to your terminal:
+
 ```shell
 cat <example.txt>
 ```
@@ -94,6 +98,7 @@ cat <example.txt>
 ##### Nano
 
 Edit a file using [nano](https://www.nano-editor.org/) command line text editor:
+
 ``` shell
 nano <example.txt>
 ```
