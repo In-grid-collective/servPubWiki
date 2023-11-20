@@ -18,14 +18,16 @@ apt install nginx
 
 Note: packages are saved by default in your user's home directory. 
 
-Nginx will create some default html files on installation, to find that HTML index page go to: 
+If you went to the IP address of your pi in web browser on a device that was on the same wifi network as the pi you would be able to see the default Nginx site already! Where is that coming from?
+
+Well, Nginx will create some default html files on installation, to find that HTML index page in your file system on the pi, change directory :
 
 ```shell
 cd /var/www/html 
 ```
 
 
-The default html document will be named `index.nginx-debian.html`
+The default html document will be named `index.nginx-debian.html` which you can see if you run the `ls` command now. 
 
 The default configuration file for this simple static site can be found here:
 
@@ -41,7 +43,7 @@ nano default
 
 Here is shortened version of what you should see with some added comments:
 
-```
+```nginx
 
 server {
 		# 80 the default port for listening for http traffic
@@ -55,7 +57,7 @@ server {
         index index.html index.htm index.nginx-debian.html;
 
 		# The server name that you would set
-        server_name servername;
+        server_name _;
 
 		# A location directive for any incoming URI requests
         location / {
@@ -71,29 +73,133 @@ server {
 This server block is where we define our server set up, this [nginx beginners guide does a good job of introducing the fundamentals](https://nginx.org/en/docs/beginners_guide.html). 
 
 
-# Customising an NGINX Static Web Site
-
-
 IMPORTANT: __DO NOT__ simply edit that default configuration file. Instead set up your own folder within `sites-enabled` to start serving your custom static site. This [Pitfalls and Common Mistakes guide](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/) should serve as a good resource to double check any changes you make. 
+
+
+# Customising an NGINX Site
+
+We are going to create a custom .conf file and point it to a new location on your pi for your custom site. 
+##### Create a custom .conf for you site
 
 We will make a copy of the default file and rename that copy, and then move the default configuration to `sites-available` which is where you can keep any configuration files for sites that are not currently active. 
 
-
-
-
-
-
-Dive Deeper:
-
-The way nginx and its modules work is determined in the nginx configuration file. By default, the configuration file is named `nginx.conf`. For nginx open source, `nginx.conf` is placed in the directory `/usr/local/nginx/conf`, `/etc/nginx`, or `/usr/local/etc/nginx` depending on your operating system.
-
-To find your `nginx.conf` on a pi with Armbian installed [[01-Set up Pi for local Network Access#Armbian]] run this change directory command:
+Make sure you are in `sites-enabled` (see above):
 
 ```shell
-cd /etc/nginx
+cp default <yoursite>.conf
 ```
 
-Here you will find your `nginx.conf` file. You can confirm that it is there by running `ls` command on your command line. For our purposes we won't be changing our `nginx.conf`
 
+Edit your config:
+
+```shell
+nano <yoursite>.conf
+```
+
+
+```nginx
+
+server {
+		# 80 the default port for listening for http traffic
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        # the root folder that your website will be served out of
+        root /var/www/yoursite;
+
+		# Allowed file formats for the index / home page
+        index index.html index.htm;
+
+		# The server name that you would set
+        server_name yoursite.local;
+
+		# A location directive for any incoming URI requests
+        location / {
+
+                # First attempt to serve request as file, then as directory,
+                # then fall back to displaying a 404 not found error
+                try_files $uri $uri/ =404;
+        }
+        
+ }
+```
+
+
+
+You can now remove the default config:
+
+```shell
+rm default
+```
+
+
+##### Create your website
+
+We are now going to make a simple index.html page at the path that you specified in the .conf file, e.g. `/var/www/yoursite` from above.
+
+```shell
+cd /var/www 
+```
+
+
+Next make a new directory to match the name of your site that you set as the root path:
+
+
+```shell
+sudo mkdir <yoursite>
+```
+
+Change directory into that new folder:
+
+```shell
+cd <yoursite>
+```
+
+Now make your index.html using the touch command:
+
+```shell
+sudo touch index.html
+```
+
+Open it up to edit in your command line text editor of choice. We will use nano:
+
+
+```shell
+sudo nano index.html
+```
+
+
+Feel free to copy this starter index.html page for a quick test:
+
+```html
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <title>Your Site Title</title>  
+</head>  
+<body>  
+  
+	<p>
+		The content of your website.
+	</p>
+  
+</body>  
+</html>
+```
+
+
+Restart nginx:
+
+```shell
+nginx -s reload
+```
+
+To see the nginx options you can always do the help command:
+
+```shell
+nginx -h
+```
+
+Test that your site is up and available by going to the IP of your pi in your web browser! You can now edit the html file with new content to update what content is being served by your Nginx web server.
 
 
