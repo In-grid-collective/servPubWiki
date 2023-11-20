@@ -135,7 +135,7 @@ the invite generated will be a long string of letters and numbers. It can then b
 
 i.e. 
 
-```
+``` shell
 sudo tinc -n systerserver join 79.99.202.57/zVublahX7LaCWXJdBzd03jNn48bxuN83jVE_26VnL
 ```
 
@@ -193,7 +193,7 @@ For NewUser1 it would look like:
 ```
 #!/bin/sh 
 #echo 'Unconfigured tinc-up script, please edit '$0'!' 
-ifconfig $INTERFACE 10.10.12.53 netmask 255.255.255.0
+ifconfig $INTERFACE 10.10.12.52 netmask 255.255.255.0
 ```
 
 
@@ -252,51 +252,99 @@ cd /ect/nginx/
 nano sites-available/servpub.conf
 ```
 
-Add the following:
+Choosing your NGINX reverse proxy setup is very much up to you but we will show to setups, a simple one with just http, and a more secure and standard one with https redirect and certificate. 
 
-```
-server { 
-	listen 80; 
-	listen [::]:80; 
-	server_name rosamex.constantvzw.org; 
-	
-	location / { 
+simle http conf:
+
+``` nginx
+server {
+	# listen to http on port 80
+	listen 80;
+	listen [::]:80;
+	# listen to url
+	server_name servpub.net;
+
+	# linking the client to the vpn subnet ip address of the pi
+	location / {
 		proxy_set_header Host $host;
 		proxy_set_header X-Real-IP $remote_addr;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
+		proxy_set_header X-Forwarded-For
+		$proxy_add_x_forwarded_for;
 		proxy_set_header X-Forwarded-Proto $scheme;
-		proxy_pass http://10.10.12.51;
-		proxy_read_timeout 90; 
-	} 
- 
-	 location / { 
-		rewrite ^ https://$host$request_uri? permanent; 
-	}
-	 
-}
 
+		# replace this with the user vpn subnet ip adress you set earlier 
+		proxy_pass http://10.10.12.51;
+		proxy_read_timeout 90;
+	}
+	
+	location / {
+		rewrite ^ https://$host$request_uri? permanent;
+	}
+}
 ```
 
-http conf setup 
+More complex https, with http redirect, and certificate:
 
+``` nginx
+
+# A server to derirect http traffic to https
+server {
+		# listen on port 80 (http) of servpub.net
+        listen 80;
+        listen [::]:80;
+        
+        # listen to servpub, change to your url
+        server_name servpub.net;
+
+		# send trafic to https of the url
+        return 301 https://servpub.net$request_uri;
+
+}
+
+server{
+        # SSL configuration, listen to https of port 443
+         listen 443 ssl default_server;
+         listen [::]:443 ssl default_server;
+
+		# link to ssl certificate on vpn server
+         ssl_certificate /etc/letsencrypt/live/servpub.net/fullchain.pem;
+         ssl_certificate_key /etc/letsencrypt/live/servpub.net/privkey.pem;
+
+		# link to root folder
+        root /var/www/html;
+
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
+
+		# listen to servpub, change to your url. 
+        server_name servpub.net;
+
+		# linking the client to the vpn subnet ip address of the pi
+        location / {
+                proxy_set_header        Host $host;
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+
+				# replace this with the user vpn subnet ip adress you set earlier 
+                proxy_pass              http://10.10.12.53; 
+                
+                proxy_read_timeout      90;
+
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+
+
+        }
+        
+}
+
+
+```
 
 
 You should be able to find information about errors and traffic here:
 `/var/log/nginx/access.log`
 `/var/log/nginx/error.log`
 
-
-### http to https redirect
-
-This is pretty simple just add a new server section to the top of the nginx .conf file
-
-``` conf
-
-server{
-listen 80;
-server_name <Your URL (e.g. serpub.net)>;
-}
-
-```
-
-Then delete the last references to port 80 on the original  server

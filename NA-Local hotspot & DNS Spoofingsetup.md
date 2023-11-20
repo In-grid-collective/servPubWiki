@@ -261,7 +261,7 @@ after implementation of DNSMasq and NGINX
 Create a new configuration file with DNSMasq for it to reroute traffic with. Replace  `example.net` domain name with the one you desire.
 
 ``` shell
-sudo nano /etc/dnsmasq.d/example.net
+sudo nano /etc/dnsmasq.d/<example.net>
 ```
 
 Paste and edit the config below:
@@ -269,9 +269,9 @@ Paste and edit the config below:
 ``` conf
 no-dhcp-interface=enp2s0f0
 bogus-priv
-domain=example.net
+domain=<example.net>
 expand-hosts
-local=/example.net/
+local=/<example.net>/
 domain-needed
 no-resolv
 no-poll
