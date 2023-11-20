@@ -1,3 +1,6 @@
+
+Network terminology 
+
 We used this service to buy a domain name. 
 
 Static IP is needed. Systerserver provided the static IP for servpub. 
