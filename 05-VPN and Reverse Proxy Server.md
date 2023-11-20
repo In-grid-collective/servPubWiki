@@ -232,7 +232,52 @@ First install Nginx, like we did for the pi [[02-Web Server Setup on Pi#NginX]]
 
 
 
-Reverse Proxy Configuration
+## Reverse Proxy Configuration
+
+Make sure you have installed Nginx. If you do not have it installed refer to [[02-Web Server Setup on Pi#NGINX]]
+
+Add an nginx config file at ``/etc/nginx/sites-available/<SERVERNAME>.conf``
+
+To do this use the command
+
+```shell
+cd /ect/nginx/
+nano sites-available/<servername>.conf
+```
+
+Ours looks like:
+
+```shell
+cd /ect/nginx/
+nano sites-available/servpub.conf
+```
+
+Add the following:
+
+```
+server { 
+	listen 80; 
+	listen [::]:80; 
+	server_name rosamex.constantvzw.org; 
+	
+	location / { 
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_pass http://10.10.12.51;
+		proxy_read_timeout 90; 
+	} 
+ 
+	 location / { 
+		rewrite ^ https://$host$request_uri? permanent; 
+	}
+	 
+}
+
+```
+
+http conf setup 
 
 
 
@@ -240,7 +285,6 @@ You should be able to find information about errors and traffic here:
 `/var/log/nginx/access.log`
 `/var/log/nginx/error.log`
 
-http conf setup 
 
 ### http to https redirect
 
