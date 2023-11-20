@@ -12,38 +12,151 @@ We will need the following:
 # Tinc
 
 tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Find out [more](https://www.tinc-vpn.org/) 
+
+You need to install tinc for all nodes, both server and client. 
+
+If you would like to install on Mac, check out [[NA-Installing tinc on Mac]]. It's a little bit more complicated than Linux. If you want to install on Windows, it may be better to run tinc from a linux console [like this](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
+
 ## Install instructions for Linux:
 The tinc install instructions in this guide zine work well. This is what we have used to install tinc on a pi. [https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) 
 
-## Windows
-We are currently unable to get a working version of tinc on windows, but we are working on it!
+We will be using apt to install development tools and dependencies before we download the source code of tinc. 
 
-## Install instructions on Mac:
-We combined several instructions guides with the Rosa zine guide (Above). The reason being is it is a bit tricky on Mac and we need ***tinc version 1.1*** and macs default installers (like homebrew) will always download the next latest version instead. 
+First we will download essential packages to  compile tinc as a sudo user.
 
-### Prerequisites: 
-- [Xcode](https://developer.apple.com/xcode/) (requires free online ADC Membership it can also be obtained from original OSX installation DVD. 
-- [Macports](http://www.macports.org/install.php)
+```shell 
+sudo su
 
-After Macports is installed, close and reopen your terminal. Update the ports system and ports list:
-
-``` shell
-sudo port selfupdate
-sudo port sync
+apt install build-essential automake libssl-dev liblzo2-dev libbz2-dev zlib1g-dev libncurses5-dev libreadline-dev 
 ```
 
-To install tinc-devel using macports run this command found at the link below:
+Navigate into a tmp folder.
 
-``` shell
-sudo port install tinc-devel
+```shell
+cd ./tmp
 ```
 
-Configuration files will be located in `/opt/local/etc/tinc`
+Download tinc 1.1 and uncompress the folder
 
-Tinc can now be configured and executed.
+``` shell
+wget https://www.tinc-vpn.org/packages/tinc-1.1pre17.tar.gz 
 
-### Configuration:
-To create a configuration file, you must join the tinc service through an invite link generated on the server machine running the service, in our case, Jean. Once you have generated your invite code, run:
+tar xvf tinc-1.1pre17.tar.gz
+```
+
+Navigate into the folder and install the packages
+
+```shell
+cd tinc-1.1pre17 
+./configure 
+make 
+make install
+```
+
+Once installed, create a configuration directory. All configurations of tinc will happen in this folder. Using tinc subcommands (like invite / join), result in changes to the files in this folder.
+
+```shell
+mkdir -p /usr/local/etc/tinc/
+```
+
+The tinc executable is installed in 
+
+`/usr/local/sbin/tinc `
+
+This means that you can only run tinc as sudo, since sbin directory saves binary executables that can be ran only by sudo (s+bin)
+
+### Create a systemd service file
+
+Systemd is a way to manage (start/stop) services like servers. Tinc is such a service. You can create new service files in the folder
+`/etc/systemd/system`
+
+In this case we create a special kind of service file (that has an @ in the name) that allows it to work for multiple network names.
+
+```shell 
+sudo nano /etc/systemd/system/tinc@.service
+```
+
+Inside that file, paste the following:
+
+``` service
+[Unit] 
+Description=Tinc (%i) 
+After=network.target 
+[Service] 
+Type=simple
+WorkingDirectory=/usr/local/etc/tinc
+ExecStart=/usr/local/sbin/tincd -D -n %i
+ExecReload=/usr/local/sbin/tincd -D -n %i -kHUP 
+TimeoutStopSec=5 
+Restart=always 
+RestartSec=60 
+[Install] 
+WantedBy=multi-user.target
+```
+
+Tinc stores all configuration in `/usr/local/etc/tinc` Tinc allows multiple private networks to be defined, each is a folder with the name of the network in `/usr/local/etc/tinc` (If you mess something up, you can restart by deleting the files that are there).
+
+## Tinc: creating the initial network and inviting nodes
+
+This step only has to happen once on the server hosting the vpn. In our case, it was performed on Jean. 
+
+We created a virtual network named "constant" on the public node. Once this network is created, we use the public node to "invite" other nodes, for instance your laptop into this network. Invited nodes can then use tinc's *join* command to use the invite link. The generic form for initializing a new network named NETNAME is 
+
+```shell
+sudo tinc -n NETNAME init NODENAME
+```
+
+so we did 
+
+``` shell
+sudo tinc -n systerserver init servpub
+```
+
+To add a new client to the network you need to
+assign them a subnet of the VPN. For instance is the VPN IP is 10.10.12.x, we can give the new client a subnet IP i.e. 10.10.12.01.
+
+Create a file to keep your list of private addresses. We use a file called `vpn-records` in `/usr/local/etc/tinc/`
+
+Your file might look something like: 
+10.10.12.1      servpub 
+10.10.12.52    NewUser1 
+10.10.12.53    NewUser2
+
+run `sudo tinc -n VPNNAME invite CLIENTNAME`
+
+for instance, in our case if we want to invite a new client called 'NewUser1':
+
+```shell 
+sudo tinc -n systerserver invite newuser1
+```
+
+
+the invite generated will be a long string of letters and numbers. It can then be passed over to NewUser1 to run
+
+i.e. 
+
+```
+sudo tinc -n systerserver join 79.99.202.57/zVublahX7LaCWXJdBzd03jNn48bxuN83jVE_26VnL
+```
+
+NewUser1 will then be asked to give their sudo password.
+
+Then NewUser1 will set the VPN ip address in the 10.10.12.x subnet, using the command below and the IP assigned to them e.g.
+
+```shell
+sudo tinc -n <NETWORK NAME> add subnet <IP>
+```
+
+For NewUser1 it would look like:
+
+```shell
+sudo tinc -n systerserver add subnet 10.10.12.52
+```
+
+## Configuration:
+To create a configuration file, you must join the tinc service through an invite link generated on the server machine running the service, in our case, Jean. Details of how to generate an invite are above.
+
+Once you have generated your invite code, run:
 ``` shell
 sudo tinc -n systerserver join <invite code>
 ```
@@ -56,37 +169,33 @@ sudo tinc -n systerserver add subnet <your assigned vpn IP>
 ```
 
 ### Edit tinc-up:
-on your machine, go to the configuration folder if you're not already there:
+On your machine, go to the configuration folder if you're not already there:
 ``` shell
 cd /opt/local/etc/tinc/systerserver
 ```
 
-you can use ls -a to see all files in there, then edit the file called tinc-up. You can do this using vim or nano (both work on mac & are just different ways to edit a file in the terminal)
-
-via [[vim]]: #maybe_remove overcomplicates + we are using nano in pages before. if remove don't forget the bit below.
-
-``` shell
-sudo vim tinc-up
-```
+you can use `ls -a` to see all files in there, then edit the file called tinc-up. We are using nano to do our text editing.
 
 via nano:
 ``` shell
 sudo nano tinc-up
 ```
 
-Your file should then look like the text below, in the code block, but swap out whats between the < and > with the vpn IP address we set up on Jean for you (ask someone if you don't know what it is)
+Once the file is open, edit it so it looks like this, filling in the correct details:
 
 ``` tinc-up
 #!/bin/sh
 #echo 'Unconfigured tinc-up script, please edit '$0'!'
 #ifconfig $INTERFACE <your vpn IP address> netmask <netmask of whole VPN>
-ifconfig $INTERFACE <your vpn IP address> 10.10.12.2 up netmask 255.255.255.0
 ```
 
-Exit from vim:
-- To save, first press **esc (escape**)
-- Enter **:wq**  (which stand for write and quite)
-- Press enter
+For NewUser1 it would look like:
+```
+#!/bin/sh 
+#echo 'Unconfigured tinc-up script, please edit '$0'!' 
+ifconfig $INTERFACE 10.10.12.53 netmask 255.255.255.0
+```
+
 
 Exit from nano:
 - Ctr+X
@@ -98,8 +207,18 @@ To test and run the service with debug:
 sudo tincd -n systerserver -D
 ```
 
-# Troubleshooting 
 
+## Start tinc
+
+After this, make sure that the server and the client are both running tinc. On linux, do this with the following command:
+
+``` shell
+sudo systemctl start tinc@.system
+```
+To make the VPN start automatically
+```shell 
+sudo systemctl enable tinc@.system
+```
 
 
 # NginX
@@ -110,7 +229,55 @@ The gist is that NginX seems to be "better" in terms of performance and speed, b
 
 First install Nginx, like we did for the pi [[02-Web Server Setup on Pi#NginX]]
 
-Reverse Proxy Configuration
+
+
+
+## Reverse Proxy Configuration
+
+Make sure you have installed Nginx. If you do not have it installed refer to [[02-Web Server Setup on Pi#NGINX]]
+
+Add an nginx config file at ``/etc/nginx/sites-available/<SERVERNAME>.conf``
+
+To do this use the command
+
+```shell
+cd /ect/nginx/
+nano sites-available/<servername>.conf
+```
+
+Ours looks like:
+
+```shell
+cd /ect/nginx/
+nano sites-available/servpub.conf
+```
+
+Add the following:
+
+```
+server { 
+	listen 80; 
+	listen [::]:80; 
+	server_name rosamex.constantvzw.org; 
+	
+	location / { 
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_pass http://10.10.12.51;
+		proxy_read_timeout 90; 
+	} 
+ 
+	 location / { 
+		rewrite ^ https://$host$request_uri? permanent; 
+	}
+	 
+}
+
+```
+
+http conf setup 
 
 
 
@@ -118,7 +285,6 @@ You should be able to find information about errors and traffic here:
 `/var/log/nginx/access.log`
 `/var/log/nginx/error.log`
 
-http conf setup 
 
 ### http to https redirect
 
