@@ -2,6 +2,17 @@
 theme: moon
 ---
 
+<style>
+	.tiny-font{
+		font-size: 0.5em;
+	}
+
+.markdown-preview-view code{
+         font-size: 0.5em;
+}
+</style>
+
+
 # VPN and Reverse Proxy Server workshop
 
 ---
@@ -13,6 +24,7 @@ theme: moon
 
 
 This is one of the last steps for setting up our server configuration, where we are linking our server on a pi to the VPN network hosted by systerserver's server Jean. This will then mean that this pi can be used as a mobile and autonomous server, running online but not from a set address. 
+
 
 
 --
@@ -154,12 +166,12 @@ ls /usr/local/sbin/tinc
 > This means that you can only run tinc as sudo, since sbin directory saves binary executables that can be ran only by sudo
 
 ---
-## Use UFW to open up the necessary firewall
+# Use UFW to open up the necessary firewall
 
 In this step, you will set up the default firewall ufw on all your server. You'll add OpenSSH service, add tinc VPN port, then start and enable ufw firewall.
 
 --
-### Open the ports
+## Open the ports
 
 First, add the OpenSSH service using the ufw command below. An output '**Rules updated**' confirms that the new rule was added to ufw.
 
@@ -173,7 +185,7 @@ Add the port 655 that will be used by tinc VPN by entering the following command
 sudo ufw allow 655
 ```
 --
-### Enable UFW and check it
+## Enable UFW and check it
 
 Now run the following ufw command to start and enable the ufw firewall. When prompted, input y to confirm and press ENTER to proceed.
 
@@ -188,9 +200,9 @@ sudo ufw status
 ```
 
 ---
-## Tinc
+# Tinc
 
-#### creating the initial network and inviting nodes
+## creating the initial network and inviting nodes
 
 
 This step only has to happen once on the server hosting the vpn. In our case, it was performed on Jean. 
@@ -210,9 +222,10 @@ so we did
 
 ``` shell
 sudo tinc -n systerserver init servpub
-```
+``` 
 
->Tinc stores all configuration in `/usr/local/etc/tinc` and allows multiple private networks, each in a folder with the name of the network, e.g. `/usr/local/etc/tinc/jean` (If you mess something up, you can restart by deleting the files that are there).
+>Tinc stores all configuration in `/usr/local/etc/tinc` and allows multiple private networks, each in a folder with the name of the network, e.g. `/usr/local/etc/tinc/jean` (If you mess something up, you can restart by deleting the files that are there). 
+
 
 --
 ### Tracking IP's
