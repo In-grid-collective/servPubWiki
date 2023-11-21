@@ -1,10 +1,9 @@
 ---
-theme: solarized
+theme: moon
 ---
----
-<!-- slide template="[[tpl-con-2-1-box]]" -->
 
 # VPN and Reverse Proxy Server workshop
+
 ---
 
 
@@ -17,6 +16,7 @@ This is one of the last steps for setting up our server configuration, where we 
 
 
 --
+
 
 ## Collaborations!
 
@@ -45,7 +45,9 @@ We will be setting up:
 -  Reverse Proxy Server using [NginX](https://www.nginx.com/resources/glossary/reverse-proxy-server/)
 
 ---
+
 # Installing Tinc
+
 
 Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Find out [more](https://www.tinc-vpn.org/) 
 
@@ -64,6 +66,8 @@ They are a litle bit more complex but we have found methods for installing on ot
 ### Install instructions for Linux:
 
 --
+
+
 ### Install dependencies
 
 We will be using apt to install dependencies before we download and install tinc. 
@@ -150,9 +154,12 @@ ls /usr/local/sbin/tinc
 > This means that you can only run tinc as sudo, since sbin directory saves binary executables that can be ran only by sudo
 
 ---
-### Use UFW to open up the necessary firewall
+## Use UFW to open up the necessary firewall
 
 In this step, you will set up the default firewall ufw on all your server. You'll add OpenSSH service, add tinc VPN port, then start and enable ufw firewall.
+
+--
+### Open the ports
 
 First, add the OpenSSH service using the ufw command below. An output '**Rules updated**' confirms that the new rule was added to ufw.
 
@@ -165,6 +172,8 @@ Add the port 655 that will be used by tinc VPN by entering the following command
 ``` shell
 sudo ufw allow 655
 ```
+--
+### Enable UFW and check it
 
 Now run the following ufw command to start and enable the ufw firewall. When prompted, input y to confirm and press ENTER to proceed.
 
@@ -178,14 +187,20 @@ Check its status with
 sudo ufw status
 ```
 
-Tinc stores all configuration in `/usr/local/etc/tinc` Tinc allows multiple private networks to be defined, each is a folder with the name of the network, e.g. `/usr/local/etc/tinc/jean` (If you mess something up, you can restart by deleting the files that are there).
+---
+## Tinc
 
-## Tinc: creating the initial network and inviting nodes
+#### creating the initial network and inviting nodes
 
 
 This step only has to happen once on the server hosting the vpn. In our case, it was performed on Jean. 
 
-We created a virtual network named "constant" on the public node. Once this network is created, we use the public node to "invite" other nodes, for instance your laptop into this network. Invited nodes can then use tinc's *join* command to use the invite link. The generic form for initializing a new network named NETNAME is 
+We created a virtual network named `systerserver` on the public node. Once this network is created, we use the public node to "invite" other nodes, for instance servpub. Invited nodes can then use tinc's *join* command to use the invite link. 
+
+--
+# Initialising the VPN 
+
+Simply write:
 
 ```shell
 sudo tinc -n <NETNAME> init <NODENAME>
@@ -197,19 +212,51 @@ so we did
 sudo tinc -n systerserver init servpub
 ```
 
+>Tinc stores all configuration in `/usr/local/etc/tinc` and allows multiple private networks, each in a folder with the name of the network, e.g. `/usr/local/etc/tinc/jean` (If you mess something up, you can restart by deleting the files that are there).
+
+--
+### Tracking IP's
+
 To add a new client to the network you need to assign them a subnet of the VPN. For instance is the VPN IP is 10.10.12.x, we can give the new client a subnet IP i.e. 10.10.12.1.
 
 Create a file to keep your list of private addresses. We use a file called `vpn-records` in `/usr/local/etc/tinc/`
 
 Your file might look something like: 
-10.10.12.1      servpub 
-10.10.12.52    NewUser1 
-10.10.12.53    NewUser2
+
+- 10.10.12.1     -  servpub 
+- 10.10.12.52   -  NewUser1 
+- 10.10.12.53   -  NewUser2
+
+--
+
+### Add our new IP record
+
+Create or open the file with:
+
+``` shell
+sudo nano /usr/local/etc/tinc/<NETNAME>/vpn-records
+```
+
+We did:
+
+``` shell
+sudo nano /usr/local/etc/tinc/systerserver/vpn-records
+```
+
+Then choose and paste in the IP for the node as below:
+``` vpn-records
+<subnet IP> - <NodeName>
+
+e.g.
+10.10.12.1 - servepub
+
+```
+--
 
 run
 
 ``` shell
-sudo tinc -n <NETNAME> invite <CLIENTNAME>
+sudo tinc -n <NETNAME> invite <NODENAME>
 ```
 
 for instance, in our case if we want to invite a new client called 'servepub':
