@@ -1,34 +1,82 @@
+---
+theme: solarized
+---
+---
+<!-- slide template="[[tpl-con-2-1-box]]" -->
+
+# VPN and Reverse Proxy Server workshop
+---
 
 
-# "Stack"
-
-We will need the following:
-- VPN ([tinc](https://www.cyberciti.biz/faq/ubuntu-install-tinc-and-set-up-a-basic-vpn/))
--  [Reverse Proxy Server](https://www.nginx.com/resources/glossary/reverse-proxy-server/) (NginX)
+# Intro
 
 
-[Notes](https://pad.riseup.net/p/un-Named_Server_CCI-keep)
 
-# Tinc
 
-tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Find out [more](https://www.tinc-vpn.org/) 
+This is one of the last steps for setting up our server configuration, where we are linking our server on a pi to the VPN network hosted by systerserver's server Jean. This will then mean that this pi can be used as a mobile and autonomous server, running online but not from a set address. 
 
-You need to install tinc for all nodes, both server and client. 
 
-If you would like to install on Mac, check out [[NA-Installing tinc on Mac]]. It's a little bit more complicated than Linux. If you want to install on Windows, it may be better to run tinc from a linux console [like this](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
+--
 
-## Install instructions for Linux:
-The tinc install instructions in this guide zine work well. This is what we have used to install tinc on a pi. [https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) 
+## Collaborations!
 
-We will be using apt to install development tools and dependencies before we download the source code of tinc. 
+Todays workshop will follow along the work of the [Rosa zine](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) made by our collaborators systerserver. 
 
-First we will download essential packages to  compile tinc as a sudo user.
+As we have been following these steps we have been adding our own approaches focusing on:
+- Accessibility
+- Transformability
+- CI imaginaries
+
+---
+## So far
+
+We have basically got a pi setup with:
+- Armbian OS
+- RSS access over local WIFI
+- Users setup
+- NginX installed
+
+--
+
+## In this session
+
+We will be setting up:
+- The VPN  using  [Tinc](https://www.cyberciti.biz/faq/ubuntu-install-tinc-and-set-up-a-basic-vpn/)
+-  Reverse Proxy Server using [NginX](https://www.nginx.com/resources/glossary/reverse-proxy-server/)
+
+---
+# Installing Tinc
+
+Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Find out [more](https://www.tinc-vpn.org/) 
+
+You need to install tinc for all nodes of the subnetwork. 
+
+--
+### OS
+
+Today we will be installing Tinc on Armbian (Linux).
+
+They are a litle bit more complex but we have found methods for installing on other OS though:
+- Mac - our manual in the wiki. 
+- Windows - documentation coming, but using ubuntu console [like this](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
+
+--
+### Install instructions for Linux:
+
+--
+### Install dependencies
+
+We will be using apt to install dependencies before we download and install tinc. 
 
 ```shell 
 sudo apt install build-essential automake libssl-dev liblzo2-dev libbz2-dev zlib1g-dev libncurses5-dev libreadline-dev 
 ```
+>	###### We don't need to know too much what they do to be honest, just that they are needed to run Tinc
 
-Navigate into a tmp folder.
+--
+### Download and decompress Tinc installer
+
+Navigate into a tmp folder. This is so our install packages are automatically deleted when we reboot. 
 
 ```shell
 cd /tmp
@@ -40,6 +88,29 @@ Download tinc 1.1 with wget and uncompres the downloaded item to a folder with t
 wget https://www.tinc-vpn.org/packages/tinc-1.1pre17.tar.gz 
 tar xvf tinc-1.1pre17.tar.gz
 ```
+
+--
+
+### See what we have got!
+
+Let's check the new folder that is there. 
+``` shell
+ls
+```
+
+>You should see these files:
+> - `tinc-1.1pre17`
+> - `tinc-1.1pre17.tar.gz`
+
+You can check what is in the new folder with
+
+``` shell
+ls tinc-1.1pre17
+```
+
+--
+
+### Install Tinc
 
 Navigate into the folder and run  the configure file to set tinc up.
 
@@ -55,18 +126,30 @@ make
 sudo make install
 ```
 
+
+--
+### Make configuration folder
+
 Once installed, create a configuration directory. All configurations of tinc will happen in this folder. Using tinc subcommands (like invite / join), result in changes to the files in this folder.
 
 ```shell
 sudo mkdir -p /usr/local/etc/tinc/
 ```
 
-The tinc executable is installed in 
+--
 
-`/usr/local/sbin/tinc `
+#### Checkout executable
 
-This means that you can only run tinc as sudo, since sbin directory saves binary executables that can be ran only by sudo (s+bin)
+We can also see the tinc executable is installed in sbin where it should be.
 
+``` shell
+ls /usr/local/sbin/tinc 
+```
+
+> [!Note]
+> This means that you can only run tinc as sudo, since sbin directory saves binary executables that can be ran only by sudo
+
+---
 ### Use UFW to open up the necessary firewall
 
 In this step, you will set up the default firewall ufw on all your server. You'll add OpenSSH service, add tinc VPN port, then start and enable ufw firewall.
