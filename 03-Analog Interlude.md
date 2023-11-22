@@ -51,9 +51,26 @@ Going forward, we will also have to name:
 - one root user (if different)
 - Separate user account (named after members)
 - The domain (which will be publicly accessible)
-
-We discussed several options of naming systems: notes here: https://pad.riseup.net/p/un-Named_Server_CCI-keep
 # Creating Users
 ##### DOCUMENTATION NEEDED HERE:
-please document the steps of creating user accounts
-- [ ] link to systerserver guide
+Using [this guide](https://alexandria.anarchaserver.org/index.php/Access_server) from Systerserver, we can create users and give them different access levels. 
+
+To make a new user, use the command below. Note, that you will be prompted to input a password and it is always better to give different users passwords
+```shell
+adduser <nameofuser>
+```
+
+If you want to give this user sudo access, then they have to be added to the "sudo" group. You don't need to create this group, it exists by default and you can just add or remove users from it.
+```bash
+usermod -aG sudo <nameofuser>
+```
+
+You can check to see who is in the group sudo using this command:
+```bash
+ grep '^sudo:.*$' /etc/group
+```
+
+Now you can change into the new user (in other words, sign into their account):
+```shell
+su <nameofuser>
+```
