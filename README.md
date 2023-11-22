@@ -27,7 +27,7 @@ fig by Mara from Systerserver
 #### Collective Documentation
 - [ ] Documentation of ServPub pending completion:
 	- [ ] Becky: NginX and automation
-	- [ ] Batool: Creating users here: [[03-Analog Interlude]]
+	- [x] Batool: Creating users here: [[03-Analog Interlude]]
 	- [ ] certification [[04-Static IP & Domain Setup]]
 	- [ ] missing steps of getting certificates [[04-Static IP & Domain Setup]]
 	- [x] redirecting http to https 

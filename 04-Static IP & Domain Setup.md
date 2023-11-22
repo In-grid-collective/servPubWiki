@@ -1,7 +1,7 @@
 
 This section is here to clarify some of the terminology we use throughout the subsequent section.
 
-### IP addresses
+## IP addresses
 
 IP (Internet Protocol) addresses work like a bit like a street address in that they allow devices find each other online. Every internet device has a unique IP address. These addresses can be converted into text via a Domain Name System (DNS) format. ``See`` [[04-Static IP & Domain Setup#Domains]] ``for more info on Domains.``
 
@@ -18,8 +18,7 @@ Static IP addresses are unchanging - an IP is assigned to a device and it remain
 
 If IP addresses are the addresses that devices use to find each other online, then domains are how we understand where things are online. When you access a server on the internet you usually do so using its domain name. Domain names are easier and more identifiable for us to remember, and recognise than IP addresses. servpub.net is easier for us to remember for example than a string of numbers. A DNS server translates between domain names (which we understand) and IP addresses (which our devices understand). 
 
-** did we buy the domain name?
-
+** did we buy the domain name? -yes.
 
 #### HTTP versus HTTPS
 
@@ -52,4 +51,7 @@ MX records show where emails for a domain should be routed to i.e. directing ema
 -----------------------------------------
 
 Keep reading for creating a network of nodes using a VPN. 
+
+## SSL & HTTPS Certificates
+
 
