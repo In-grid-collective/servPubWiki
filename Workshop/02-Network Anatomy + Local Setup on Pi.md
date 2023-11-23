@@ -23,10 +23,111 @@ theme: moon
 	code{
 	     padding: 0.5em 1em!important;
 	}
+	code.nginx{
+	    font-size: 0.4em!important;
+	    line-height: 1.5em!important;
+	}
+
+	table{
+		 font-size: 0.5em!important;
+		 margin: 40px 0!important;;
+	}
 
 </style>
 
 
+
+## Network Anatomy 
+
+We will start with an overview of servpub to introduce different elements of internet infrastructure and associated terms.
+
+---
+
+
+This will be followed by an introduction to the tools for working with the wiki2print pi on a local network, before later moving onto mounting the raspberry pi into the Virtual Private Network accessible online.
+
+| __Local__ Devices in __Local__ Area Networks |  Remote Devices on the Public Internet  |
+| ----------- | ----------- |
+| Devices that are connected via the same wi-fi or ethernet in a limited geographical area. | Devices that are connected via the wider public internet.  |
+
+
+---
+
+
+![[slideAsset 6.png]]
+
+---
+![[slideAsset 2.png]]
+
+--
+
+
+
+| Term     | Example | Description |
+| ----------- | -----------  | ----------- |
+| IP Address   |  192.0.2.1 | IP (Internet Protocol) addresses work like a bit like a street address in that they allow devices to find each other online.      |
+| Static IP |  89.106.208.4 | Unlike standard dynamic IPs, a static IP is assigned to a device and it remains the same. |
+| Domain Name |  servpub.net | IP addresses can be converted into text via a Domain Name System (DNS) format.   |
+| Ports | 80 | Port 80 is the port number assigned to internet communication protocol, Hypertext Transfer Protocol (HTTP). Ports are part of the TCP transport layer.|
+
+
+
+---
+![[slideAsset 7.png]]
+
+--
+
+
+
+| Term     | Example | Description |
+| ----------- | -----------  | ----------- |
+| Tinc |   | VPN software |
+| Local IP Addresses   |  10.0.0.0| IPs in this range are reserved for private networks     |
+
+
+
+
+---
+
+![[slideAsset 4.png]]
+
+---
+
+
+![[slideAsset 5.png]]
+--
+
+| Term     |  Description |
+| ----------- | ----------- |
+| Static Server |  A Server for serving up files like .html .jpeg .css .js etc  |
+| Proxy Server | A proxy server is a go‑between or intermediary server that forwards requests for content from multiple clients to different servers|
+| Reverse Proxy Server  |  A **reverse proxy server** is a type of proxy server that typically sits behind the firewall in a private network and directs client requests to the appropriate backend server    |
+| Nginx |  **Nginx** is open source software for web serving |
+
+---
+
+## Local Server on the Pi
+
+--
+
+## Set up Pi for Local Network Access
+
+
+SSH or Secure Shell is a network communication protocol that enables two computers to communicate. We will use SSH to access the Pi remotely via the local network
+
+![[Pasted image 20231108164245.png]]
+*Image courtesy of Mara, Systerserver*
+
+--
+## Prerequisites
+
+- Raspberry pi + peripherals: HDMI screen, keyboard, mouse etc. 
+- Pi OS booted: The Rosa Server Guide recommends [Armbian OS](https://www.armbian.com/rpi4b/)
+- Knowledge of terminal/bash
+- Have SSH installed on laptop (most OS have it by default now, if not then manually install, below)
+- To be on the same local network
+
+---
 ## Break
 
 Download GitBash
@@ -46,80 +147,6 @@ sudo apt install -y openssh-client
 
 
 ---
-
-## Network Anatomy 
-
-
---
-
-
-## Intro
-
-
-
-
---
-
-
-![[slideAsset 6.png]]
-
----
-![[slideAsset 2.png]]
-
---
-
----
-![[slideAsset 7.png]]
-
---
-
----
-
-![[slideAsset 4.png]]
-
----
-
-
-![[slideAsset 5.png]]
----
-
-## Local Server on the Pi
-
----
-
-
-
-## Notes on terms
-
-Local vs. Remote
-
-Server = the Pi
-
-Client = your laptop
-
-
-
----
-
-## Set up Pi for Local Network Access
-
-
-SSH or Secure Shell is a network communication protocol that enables two computers to communicate. We will use SSH to access the Pi remotely via the local network
-
-![[Pasted image 20231108164245.png]]
-*Image courtesy of Mara, Systerserver*
-
---
-## Prerequisites
-
-- Raspberry pi + peripherals: HDMI screen, keyboard, mouse etc. 
-- Pi OS booted: The Rosa Server Guide recommends [Armbian OS](https://www.armbian.com/rpi4b/)
-- Knowledge of terminal/bash
-- Have SSH installed on laptop (most OS have it by default now, if not then manually install, below)
-- To be on the same local network
-
-
---
 
 ## So far
 
@@ -215,18 +242,15 @@ cd ..
 ```
 
 
---
+---
 
 ## Installing SSH 
 
-The next step is to install an SSH server to the server (Pi) and a client package to the client (your laptop). We have already installed it on the Pi.
-
-If you haven't already checked if you have ssh, try to check the ssh version:
+We have installed an SSH server on the (Pi) and you will need an ssh client package (on your laptop). If you haven't already checked if you have ssh, try to check the ssh version:
 
 ``` shell
 ssh -v
 ```
-
 
 If you get a "command not found", install the client package to your laptop with this line on linux:
 
@@ -341,7 +365,7 @@ We will be using [NginX](https://www.nginx.com/)  which is a web serving softwar
 
 --
 
-We create Nginx configuration files for each server.
+### Nginx configuration files for servers
 
 All Nginx configuration files should be created here:
 
@@ -357,7 +381,7 @@ nano wiki2print.conf
 
 --
 
-The server block is where we define our server set up:
+The server block is where we define our server set up. Take note of the root folder path, that is where our website is being served out of: 
 
 ```nginx
 
@@ -386,7 +410,6 @@ server {
  }
 ```
 
-Take note of the root folder path, that is where our website is being served out of. 
 
 --
 
