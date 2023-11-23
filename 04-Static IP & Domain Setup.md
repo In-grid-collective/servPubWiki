@@ -29,7 +29,7 @@ HTTPS websites must obtain an SSL/TS certificate from a certificate authority (C
 
 #### DNS Records
 
-DNS records provide information about a hostname or domain, and include the IP address for a domain. They are stored on a DNS server.
+DNS records provide information about a hostname or domain, and include the IP addresses for a domain. They are stored on a DNS server.
 
 There are several types of DNS record. 5 main types include:
 
