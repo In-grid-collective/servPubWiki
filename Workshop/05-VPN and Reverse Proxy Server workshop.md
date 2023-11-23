@@ -1,8 +1,10 @@
 ---
-theme: moon
+theme: serif
 ---
 
 <style>
+
+    
 	.tiny-font{
 		font-size: 0.5em;
 	}
@@ -10,15 +12,18 @@ theme: moon
 .markdown-preview-view code{
          font-size: 0.5em;
 }
+
 </style>
 
 
-# VPN and Reverse Proxy Server workshop
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
+
+## VPN and Reverse Proxy Server workshop
 
 ---
 
-
-# Intro
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
+## Intro
 
 
 
@@ -29,7 +34,7 @@ This is one of the last steps for setting up our server configuration, where we 
 
 --
 
-
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ## Collaborations!
 
 Todays workshop will follow along the work of the [Rosa zine](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) made by our collaborators systerserver. 
@@ -40,6 +45,7 @@ As we have been following these steps we have been adding our own approaches foc
 - CI imaginaries
 
 ---
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ## So far
 
 We have basically got a pi setup with:
@@ -49,7 +55,7 @@ We have basically got a pi setup with:
 - NginX installed
 
 --
-
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ## In this session
 
 We will be setting up:
@@ -57,8 +63,8 @@ We will be setting up:
 -  Reverse Proxy Server using [NginX](https://www.nginx.com/resources/glossary/reverse-proxy-server/)
 
 ---
-
-# Installing Tinc
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
+### Installing Tinc
 
 
 Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Find out [more](https://www.tinc-vpn.org/) 
@@ -66,6 +72,7 @@ Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encrypti
 You need to install tinc for all nodes of the subnetwork. 
 
 --
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ### OS
 
 Today we will be installing Tinc on Armbian (Linux).
@@ -75,11 +82,12 @@ They are a litle bit more complex but we have found methods for installing on ot
 - Windows - documentation coming, but using ubuntu console [like this](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
 
 --
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ### Install instructions for Linux:
 
 --
 
-
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ### Install dependencies
 
 We will be using apt to install dependencies before we download and install tinc. 
@@ -90,6 +98,7 @@ sudo apt install build-essential automake libssl-dev liblzo2-dev libbz2-dev zlib
 >	###### We don't need to know too much what they do to be honest, just that they are needed to run Tinc
 
 --
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ### Download and decompress Tinc installer
 
 Navigate into a tmp folder. This is so our install packages are automatically deleted when we reboot. 
@@ -106,7 +115,7 @@ tar xvf tinc-1.1pre17.tar.gz
 ```
 
 --
-
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ### See what we have got!
 
 Let's check the new folder that is there. 
@@ -125,7 +134,7 @@ ls tinc-1.1pre17
 ```
 
 --
-
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ### Install Tinc
 
 Navigate into the folder and run  the configure file to set tinc up.
@@ -144,6 +153,7 @@ sudo make install
 
 
 --
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ### Make configuration folder
 
 Once installed, create a configuration directory. All configurations of tinc will happen in this folder. Using tinc subcommands (like invite / join), result in changes to the files in this folder.
@@ -153,7 +163,7 @@ sudo mkdir -p /usr/local/etc/tinc/
 ```
 
 --
-
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 #### Checkout executable
 
 We can also see the tinc executable is installed in sbin where it should be.
@@ -166,11 +176,13 @@ ls /usr/local/sbin/tinc
 > This means that you can only run tinc as sudo, since sbin directory saves binary executables that can be ran only by sudo
 
 ---
-# Use UFW to open up the necessary firewall
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
+### Use UFW to open up the necessary firewall
 
 In this step, you will set up the default firewall ufw on all your server. You'll add OpenSSH service, add tinc VPN port, then start and enable ufw firewall.
 
 --
+<!-- slide bg="[[servpubDiagram_bg.png]]" -->
 ## Open the ports
 
 First, add the OpenSSH service using the ufw command below. An output '**Rules updated**' confirms that the new rule was added to ufw.

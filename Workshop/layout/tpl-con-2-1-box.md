@@ -23,6 +23,7 @@
   border-bottom: 2px dotted gray;
 } 
 } 
+
 </style>
 
 <grid drag="94 0" drop="3 -6" class="horizontal_dotted_line">
