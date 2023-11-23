@@ -31,6 +31,20 @@ theme: moon
 
 Download GitBash
 
+If you haven't already checked if you have ssh, try to check the ssh version:
+
+``` shell
+ssh -v
+```
+
+
+If you get a "command not found", install the client package to your laptop with this line on linux:
+
+``` shell
+sudo apt install -y openssh-client
+```
+
+
 ---
 
 ## Network Anatomy 
@@ -286,7 +300,7 @@ To access a shared session, we all have to be logged in as the same user simulta
 
 --
 
-If you want to enter into sudo mode to run all commands as a super user (we do), run:
+We will enter into sudo mode to run all commands as a super user run:
 
 ```shell
  sudo su
@@ -302,17 +316,18 @@ We're now going to start our tmux session with the following command:
 tmux attach
 ```
 
---
-Note: Everyone in a Tmux session is acting as the same user. However we can create split screens and multiple panes within Tmux so different people can work on different things. 
 
-Reference and troubleshooting: https://www.howtogeek.com/devops/how-to-get-started-and-use-tmux/
+
+> [!Note]
+> Everyone in a Tmux session is acting as the same user. However we can create split screens and multiple panes within Tmux so different people can work on different things. 
+
 
 ---
 
-# Server Software 
+## Server Software 
 
 
-We will be using [NginX](https://www.nginx.com/)  which is a web serving software. You can use Nginx to create various types of servers. We have created a simple static server using Nginx on our both pis. 
+We will be using [NginX](https://www.nginx.com/)  which is a web serving software. You can use Nginx to create various types of servers. We have created a simple static server using Nginx on our both pis. So Far:
 
 - We have installed Nginx
 - And configured a simple static server
@@ -370,7 +385,7 @@ Take note of the root folder path, that is where our website is being served out
 
 --
 
-#### Using Systemctl for Nginx
+### Using Systemctl for Nginx
 
 We will be using [systemd](https://en.wikipedia.org/wiki/Systemd) the Linux system and service manager. We can use systemctl to manage systemd services. 
 
@@ -380,7 +395,7 @@ Check status of Nginx:
 sudo systemctl status nginx
 ```
 
-Reload any Nginx configuration files that have changed (in sites-enabled). This is a safer process as it does not shut down the Nginx process entirely, if you have any errors in your configuration file it will keep the service running on the old configuration file:
+Reload any Nginx configuration files that have changed (in sites-enabled):
 
 ```shell
 sudo systemctl reload nginx
@@ -413,7 +428,7 @@ Print out the contents of the index.html to terminal:
 cat index.html
 ```
 
-Let's open it up in Nano text editor to make some changes:
+Let's open it up in Nano command line text editor to make some changes:
 
 ```shell
 nano index.html
@@ -421,10 +436,9 @@ nano index.html
 
 --
 
-Nano quick start for editing a text file:
+### Nano Quick Start
 
 - You will see the nano editor open. At the bottom of the window, you will find some shortcuts to use with the Nano editor. The `^` (caret) means that you must press **CTRL** (Windows) or **control** (macOS) to use the chosen command.
-- You should be able to edit and enter text in your file.
 - Press **CTRL + O** to save the changes made in the file and continue editing.
 - To exit from the editor, press **CTRL + X**. If there are changes, it will ask you whether to save them or not. Input **Y** for **Yes**, or **N** for **No**, then press **Enter**. If there are no changes, you will exit the editor right away.
 
@@ -433,7 +447,7 @@ Every time we save we should be able to refresh our browsers to see the change!
 
 --
 
-## More Terminal Commands
+### More Terminal Commands
 
 Make new directory:
 
