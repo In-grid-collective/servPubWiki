@@ -18,6 +18,7 @@
 	ul,
 	p{
 		font-size: 0.8em!important;
+		color: white!important
 	}
 	h1,h2,h3{
         font-family : "GeneraleStationRegular"!important;
@@ -27,12 +28,10 @@
 	     padding: 0.5em 1em!important;
 	}
 
-.bg{
-background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 4%, rgba(52,1,45,1) 100%);
+.slide-background{
+background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 4%, rgba(52,1,45,1) 100%)!important;
 
 }
 
 </style>
 
-
-<!-- .slide: class="bg" -->
