@@ -8,7 +8,7 @@ ServPub is an experimental site for research and practice on experimental and co
 
 
 # People Involved
-##### Main Organisers: 
+##### Organising bodies: 
 - Geoff Cox, [CSNI](https://www.centreforthestudyof.net/?page_id=756) at London South Bank Uni
 - Winnie Soon, [CCI](https://www.arts.ac.uk/creative-computing-institute), UaL
 - Christian Ulrik Andersen, [DARC](https://darc.au.dk) & [Shape](https://shape.au.dk) at Aarhus Uni
