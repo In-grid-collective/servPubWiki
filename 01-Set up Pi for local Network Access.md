@@ -40,6 +40,7 @@ sudo apt install -y openssh-server
 sudo apt install -y openssh-client
 ```
 
+If you are installing ssh for windows or mac refer to [[NA- Installing SSH on other devices]]
 ## Change Default PW:
 
 Defaults are 

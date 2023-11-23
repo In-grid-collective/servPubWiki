@@ -130,21 +130,25 @@ SSH or Secure Shell is a network communication protocol that enables two comput
 ---
 ## Break
 
-Download GitBash
+**Things to do:~**
 
-If you haven't already checked if you have ssh, try to check the ssh version:
+If you have a windows machine and you would like to follow along with us download Git for Windows: https://gitforwindows.org/
+
+Check if you have SSH installed on your laptop. Most newer macs and windows laptops already have it installed.
+
+Try to check the ssh version in Command Prompt (Windows) or terminal (Linux or Mac):
 
 ``` shell
 ssh -v
 ```
 
 
-If you get a "command not found", install the client package to your laptop with this line on linux:
+Linux users install the client package to your laptop with this line on linux:
 
 ``` shell
 sudo apt install -y openssh-client
 ```
-
+If you're using another operating system/or need help let us know and we can assist.
 
 ---
 

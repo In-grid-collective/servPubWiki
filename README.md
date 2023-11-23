@@ -18,9 +18,7 @@ fig by Mara from Systerserver
 - [x] make visual material describing project & network relations
 - [-] path diagram of what we will learn
 #### Technical prep for Work Session:
-<<<<<<< HEAD
 - [x] Prep 2nd pi: flashing SD card + Install OS
-=======
 - [x] Prep 2nd pi: flashing SSD card + Install OS
 - [x] Prep 2nd pi: maybe create one public user for participants & give it a fun password
 - [x] Decide what parts of tech setup to do in workshop & make steps
@@ -28,11 +26,10 @@ fig by Mara from Systerserver
 - [ ] Documentation of ServPub pending completion:
 	- [ ] Becky: NginX and automation
 	- [x] Batool: Creating users here: [[03-Analog Interlude]]
-	- [ ] certification [[04-Static IP & Domain Setup]]
 	- [ ] missing steps of getting certificates [[04-Static IP & Domain Setup]]
 	- [x] redirecting http to https 
 	- [x] how to replace lost SSH
-- [ ] Put documentation (even as draft) on Systerservers Git
+- [x] Put documentation (even as draft) on Systerservers Git
 - [ ] For NEXT workshop/future: host own etherpad server 
 - [x] redirect http to https
 - [x] Compile and edit notes from both work sessions
