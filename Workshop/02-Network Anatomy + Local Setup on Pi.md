@@ -60,13 +60,13 @@ sudo apt install -y openssh-client
 
 ---
 
-![[slide1Asset 1.png]]
 
+![[slideAsset 6.png]]
 ---
 ![[slideAsset 2.png]]
 
 ---
-![[slideAsset 3.png]]
+![[slideAsset 7.png]]
 
 ---
 
