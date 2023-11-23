@@ -2,8 +2,12 @@
 theme: moon
 ---
 
-<style>
 
+<header>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/generale-station" type="text/css"/>
+</header>
+
+<style>
     
 	.tiny-font{
 		font-size: 0.5em;
@@ -20,22 +24,23 @@ theme: moon
 	p{
 		font-size: 0.8em!important;
 	}
+	h1,h2,h3{
+        font-family : "GeneraleStationRegular"!important;
+        font-size: 1.5em!important;
+}
 	code{
 	     padding: 0.5em 1em!important;
 	}
-	code.nginx{
-	    font-size: 0.4em!important;
-	    line-height: 1.5em!important;
-	}
 
-	table{
-		 font-size: 0.5em!important;
-		 margin: 40px 0!important;;
-	}
+.bg{
+background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 4%, rgba(52,1,45,1) 100%);
+
+}
 
 </style>
 
 
+<!-- .slide: class="bg" -->
 
 ## Network Anatomy 
 
