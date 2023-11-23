@@ -9,8 +9,9 @@
 
 #### Sharing Feminist Methodologies (20 mins)
 Sharing feminist methodologies (Systerserver)
+
 ##### Network Anatomy (30 mins) - becky + kt
-- Introduction to local network + Introduce network anatomy briefly (guided by diagrams, reference "Local Config" in servPub documentation).
+- Introduction to local network + Introduce network anatomy briefly (guided by diagrams, reference "Pi for Local Network Access" in servPub documentation).
 
 Tour of the browser:
 - ACTION SLIDE: Join Dongle Wi-fi (don't do big data things... joke about mbs)

@@ -79,6 +79,7 @@ IMPORTANT: __DO NOT__ simply edit that default configuration file. Instead set u
 # Customising an NGINX Site
 
 We are going to create a custom .conf file and point it to a new location on your pi for your custom site. 
+
 ##### Create a custom .conf for you site
 
 We will make a copy of the default file and rename that copy, and then move the default configuration to `sites-available` which is where you can keep any configuration files for sites that are not currently active. 
@@ -188,7 +189,7 @@ Feel free to copy this starter index.html page for a quick test:
 ```
 
 
-Restart nginx:
+Restart nginx using the nginx commands:
 
 ```shell
 nginx -s reload
@@ -201,5 +202,41 @@ nginx -h
 ```
 
 Test that your site is up and available by going to the IP of your pi in your web browser! You can now edit the html file with new content to update what content is being served by your Nginx web server.
+
+
+#### Using Systemctl for Nginx
+
+We will be using [systemd](https://en.wikipedia.org/wiki/Systemd) the linux system and service manager. We can use systemctl to manage systemd services. 
+
+Check status of Nginx:
+
+```shell
+sudo systemctl status nginx
+```
+
+Stop Nginx:
+
+```shell
+sudo systemctl stop nginx
+```
+
+Start Nginx:
+
+```shell
+sudo systemctl start nginx
+```
+
+Reload any Nginx configuration files that have changed (in sites-enabled). This is a safer process as it does not shut down the Nginx process entirely:
+
+```shell
+sudo systemctl reload nginx
+```
+
+Force restart Nginx:
+
+```shell
+sudo systemctl restart nginx
+```
+
 
 

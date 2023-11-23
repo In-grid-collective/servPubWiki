@@ -25,6 +25,45 @@ in this example the user is called "pubdoc"
 ### Basic Commands
 The following commands will help us get started, but are just the tip of the [iceberg](https://www.geeksforgeeks.org/linux-commands/?ref=lbp)
 
+
+
+
+Show the name of the currently logged in user:
+
+```shell
+whoami
+```
+
+Show the name of the machine is given on the network: 
+
+```shell
+hostname
+```
+
+
+`sudo` stands for [Super User DO](https://www.geeksforgeeks.org/sudo-command-in-linux-with-examples/). This command is used to allow you to run commands that only super users are allowed to run, and is often followed by the command you want to run. When you use `sudo` you will be prompted to enter your super user password to execute the command:
+
+```shell
+ sudo <command>
+```
+
+If you want to enter into sudo mode to run all commands as a super user, run:
+
+```shell
+ sudo su
+```
+(this will then prompt you to enter your password and after which you can run commands as a super user)
+
+
+
+
+Print working directory that you are currently in:
+
+```shell
+pwd
+```
+
+
 Change directory to a directory using the "path" to that folder/directory:
 
 ```shell
@@ -51,6 +90,7 @@ ls
 ```
 
 
+
 Make new directory. When working on the command line it is customary for anything that is variable, i.e. in the example below `mkdir` is our command, and you would then write the name of the folder:
 
  ```shell
@@ -62,21 +102,6 @@ However, in instructions you might see something like this:
  ```shell
 mkdir <directoryname>
 ```
-
-
-`sudo` stands for [Super User DO](https://www.geeksforgeeks.org/sudo-command-in-linux-with-examples/). This command is used to allow you to run commands that only super users are allowed to run, and is often followed by the command you want to run. When you use `sudo` you will be prompted to enter your super user password to execute the command:
-
-```shell
- sudo <command>
-```
-
-If you want to enter into sudo mode to run all commands as a super user, run:
-
-```shell
- sudo su
-```
-(this will then prompt you to enter your password and after which you can run commands as a super user)
-
 
 
 Make new file:
@@ -91,6 +116,35 @@ A quick way to print contents of a file to your terminal:
 ```shell
 cat <example.txt>
 ```
+
+
+Copy a text file called `example.txt` which is in a sub directory "exampleFolder" to a new location  `/path/to/folder`:
+
+```shell
+cp exampleFolder/example.txt /path/to/folder
+```
+
+
+Remove a file, be careful with removing files!
+
+```shell
+rm <file.txt>
+```
+
+
+Remove an empty directory:
+
+```shell
+rmdir <directoryname>
+```
+
+Remove a directory and all the items inside of it:
+
+```shell
+rm -r <directoryname>
+```
+
+
 
 
 ###  Command Line Text Editors

@@ -204,7 +204,7 @@ sudo tincd -n systerserver -D
 
 ### Start tinc
 
-After this, make sure that the server and the client are both running tinc. we are now going to get tinc to launch automatically with systemd.
+After this, make sure that the server and the client are both running tinc. we are now going to get tinc to launch automatically with [systemd](https://en.wikipedia.org/wiki/Systemd) 
 
 #### Create a systemd service file
 

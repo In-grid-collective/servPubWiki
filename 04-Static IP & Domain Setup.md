@@ -14,6 +14,7 @@ Dynamic IPs are the standard for most consumer devices, or those connected to yo
 #### Static IP addresses
 
 Static IP addresses are unchanging - an IP is assigned to a device and it remains the same. They are manually assigned to individual devices, and are in place for as long as you need them to be. They usually also come with a cost associated. They are used for things like DNS servers, which need to remain accessible and devices always know where to find them. As they are fixed, static IP addresses also make it easier to work with Virtual Private Networks (VPNs). In our case Systerserver provide the static IP we use for servepub. 
+
 #### Domain names
 
 If IP addresses are the addresses that devices use to find each other online, then domains are how we understand where things are online. When you access a server on the internet you usually do so using its domain name. Domain names are easier and more identifiable for us to remember, and recognise than IP addresses. servpub.net is easier for us to remember for example than a string of numbers. A DNS server translates between domain names (which we understand) and IP addresses (which our devices understand). 

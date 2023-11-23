@@ -46,5 +46,3 @@ fig by Mara from Systerserver
 - [x] setup documentation of project (here?)
 - [x] secure 4g dongle for workshop
 
-### Members Involved:
-[[Batool Desouky]] | [[Sunni Liao]] | [[George Simms]] | [[Katie Tindle]]
