@@ -1,3 +1,7 @@
+Linux and Mac OS systems have Unix Shells that provide us a command line interface. e.g. Bash Shells or Zsh 
+
+Windows uses Power Shell by default, which has a different command language. If you are on Windows you will need a Bash shell installed for the following commands. 
+
 
 Much of working on the command line involves navigating around your system without the use of a Graphical User Interface (GUI). Below we have a graphical representation of a folder hierarchy with a plain text .txt file:
 
