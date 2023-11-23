@@ -9,7 +9,6 @@
 
 #### Sharing Feminist Methodologies (20 mins)
 Sharing feminist methodologies (Systerserver)
-
 ##### Network Anatomy (30 mins) - becky + kt
 - Introduction to local network + Introduce network anatomy briefly (guided by diagrams, reference "Local Config" in servPub documentation).
 
@@ -21,8 +20,6 @@ Tour of the browser:
 	- what we see in the browser -> diagram as ASCII image hosted on the server (pre-made)
 ##### To-do:
 - [ ] make visual material describing project & network relations
-- [ ] path diagram of what we will learn
-
 
 ACTION: Reminder if you are on Windows download Git for Windows so you can follow along on terminal. We can help you during the break. 
 #### BREAK (15 mins)
@@ -46,11 +43,11 @@ ACTION: Reminder if you are on Windows download Git for Windows so you can follo
 - Watch us on Jean add the 2nd Pi
 - Someone pings Jean from the 2nd Pi using the local VPN IP
 ##### To-do:
-- [ ] Prep 2nd pi: flashing SSD card + Install OS
+- [x] Prep 2nd pi: flashing SSD card + Install OS
 - [ ] Prep 2nd pi: maybe create one public user for participants & give it a fun password
-- [ ] Decide what parts of tech setup to do in workshop & make steps
+- [x] Decide what parts of tech setup to do in workshop & make steps
 	- Local SSHing and local webpage - with attendee participation
-- [ ] make wiki into slides 
+- [x] make wiki into slides 
 #### BREAK (15 mins)
 
 #### Documentation & Discussion (40 mins) - B200l + George 

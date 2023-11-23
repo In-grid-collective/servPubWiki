@@ -8,30 +8,29 @@ fig by Mara from Systerserver
 
 ## To Dos:
 #### Meeting with Mara:
-- [ ] Prep diagrams with Mara (Monday 13 Nov)
-- [ ] Discuss credits/captions
-- [ ] Brainstorm some workshop logistics 
+- [x] Prep diagrams with Mara (Monday 13 Nov)
+- [x] Discuss credits/captions
+- [x] Brainstorm some workshop logistics 
 	- how long to spend for tech steps
 	- etc.
 ### For Workshop:
 #### Intro:
-- [ ] make visual material describing project & network relations
-- [ ] path diagram of what we will learn
+- [x] make visual material describing project & network relations
+- [-] path diagram of what we will learn
 #### Technical prep for Work Session:
 <<<<<<< HEAD
-- [ ] Prep 2nd pi: flashing SD card + Install OS
+- [x] Prep 2nd pi: flashing SD card + Install OS
 =======
 - [x] Prep 2nd pi: flashing SSD card + Install OS
->>>>>>> origin/main
-- [ ] Prep 2nd pi: maybe create one public user for participants & give it a fun password
+- [x] Prep 2nd pi: maybe create one public user for participants & give it a fun password
 - [x] Decide what parts of tech setup to do in workshop & make steps
 #### Collective Documentation
 - [ ] Documentation of ServPub pending completion:
 	- [ ] Becky: NginX and automation
-	- [ ] Batool: Creating users here: [[03-Analog Interlude]]
+	- [x] Batool: Creating users here: [[03-Analog Interlude]]
 	- [ ] certification [[04-Static IP & Domain Setup]]
 	- [ ] missing steps of getting certificates [[04-Static IP & Domain Setup]]
-	- [ ] redirecting http to https 
+	- [x] redirecting http to https 
 	- [x] how to replace lost SSH
 - [ ] Put documentation (even as draft) on Systerservers Git
 - [ ] For NEXT workshop/future: host own etherpad server 
