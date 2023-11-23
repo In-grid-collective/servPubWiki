@@ -128,9 +128,7 @@ SSH or Secure Shell is a network communication protocol that enables two comput
 - To be on the same local network
 
 ---
-## Break
-
-**Things to do:~**
+## Break, **Things to do:~**
 
 If you have a windows machine and you would like to follow along with us download Git for Windows: https://gitforwindows.org/
 
@@ -149,6 +147,8 @@ Linux users install the client package to your laptop with this line on linux:
 sudo apt install -y openssh-client
 ```
 If you're using another operating system/or need help let us know and we can assist.
+
+Join the network on the pad, please don't download / browse on that network. 
 
 ---
 
@@ -369,6 +369,36 @@ We will be using [NginX](https://www.nginx.com/)  which is a web serving softwar
 
 --
 
+
+## Our Static Website
+
+Inside of www we will see our wiki2print folder which is serving up our html:
+
+<pre style="background-color:black; padding:20px">
+var/
+├─ www/
+       ├─ wiki2print/
+                  ├─ index.html
+</pre>
+
+Change directory to the root:
+
+```shell
+cd /var/www/wiki2print
+```
+
+
+--
+
+Print out the contents of the index.html to terminal:
+
+```shell
+cat index.html
+```
+
+How is this being served up to us?
+
+--
 ### Nginx configuration files for servers
 
 All Nginx configuration files should be created here:
@@ -436,31 +466,12 @@ sudo systemctl reload nginx
 
 --
 
-## Our Static Website
-
-Inside of www we will see our wiki2print folder which is serving up our html:
-
-<pre style="background-color:black; padding:20px">
-var/
-├─ www/
-       ├─ wiki2print/
-                  ├─ index.html
-</pre>
-
-Change directory to the root:
+Let's go back to edit our index.html file!
 
 ```shell
 cd /var/www/wiki2print
 ```
 
-
---
-
-Print out the contents of the index.html to terminal:
-
-```shell
-cat index.html
-```
 
 Let's open it up in Nano command line text editor to make some changes:
 
