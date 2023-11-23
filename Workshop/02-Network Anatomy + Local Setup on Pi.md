@@ -16,6 +16,7 @@ theme: moon
 	pre{
 	     font-size: 0.7em!important;
 	}
+	ul,
 	p{
 		font-size: 0.8em!important;
 	}
@@ -67,7 +68,17 @@ Download GitBash
 
 ---
 
-## Local vs. Remote
+
+
+## Notes on terms
+
+Local vs. Remote
+
+Server = the Pi
+
+Client = your laptop
+
+
 
 ---
 
@@ -88,13 +99,6 @@ SSH or Secure Shell is a network communication protocol that enables two comput
 - Have SSH installed on laptop (most OS have it by default now, if not then manually install, below)
 - To be on the same local network
 
---
-
-## Notes on terms
-
-Server = the Pi
-
-Client = your laptop
 
 --
 
@@ -103,23 +107,109 @@ Client = your laptop
 We have got a Pi setup with:
 - Armbian OS
 
-We prepared this ahead of today in the interest of time. This is a process of downloading and installing the Armbian, which is a Linux operating system.
+We prepared this ahead of today in the interest of time. This is a process of downloading and installing Armbian, which is a Linux operating system. Full instructions live on our docs.
 
-Full instructions live on our docs.
+The next thing we need to do is access our pi via ssh, but to do that we need to understand a bit about the terminal.
+
+
+---
+## Terminal
+
+Linux and Mac OS systems have Unix Shells that provide us a command line interface. e.g. Bash Shells or Zsh 
+
+Windows uses Power Shell by default, which has a different command language. If you are on Windows you will need a Bash shell installed for the following commands. 
+
 
 --
 
-## Installing SSH server & client
+## Who are you?
 
-The next step is to install an SSH server to the server (Pi) and a client package to the client (your laptop).
+Show the name of the currently logged in user:
 
-To install the server package to the Pi:
-
-``` shell
-sudo apt install -y openssh-server
+```shell
+whoami
 ```
 
-To install the server package to your laptop:
+Show the name of the machine is given on the network: 
+
+```shell
+hostname
+```
+
+
+--
+## Folder Hierarchies
+
+Much of working on the command line involves navigating around your system without the use of a Graphical User Interface (GUI). 
+
+However, we will essentially be navigating around folder hierarchies like below:
+
+<pre style="background-color:black; padding:20px">
+root/
+├─ directoryname/
+       ├─ anotherdirectory/
+                  ├─ aFileName.txt
+</pre>
+
+
+--
+
+- __directory__ : also known as a folder
+- __root directory__ :  "highest" directory in the hierarchy. You can also think of it as the start of a particular folder structure,  denoted by a tilde `~` on the command line.
+- __directory path__ :  in the example above, there would be a directory called "directoryname", which has a folder called "anotherdirectory" inside of it, the path would be: `/directoryname/anotherdirectory`
+
+--
+
+
+
+Print working directory that you are currently in:
+
+```shell
+pwd
+```
+
+
+List current directory contents:
+
+``` shell
+ls
+```
+
+--
+
+Change directory to a directory using the "path" to that folder/directory, if the path starts with `/`  it will start at the root directory:
+
+```shell
+cd /directoryname/anotherdirectory
+```
+
+Change directory to root :
+
+```shell
+cd 
+```
+
+Change directory to the directory above the one you are currently in:
+
+```shell
+cd ..
+```
+
+
+--
+
+## Installing SSH 
+
+The next step is to install an SSH server to the server (Pi) and a client package to the client (your laptop). We have already installed it on the Pi.
+
+If you haven't already checked if you have ssh, try to check the ssh version:
+
+``` shell
+ssh -v
+```
+
+
+If you get a "command not found", install the client package to your laptop with this line on linux:
 
 ``` shell
 sudo apt install -y openssh-client
@@ -135,7 +225,7 @@ The first thing we need to do is find out the IP address of the device we want t
 hostname -I
 ```
 
-We have already done this, and added the Pi address for you here on the Pad: https://digitalcare.noho.st/pad/p/serv.pub_wrk.shp
+We have already done this, for those in the room we have added the Pi address for you on the Pad.
 
 --
 
@@ -216,90 +306,6 @@ tmux attach
 Note: Everyone in a Tmux session is acting as the same user. However we can create split screens and multiple panes within Tmux so different people can work on different things. 
 
 Reference and troubleshooting: https://www.howtogeek.com/devops/how-to-get-started-and-use-tmux/
-
----
-## Terminal
-
-Linux and Mac OS systems have Unix Shells that provide us a command line interface. e.g. Bash Shells or Zsh 
-
-Windows uses Power Shell by default, which has a different command language. If you are on Windows you will need a Bash shell installed for the following commands. 
-
-
---
-
-## Who are you?
-
-Show the name of the currently logged in user:
-
-```shell
-whoami
-```
-
-Show the name of the machine is given on the network: 
-
-```shell
-hostname
-```
-
-
---
-## Folder Hierarchies
-
-Much of working on the command line involves navigating around your system without the use of a Graphical User Interface (GUI). 
-
-However, we will essentially be navigating around folder hierarchies like below:
-
-<pre style="background-color:black; padding:20px">
-root/
-├─ directoryname/
-       ├─ anotherdirectory/
-                  ├─ aFileName.txt
-</pre>
-
-
---
-
-- __directory__ : also known as a folder
-- __root directory__ :  "highest" directory in the hierarchy. You can also think of it as the start of a particular folder structure,  denoted by a tilde `~` on the command line.
-- __directory path__ :  in the example above, there would be a directory called "directoryname", which has a folder called "anotherdirectory" inside of it, the path would be: `/directoryname/anotherdirectory`
-- __file__ : a file, e.g. file.txt or index.html 
-
---
-
-
-
-Print working directory that you are currently in:
-
-```shell
-pwd
-```
-
-
-List current directory contents:
-
-``` shell
-ls
-```
-
---
-
-Change directory to a directory using the "path" to that folder/directory, if the path starts with `/`  it will start at the root directory:
-
-```shell
-cd /directoryname/anotherdirectory
-```
-
-Change directory to root :
-
-```shell
-cd 
-```
-
-Change directory to the directory above the one you are currently in:
-
-```shell
-cd ..
-```
 
 ---
 
