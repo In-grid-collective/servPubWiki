@@ -6,6 +6,17 @@ theme: moon
 </header>
 
 <style>
+
+	code.nginx{ 
+		font-size: 0.4em!important; 
+		line-height: 1.5em!important; 
+	} 
+	table{ 
+		font-size: 0.5em!important; 
+		margin: 40px 0!important;
+		color:white!important;
+	}
+
     
 	.tiny-font{
 		font-size: 0.5em;
@@ -21,6 +32,7 @@ theme: moon
 	ul,
 	p{
 		font-size: 0.8em!important;
+		color:white!important;
 	}
 	h1,h2,h3{
         font-family : "GeneraleStationRegular"!important;
@@ -30,8 +42,8 @@ theme: moon
 	     padding: 0.5em 1em!important;
 	}
 
-.bg{
-background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 4%, rgba(52,1,45,1) 100%);
+.slide-background{
+background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 4%, rgba(52,1,45,1) 100%)!important;
 
 }
 
@@ -44,10 +56,9 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 
 We will start with an overview of servpub to introduce different elements of internet infrastructure and associated terms.
 
+
 ---
 
-
-This will be followed by an introduction to the tools for working with the wiki2print pi on a local network, before later moving onto mounting the raspberry pi into the Virtual Private Network accessible online.
 
 | __Local__ Devices in __Local__ Area Networks |  Remote Devices on the Public Internet  |
 | ----------- | ----------- |
@@ -113,7 +124,7 @@ This will be followed by an introduction to the tools for working with the wiki2
 
 --
 
-## Set up Pi for Local Network Access
+##  Local Network Access with SSH
 
 
 SSH or Secure Shell is a network communication protocol that enables two computers to communicate. We will use SSH to access the Pi remotely via the local network
@@ -131,27 +142,23 @@ SSH or Secure Shell is a network communication protocol that enables two comput
 - To be on the same local network
 
 ---
-## Break, **Things to do:~**
+### Break, things to do:~
 
-If you have a windows machine and you would like to follow along with us download Git for Windows: https://gitforwindows.org/
+If you have a windows machine and would like to follow along, download Git for Windows Bash: https://gitforwindows.org/
 
-Check if you have SSH installed on your laptop. Most newer macs and windows laptops already have it installed.
-
-Try to check the ssh version in Command Prompt (Windows) or terminal (Linux or Mac):
+Newer macs and windows laptops have SSH installed. Check version in Command Prompt (Windows) or terminal (Linux or Mac OS):
 
 ``` shell
 ssh -v
 ```
 
 
-Linux users install the client package to your laptop with this line on linux:
+If not, we can assist. Linux users can install the client package to your laptop with this line if needed:
 
 ``` shell
 sudo apt install -y openssh-client
 ```
-If you're using another operating system/or need help let us know and we can assist.
 
-Join the network on the pad, please don't download / browse on that network. 
 
 ---
 
@@ -207,13 +214,7 @@ root/
 
 --
 
-- __directory__ : also known as a folder
-- __root directory__ :  "highest" directory in the hierarchy. You can also think of it as the start of a particular folder structure,  denoted by a tilde `~` on the command line.
-- __directory path__ :  in the example above, there would be a directory called "directoryname", which has a folder called "anotherdirectory" inside of it, the path would be: `/directoryname/anotherdirectory`
-
---
-
-
+__Directory__ : also known as a folder
 
 Print working directory that you are currently in:
 
@@ -229,17 +230,25 @@ ls
 ```
 
 --
-
-Change directory to a directory using the "path" to that folder/directory, if the path starts with `/`  it will start at the root directory:
-
-```shell
-cd /directoryname/anotherdirectory
-```
+### __Root directory__  
+"Highest" directory in the hierarchy. You can also think of it as the start of a particular folder structure. Root directory of your machine denoted by a tilde `~` on the command line.
 
 Change directory to root :
 
 ```shell
 cd 
+```
+
+
+--
+
+### __directory path__  
+Route to a folder
+
+Change directory using the "path" to that folder/directory. If the path starts with `/`  it will start at the root directory:
+
+```shell
+cd /directoryname/anotherdirectory
 ```
 
 Change directory to the directory above the one you are currently in:
@@ -326,7 +335,7 @@ We are now going to join in on a shared terminal session. To do this we will be 
 
 
 --
-To access a shared session, we all have to be logged in as the same user simultaneously. The tmux session will be registered under that user - in our case we want to create a session as `sudo`.
+To access a shared session, we all have to be logged in as the same user simultaneously. The tmux session will be registered under that user - in our case we want to create a session as `sudo`
 
 `sudo` stands for [Super User DO](https://www.geeksforgeeks.org/sudo-command-in-linux-with-examples/). This command is used to allow you to run commands that only super users are allowed to run, and is often followed by another command you want to run. When you use `sudo` you will be prompted to enter your super user password to execute the command:
 
@@ -346,7 +355,7 @@ This will then prompt you to enter your password and after which you can run com
 
 --
 
-We're now going to start our tmux session with the following command:
+We have started a tmux session, and you can join with the following command:
 
 ```shell 
 tmux attach
@@ -355,7 +364,7 @@ tmux attach
 
 
 > [!Note]
-> Everyone in a Tmux session is acting as the same user. However we can create split screens and multiple panes within Tmux so different people can work on different things. 
+> Everyone in a Tmux session is acting as the same user. However we could create split screens and multiple panes within Tmux so different people can work on different things. 
 
 
 ---
@@ -402,9 +411,9 @@ cat index.html
 How is this being served up to us?
 
 --
-### Nginx configuration files for servers
+### Nginx configuration
 
-All Nginx configuration files should be created here:
+All Nginx server configuration files should be created here:
 
 ```shell
 cd /etc/nginx/sites-enabled
@@ -450,7 +459,7 @@ server {
 
 --
 
-### Using Systemctl for Nginx
+###  Systemctl & Nginx
 
 We will be using [systemd](https://en.wikipedia.org/wiki/Systemd) the Linux system and service manager. We can use systemctl to manage systemd services. 
 
@@ -520,7 +529,7 @@ cp exampleFolder/example.txt /path/to/folder
 
 --
 
-### ! Be careful with removing things !
+### !  be careful   !
 Remove a file:
 
 ```shell
