@@ -50,7 +50,7 @@ sudo apt install -y openssh-client
 ## Network Anatomy 
 
 
----
+--
 
 
 ## Intro
@@ -58,15 +58,21 @@ sudo apt install -y openssh-client
 
 
 
----
+--
 
 ![[slide1Asset 1.png]]
+
+--
 
 ---
 ![[slideAsset 2.png]]
 
+--
+
 ---
 ![[slideAsset 3.png]]
+
+--
 
 ---
 
@@ -404,6 +410,8 @@ sudo systemctl reload nginx
 
 --
 
+## Our Static Website
+
 Inside of www we will see our wiki2print folder which is serving up our html:
 
 <pre style="background-color:black; padding:20px">
@@ -464,7 +472,7 @@ touch example.txt
 
 --
 
-Copy a text file called `example.txt` which is in a sub directory "exampleFolder" to a new location  `/path/to/folder`:
+Copy a text file called `example.txt` which is in a sub directory "exampleFolder" to a new location  `/path/to/folder`
 
 ```shell
 cp exampleFolder/example.txt /path/to/folder
@@ -472,7 +480,8 @@ cp exampleFolder/example.txt /path/to/folder
 
 --
 
-Remove a file, be careful with removing files!
+### ! Be careful with removing things !
+Remove a file:
 
 ```shell
 rm <file.txt>
