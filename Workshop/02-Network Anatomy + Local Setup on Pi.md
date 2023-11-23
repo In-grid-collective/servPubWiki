@@ -1,8 +1,6 @@
 ---
 theme: moon
 ---
-
-
 <header>
 <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/generale-station" type="text/css"/>
 </header>
