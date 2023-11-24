@@ -79,10 +79,10 @@ We will start with an overview of servpub to introduce different elements of int
 
 | Term     | Example | Description |
 | ----------- | -----------  | ----------- |
-| IP Address   |  192.0.2.1 | IP (Internet Protocol) addresses work like a bit like a street address in that they allow devices to find each other online.      |
+| IP Address   |  192.0.2.1 | IP (Internet Protocol) addresses work a bit like a street address in that they allow devices to find each other on a network.      |
 | Static IP |  89.106.208.4 | Unlike standard dynamic IPs, a static IP is assigned to a device and it remains the same. |
-| Domain Name |  servpub.net | IP addresses can be converted into text via a Domain Name System (DNS) format.   |
-| Ports | 80 | Port 80 is the port number assigned to internet communication protocol, Hypertext Transfer Protocol (HTTP). Ports are part of the TCP transport layer.|
+| Domain Name |  servpub.net | IP addresses can be mapped to a name/text via a Domain Name System (DNS) format.   |
+| Ports | 80 | Port 80 is the default port number assigned to internet communication protocol, Hypertext Transfer Protocol (HTTP). Ports are part of the TCP transport layer.|
 
 
 
@@ -138,8 +138,16 @@ SSH or Secure Shell is a network communication protocol that enables two comput
 - Raspberry pi + peripherals: HDMI screen, keyboard, mouse etc. 
 - Pi OS booted: The Rosa Server Guide recommends [Armbian OS](https://www.armbian.com/rpi4b/)
 - Knowledge of terminal/bash
-- Have SSH installed on laptop (most OS have it by default now, if not then manually install, below)
+- Have SSH installed on laptop (most OS have it by default now, if not then manually install)
 - To be on the same local network
+
+--
+## So far
+
+We have got a Pi setup with:
+- Armbian OS
+
+We prepared this ahead of today in the interest of time. This is a process of downloading and installing Armbian, which is a Linux operating system. Full instructions live on our docs.
 
 --
 
@@ -168,13 +176,8 @@ sudo apt install -y openssh-client
 
 ---
 
-## So far
 
-We have got a Pi setup with:
-- Armbian OS
-
-We prepared this ahead of today in the interest of time. This is a process of downloading and installing Armbian, which is a Linux operating system. Full instructions live on our docs.
-
+## Accessing the Pi
 The next thing we need to do is access our pi via ssh, but to do that we need to understand a bit about the terminal.
 
 
