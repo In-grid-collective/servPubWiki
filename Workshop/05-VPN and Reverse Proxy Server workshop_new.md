@@ -360,7 +360,7 @@ sudo tinc -n systerserver join 79.91.202.97/SVublahX7LapWXJdBzd03jNn48bxuN83jVE_
 
 ## Set subnet IP
 
-Then we will set the node VPN subnet ip address in the 10.10.12.x subnet, using the command below with the IP we assigned to them earlier in the tracking IP step. 
+Then we will set the node VPN subnet ip address in the 10.10.12.x subnet, using the command below with the IP we assigned to them earlier in the VPN records on the server/jean
 
 ```shell
 sudo tinc -n <NETWORK NAME> add subnet <IP>
@@ -400,11 +400,11 @@ Once the file is open, edit it so it looks like this, filling in the correct det
 #ifconfig $INTERFACE <your vpn IP> netmask <netmask of whole VPN>
 ```
 
-For servepub it would look like:
+For wiki2print it would look like:
 ```
 #!/bin/sh 
 #echo 'Unconfigured tinc-up script, please edit '$0'!' 
-ifconfig $INTERFACE 10.10.12.1 netmask 255.255.255.0
+ifconfig $INTERFACE 10.10.12.4 netmask 255.255.255.0
 ```
 
 --
@@ -480,6 +480,7 @@ so for us it would be:
 ``` shell
 sudo systemctl start tinc@systerserver
 ```
+--
 
 To make the VPN start automatically on boot:
 ```shell 
@@ -492,10 +493,12 @@ e.g.:
 sudo systemctl enable tinc@systerserver
 ```
 
+--
+# now we have setup our VPN network!
 ---
 # NginX Reverse Proxy
 
-We are now going to run a reverse proxy server with NginX that will enamble us to forward our webtrafic from their public IP that the DNS server point to, to our internal vpn subnet IP.
+We are now going to run a reverse proxy server with NginX that will enamble us to forward our webtraffic from their public IP that the DNS server point to, to our internal vpn subnet IP.
 
 #diagram
 
