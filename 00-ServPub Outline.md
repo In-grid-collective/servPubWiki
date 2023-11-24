@@ -5,8 +5,6 @@ ServPub is an experimental site for research and practice on experimental and co
 
 ![[Rosa-tinc-down.jpg]]
 
-
-
 # People Involved
 ##### Organising bodies: 
 - Geoff Cox, [CSNI](https://www.centreforthestudyof.net/?page_id=756) at London South Bank Uni
@@ -34,25 +32,70 @@ ServPub is an experimental site for research and practice on experimental and co
 
 ##### 26 May 2023: Public Workshop 1 (CCI)
 - InGrid to configure local remote access to the pies.
-- Testing Wifi login at UaL/CCI campus (14 May)
+- Testing Wifi login at UaL/CCI campus
 - prepare any questions ahead of workshop
-- Attending Networking setup workshop on 26 June (Hybrid)
+- Generally understanding things
 ##### 19 July 2023: Working Session 1 (online)
-- Getting the pi online 
-- Hosting "ServPub"
-- tinc
+- ssh-ing
+- hostnames
+- tmux
+- NginX 
+- install tinc on pubdoc (Linux)
 ##### 4 Aug 2023: Working Session 2 (CCI)
-- 
-##### Oct 2023: Working session 3 
-
+- tinc on sysadmin machines (mac & win)
+- configure tinc
+- configure nginX
+- servpub.net online
+##### 6 Oct 2023:
+- Big regroup meeting (online)
+##### Oct - Nov 2023: Several working sessions
+- SSL & HTML Certificates
+- Populating Documentation 
+- planning workshop
 ##### 24 Nov 2023: Public Workshop 2 "Interrupted Infra"
 
 ##### 8 Dec 2023: Working Session X Varia
 - Wiki2print install on wiki2Print pi
 
+# Timeline
+```timeline-labeled
+[line-4, body-4]
+Date: 26 May 2023
+Title: Public Workshop 1 (CCI)
+Content: [[Meeting Notes_Workshop UaL CCI]]
+
+Date: 19 July 2023
+Title: Working Session 1 (online)
+Content: installa nginX & tinc
+
+Date: 4 August 2023
+Title: Working Session 2 (CCI)
+Content: config and get online
+
+Date: 6 October 2023
+Title: Big regroup meeting (online)
+Content: Catch-up & discuss workshop
+
+Date: Oct -- Nov 2023
+Title: Several internal working sessions
+Content: Documentations and workshop planning
+
+Date: 24 Novemebr 2023
+Title: Public Workshop 2 (LSBU)
+Content:
+
+Date: 8 December 2023
+Title: wiki2print install
+Content: session with Varia 
+
+Date: xx January 2024
+Title: Transmediale Workshop
+Content: ??
+```
+
 # Purpose
 ##### Using, hosting, publishing, sharing
-- They were quite open about possibilities of what to host and do with the server space so, any suggestions we should pose to them.
+Quite open about possibilities of what to host and do with the server space so, any suggestions we should pose to them.
 
 # Uses
 
