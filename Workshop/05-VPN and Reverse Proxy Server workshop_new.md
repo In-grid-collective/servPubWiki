@@ -169,11 +169,13 @@ make
 sudo make install
 ```
 
+--
+Now we have installed tinc, we can setup our configuration.
 
 --
 ### Make configuration folder
 
-Once installed, create a configuration directory. All configurations of tinc will happen in this folder. Using tinc subcommands (like invite / join), result in changes to the files in this folder.
+Once installed, create a configuration directory. All configurations of tinc will happen in this folder. Using tinc subcommands (like invite / join) will result in changes to the files in this folder.
 
 ```shell
 sudo mkdir -p /usr/local/etc/tinc/
@@ -190,7 +192,7 @@ ls /usr/local/sbin/tinc
 ```
 
 
-> This means that you can only run tinc as sudo, since sbin directory saves binary executables that can be ran only with sudo rights.
+> This means that you can only run tinc as sudo, since sbin directory can be ran only with sudo rights.
 
 ---
 # Use UFW to open up the necessary firewall
@@ -227,19 +229,17 @@ sudo ufw status
 ```
 
 ---
-# Tinc
-
-## creating the initial network and inviting nodes
+# creating the initial network on tinc and inviting nodes
 
 
 This step only has to happen once on the server hosting the vpn. In our case, it was performed on Jean. 
 
-We created a virtual network named `systerserver` on the public node. Once this network is created, we use the public node to "invite" other nodes, for instance servpub. Invited nodes can then use tinc's *join* command to use the invite link. 
+We created a virtual network named systerserver on the public node. Once this network is created, we use the public node to "invite" other nodes, for instance servpub or wiki2print. Invited nodes can then use tinc's *join* command to use the invite link.  
 
 --
 # Initialising the VPN and node
 
-This command adds nodes to the network, but on the first call 
+This command adds nodes to the network, but on the first call initiates the network (our network has already been initiated but are now adding the wiki2print pi to it)
 
 Simply write:
 
@@ -250,7 +250,7 @@ sudo tinc -n <NETNAME> init <NODENAME>
 so we did 
 
 ``` shell
-sudo tinc -n systerserver init servpub
+sudo tinc -n systerserver init wiki2print
 ``` 
 
 --
@@ -269,7 +269,7 @@ This allows multiple private networks, each in a folder with the name of the net
 
 To add a new client to the network you need to assign them a subnet of the VPN. For instance is the VPN IP is 10.10.12.x, we can give the new client a subnet IP i.e. 10.10.12.1.
 
-Create a file to keep your list of private addresses. We create a file called `vpn-records` in `/usr/local/etc/tinc/<NETNAME>/`
+Create a text file to keep your list of private addresses. We create a file called `vpn-records` in `/usr/local/etc/tinc/<NETNAME>/`
 
 --
 
@@ -303,6 +303,7 @@ e.g.
 ```
 #servers
 10.10.12.1    -  servpub 
+10.10.12.2    -  wiki2print
 
 #users
 10.10.12.20   -  User1 
@@ -312,7 +313,7 @@ e.g.
 
 --
 
-### Now to invite the new node!
+## Now to invite the new node!
 
 
 On the first invite of a node it will initialise the network.
@@ -324,13 +325,15 @@ sudo tinc -n <NETNAME> invite <NODENAME>
 for instance, in our case if we want to invite a new client called 'servepub':
 
 ```shell 
-sudo tinc -n systerserver invite servepub
+sudo tinc -n systerserver invite wiki2print
 ```
 
 
 the invite generated will be a long string of letters and numbers. It can then be passed over to servepub to run.
 
-Example of given code: 
+--
+
+Example of given invite code: 
 ```
 79.91.202.97/SVublahX7LapWXJdBzd03jNn48bxuN83jVE_23VnL
 ```
@@ -339,7 +342,7 @@ Example of given code:
 
 # Joining the VPN network from Pi
 
-Now we will jump to the Pi to join the network.
+Now we will jump to our Pi (wiki2print) to join the VPN network.
 
 To  join the network from the new client  use:
 
