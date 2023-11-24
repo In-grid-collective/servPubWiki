@@ -43,6 +43,9 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 
 ---
 
+# Follow 
+![[PADQR.png]]
+--
 
 # Intro
 
@@ -656,6 +659,14 @@ Ours looks like:
 
 ```shell
 sudo ln sites-available/systerserver.conf sites-enabled/systerserver.conf
+```
+
+--
+
+Restart the Nginx server
+
+``` shell
+sudo systemctl  restart nginx
 ```
 
 ---

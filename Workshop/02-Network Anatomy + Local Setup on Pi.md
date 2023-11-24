@@ -153,7 +153,12 @@ We prepared this ahead of today in the interest of time. This is a process of do
 
 ## Our Pi is already serving up a simple website!
 
-You will need to be on the same network to see this in your browser. Which you can do now during the break. 
+You will need to be on the same network to see this in your browser. 
+
+Enter in URL Bar:    
+
+Which you can do now during the break. 
+
 
 ---
 ### Break, things to do:~
