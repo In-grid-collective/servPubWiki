@@ -30,7 +30,7 @@ theme: moon
 	     padding: 0.5em 1em!important;
 	}
 
-.bg{
+.slide-background{
 background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 4%, rgba(52,1,45,1) 100%);
 
 }
