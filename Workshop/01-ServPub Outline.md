@@ -79,7 +79,7 @@ Date: xx January 2024
 Title: Transmediale Workshop
 Content: ??
 ```
----
+--
 #### 26 May 2023: Public Workshop 1 (CCI)
 #### 19 July 2023: Working Session 1 (online)
 
@@ -116,7 +116,6 @@ Content: ??
 ### 6 Oct 2023:
 - Big regroup meeting (online)
 ___
-
 ### Oct - Nov 2023: Several working sessions
 - SSL & HTML Certificates
 - Populating Documentation 
@@ -158,9 +157,25 @@ Christian Ulrik Andersen, [DARC](https://darc.au.dk) & [Shape](https://shape.au.
 > Is a resource that we happen to have access to at no extra cost at our studio buildings
 <!-- element style="width:70%"-->
 
----
+--
 # Resources:
 
 > [!warning] Time
 > A resource we had to share, split and make
 <!-- element style="width:70%"-->
+
+---
+# Agenda:
+Feminist Methodologies - Systerserver
+
+Setup time - Downloading some tools
+
+Hands-on: Network Anatomy - Becky & Katie
+
+Break
+
+Demo: VPN & Reverse Proxy - George & Batool
+
+Break
+
+Feedback: Documentation & Discussion - Notes
