@@ -49,7 +49,9 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 
 
 
-This is one of the last steps for setting up our server configuration, where we are linking our server on a pi to the VPN network hosted by systerserver's server Jean. This will then mean that this pi can be used as a mobile and autonomous server, running online but not from a set address. 
+This is one of the last steps for setting up our server configuration, where we are linking our server on a pi to the VPN network hosted by systerserver's server: Jean. 
+
+This will then mean that this pi can be used as a mobile server, running online but not from a set IP address/location. 
 
 
 
@@ -57,22 +59,21 @@ This is one of the last steps for setting up our server configuration, where we 
 
 ## Collaborations!
 
-Todays workshop will follow along the work of the [Rosa zine](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) made by our collaborators Systerserver. 
+Todays workshop will follow along the work of the [Rosa zine](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) made by our collaborators Systerserver & Varia. 
 
-As we have been following these steps we have been adding our own approaches focusing on accessibility, transformability, alternative CI imaginaries
+As we have been following these steps we have been adding our own approaches troubleshooting around accessibility, transformability, alternative imaginaries of CI
 
 ---
 ## So far
 
 We have basically got a pi setup with:
 - Armbian OS
-- RSS access
-- Users setup with sudo rights
-- NginX installed
-
+- SSH access
+- Several users setup with sudo rights
+- NginX installed & pointing to a static site
 --
 ## In this session
-
+![[slideAsset 7.png]]
 We will be setting up:
 - The VPN  using  [Tinc](https://www.cyberciti.biz/faq/ubuntu-install-tinc-and-set-up-a-basic-vpn/)
 -  Reverse Proxy Server using [NginX](https://www.nginx.com/resources/glossary/reverse-proxy-server/)
@@ -82,16 +83,18 @@ We will be setting up:
 # Installing Tinc
 
 
-Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Find out [more](https://www.tinc-vpn.org/) 
+Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between nodes on the Internet
 
-You need to install tinc for all nodes of the subnetwork. 
+You need to install tinc for all nodes of the subnetwork
+- personal machines 
+- servers
 
 --
 ## OS
 
 Today we will be installing Tinc on Armbian (Linux).
 
-They are a litle bit more complex but we have found methods for installing on other OS though:
+They are a litle bit more complex but we have found methods for installing on other OS:
 - Mac - our manual in the wiki. 
 - Windows - documentation coming, but using ubuntu console [like this](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
 
@@ -110,7 +113,8 @@ We will be using apt to install dependencies before we download and install tinc
 ```shell 
 sudo apt install build-essential automake libssl-dev liblzo2-dev libbz2-dev zlib1g-dev libncurses5-dev libreadline-dev 
 ```
->	###### We don't need to know too much what they do to be honest, just that they are needed to run Tinc
+
+>	We don't need to know too much what they do to be honest, just that they are needed to run Tinc
 
 --
 ### Download and decompress Tinc installer
@@ -121,7 +125,7 @@ Navigate into a tmp folder. This is so our install packages are automatically de
 cd /tmp
 ```
 
-Download tinc 1.1 with wget and uncompres the downloaded item to a folder with tar.
+Download tinc 1.1pre17 (every node needs the same version of tinc) with wget and uncompress the downloaded item to a folder with tar.
 
 ``` shell
 wget https://www.tinc-vpn.org/packages/tinc-1.1pre17.tar.gz 
@@ -132,7 +136,7 @@ tar xvf tinc-1.1pre17.tar.gz
 
 ### See what we have got!
 
-Let's check the new folder that is there. 
+Let's check the new folder that is there. We're still inside /tmp. 
 ``` shell
 ls
 ```
@@ -158,7 +162,7 @@ cd tinc-1.1pre17
 ./configure 
 ```
 
-Install tinc!
+Install tinc with make install command
 
 ```shell
 make 
