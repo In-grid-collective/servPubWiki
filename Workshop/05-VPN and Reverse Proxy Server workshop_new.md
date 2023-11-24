@@ -30,7 +30,7 @@ theme: moon
 	     padding: 0.5em 1em!important;
 	}
 
-.bg{
+.slide-background{
 background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 4%, rgba(52,1,45,1) 100%);
 
 }
@@ -49,7 +49,9 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 
 
 
-This is one of the last steps for setting up our server configuration, where we are linking our server on a pi to the VPN network hosted by systerserver's server Jean. This will then mean that this pi can be used as a mobile and autonomous server, running online but not from a set address. 
+This is one of the last steps for setting up our server configuration, where we are linking our server on a pi to the VPN network hosted by systerserver's server: Jean. 
+
+This will then mean that this pi can be used as a mobile server, running online but not from a set IP address/location. 
 
 
 
@@ -57,22 +59,21 @@ This is one of the last steps for setting up our server configuration, where we 
 
 ## Collaborations!
 
-Todays workshop will follow along the work of the [Rosa zine](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) made by our collaborators Systerserver. 
+Todays workshop will follow along the work of the [Rosa zine](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) made by our collaborators Systerserver & Varia. 
 
-As we have been following these steps we have been adding our own approaches focusing on accessibility, transformability, alternative CI imaginaries
+As we have been following these steps we have been adding our own approaches troubleshooting around accessibility, transformability, alternative imaginaries of CI
 
 ---
 ## So far
 
 We have basically got a pi setup with:
 - Armbian OS
-- RSS access
-- Users setup with sudo rights
-- NginX installed
-
+- SSH access
+- Several users setup with sudo rights
+- NginX installed & pointing to a static site
 --
 ## In this session
-
+![[slideAsset 7.png]]
 We will be setting up:
 - The VPN  using  [Tinc](https://www.cyberciti.biz/faq/ubuntu-install-tinc-and-set-up-a-basic-vpn/)
 -  Reverse Proxy Server using [NginX](https://www.nginx.com/resources/glossary/reverse-proxy-server/)
@@ -82,16 +83,18 @@ We will be setting up:
 # Installing Tinc
 
 
-Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Find out [more](https://www.tinc-vpn.org/) 
+Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between nodes on the Internet
 
-You need to install tinc for all nodes of the subnetwork. 
+You need to install tinc for all nodes of the subnetwork
+- personal machines 
+- servers
 
 --
 ## OS
 
 Today we will be installing Tinc on Armbian (Linux).
 
-They are a litle bit more complex but we have found methods for installing on other OS though:
+They are a litle bit more complex but we have found methods for installing on other OS:
 - Mac - our manual in the wiki. 
 - Windows - documentation coming, but using ubuntu console [like this](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
 
@@ -110,7 +113,8 @@ We will be using apt to install dependencies before we download and install tinc
 ```shell 
 sudo apt install build-essential automake libssl-dev liblzo2-dev libbz2-dev zlib1g-dev libncurses5-dev libreadline-dev 
 ```
->	###### We don't need to know too much what they do to be honest, just that they are needed to run Tinc
+
+>	We don't need to know too much what they do to be honest, just that they are needed to run Tinc
 
 --
 ### Download and decompress Tinc installer
@@ -121,7 +125,7 @@ Navigate into a tmp folder. This is so our install packages are automatically de
 cd /tmp
 ```
 
-Download tinc 1.1 with wget and uncompres the downloaded item to a folder with tar.
+Download tinc 1.1pre17 (every node needs the same version of tinc) with wget and uncompress the downloaded item to a folder with tar.
 
 ``` shell
 wget https://www.tinc-vpn.org/packages/tinc-1.1pre17.tar.gz 
@@ -132,7 +136,7 @@ tar xvf tinc-1.1pre17.tar.gz
 
 ### See what we have got!
 
-Let's check the new folder that is there. 
+Let's check the new folder that is there. We're still inside /tmp. 
 ``` shell
 ls
 ```
@@ -158,18 +162,20 @@ cd tinc-1.1pre17
 ./configure 
 ```
 
-Install tinc!
+Install tinc with make install command
 
 ```shell
 make 
 sudo make install
 ```
 
+--
+Now we have installed tinc, we can setup our configuration.
 
 --
 ### Make configuration folder
 
-Once installed, create a configuration directory. All configurations of tinc will happen in this folder. Using tinc subcommands (like invite / join), result in changes to the files in this folder.
+Once installed, create a configuration directory. All configurations of tinc will happen in this folder. Using tinc subcommands (like invite / join) will result in changes to the files in this folder.
 
 ```shell
 sudo mkdir -p /usr/local/etc/tinc/
@@ -186,7 +192,7 @@ ls /usr/local/sbin/tinc
 ```
 
 
-> This means that you can only run tinc as sudo, since sbin directory saves binary executables that can be ran only with sudo rights.
+> This means that you can only run tinc as sudo, since sbin directory can be ran only with sudo rights.
 
 ---
 # Use UFW to open up the necessary firewall
@@ -223,19 +229,17 @@ sudo ufw status
 ```
 
 ---
-# Tinc
-
-## creating the initial network and inviting nodes
+# creating the initial network on tinc and inviting nodes
 
 
 This step only has to happen once on the server hosting the vpn. In our case, it was performed on Jean. 
 
-We created a virtual network named `systerserver` on the public node. Once this network is created, we use the public node to "invite" other nodes, for instance servpub. Invited nodes can then use tinc's *join* command to use the invite link. 
+We created a virtual network named systerserver on the public node. Once this network is created, we use the public node to "invite" other nodes, for instance servpub or wiki2print. Invited nodes can then use tinc's *join* command to use the invite link.  
 
 --
 # Initialising the VPN and node
 
-This command adds nodes to the network, but on the first call 
+This command adds nodes to the network, but on the first call initiates the network (our network has already been initiated but are now adding the wiki2print pi to it)
 
 Simply write:
 
@@ -246,7 +250,7 @@ sudo tinc -n <NETNAME> init <NODENAME>
 so we did 
 
 ``` shell
-sudo tinc -n systerserver init servpub
+sudo tinc -n systerserver init wiki2print
 ``` 
 
 --
@@ -265,7 +269,7 @@ This allows multiple private networks, each in a folder with the name of the net
 
 To add a new client to the network you need to assign them a subnet of the VPN. For instance is the VPN IP is 10.10.12.x, we can give the new client a subnet IP i.e. 10.10.12.1.
 
-Create a file to keep your list of private addresses. We create a file called `vpn-records` in `/usr/local/etc/tinc/<NETNAME>/`
+Create a text file to keep your list of private addresses. We create a file called `vpn-records` in `/usr/local/etc/tinc/<NETNAME>/`
 
 --
 
@@ -299,6 +303,7 @@ e.g.
 ```
 #servers
 10.10.12.1    -  servpub 
+10.10.12.2    -  wiki2print
 
 #users
 10.10.12.20   -  User1 
@@ -308,7 +313,7 @@ e.g.
 
 --
 
-### Now to invite the new node!
+## Now to invite the new node!
 
 
 On the first invite of a node it will initialise the network.
@@ -320,13 +325,15 @@ sudo tinc -n <NETNAME> invite <NODENAME>
 for instance, in our case if we want to invite a new client called 'servepub':
 
 ```shell 
-sudo tinc -n systerserver invite servepub
+sudo tinc -n systerserver invite wiki2print
 ```
 
 
 the invite generated will be a long string of letters and numbers. It can then be passed over to servepub to run.
 
-Example of given code: 
+--
+
+Example of given invite code: 
 ```
 79.91.202.97/SVublahX7LapWXJdBzd03jNn48bxuN83jVE_23VnL
 ```
@@ -335,7 +342,7 @@ Example of given code:
 
 # Joining the VPN network from Pi
 
-Now we will jump to the Pi to join the network.
+Now we will jump to our Pi (wiki2print) to join the VPN network.
 
 To  join the network from the new client  use:
 
@@ -353,7 +360,7 @@ sudo tinc -n systerserver join 79.91.202.97/SVublahX7LapWXJdBzd03jNn48bxuN83jVE_
 
 ## Set subnet IP
 
-Then we will set the node VPN subnet ip address in the 10.10.12.x subnet, using the command below with the IP we assigned to them earlier in the tracking IP step. 
+Then we will set the node VPN subnet ip address in the 10.10.12.x subnet, using the command below with the IP we assigned to them earlier in the VPN records on the server/jean
 
 ```shell
 sudo tinc -n <NETWORK NAME> add subnet <IP>
@@ -393,11 +400,11 @@ Once the file is open, edit it so it looks like this, filling in the correct det
 #ifconfig $INTERFACE <your vpn IP> netmask <netmask of whole VPN>
 ```
 
-For servepub it would look like:
+For wiki2print it would look like:
 ```
 #!/bin/sh 
 #echo 'Unconfigured tinc-up script, please edit '$0'!' 
-ifconfig $INTERFACE 10.10.12.1 netmask 255.255.255.0
+ifconfig $INTERFACE 10.10.12.4 netmask 255.255.255.0
 ```
 
 --
@@ -473,6 +480,7 @@ so for us it would be:
 ``` shell
 sudo systemctl start tinc@systerserver
 ```
+--
 
 To make the VPN start automatically on boot:
 ```shell 
@@ -485,19 +493,19 @@ e.g.:
 sudo systemctl enable tinc@systerserver
 ```
 
+--
+# now we have setup our VPN network!
 ---
 # NginX Reverse Proxy
 
-We are now going to run a reverse proxy server with NginX that will enamble us to forward our webtrafic from their public IP that the DNS server point to, to our internal vpn subnet IP.
+We are now going to run a reverse proxy server with NginX that will enamble us to forward our webtraffic from their public IP that the DNS server point to, to our internal vpn subnet IP.
 
-#diagram
-
-if you haven't already install Nginx, like we did for the pi [[02-Web Server Setup on Pi#NginX]]
+To do this we are jumping back onto Jean
 
 --
 ## Reverse Proxy Configuration
 
-On the server hosting the tinc vpn (in our case Jean) add an nginx config file at ``/etc/nginx/sites-available/<SERVERNAME>.conf``
+On the server hosting the tinc vpn (Jean) create an nginx config file at ``/etc/nginx/sites-available/<SERVERNAME>.conf``
 
 To do this use the command
 
@@ -515,7 +523,7 @@ sudo nano sites-available/systerserver.conf
 
 --
 
-### Decide on proxy configuration.
+### Decide on proxy configuration
 
 Choosing your NGINX reverse proxy setup is very much up to you but we will show two setups:
 - A simple one with just http.
@@ -523,7 +531,7 @@ Choosing your NGINX reverse proxy setup is very much up to you but we will show 
 
 --
 
-#### simple http conf:
+simple http conf
 
 ``` nginx
 server {
@@ -553,8 +561,7 @@ server {
 ```
 
 --
-
-#### More complex https, with http redirect, and certificate:
+More complex https, with http redirect, and certificate:
 
 ``` nginx
 
@@ -637,10 +644,9 @@ to its neighbour folder at:
 `/etc/nginx/sites-enabled/<SERVERNAME>.conf` 
 
 --
+### linking the nginx .conf
 
-#### linking the nginx .conf
-
-To do this use the ln command:
+To do this use the in command:
 
 ```shell
 sudo ln sites-available/<NETNAME>.conf sites-enabled/<NETNAME>.conf

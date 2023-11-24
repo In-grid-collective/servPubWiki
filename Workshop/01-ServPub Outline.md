@@ -84,17 +84,6 @@ Date: xx January 2024
 Title: Transmediale Workshop
 Content: ??
 ```
---
-#### 26 May 2023: Public Workshop 1 (CCI)
-#### 19 July 2023: Working Session 1 (online)
-
-#### 4 Aug 2023: Working Session 2 (CCI)
-
-#### Oct 2023: Working session 3 
-
-#### 24 Nov 2023: Public Workshop 2 "Interrupted Infra"
-
-#### 8 Dec 2023: Working Session X Varia
 
 --
 # Timeline
