@@ -33,10 +33,9 @@ theme: moon
 
 .slide-background{
 background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 4%, rgba(52,1,45,1) 100%)!important;
-
 }
-
 </style>
+
 ![[servpubProjectMap.png]]
 ---
 ServPub is an experimental platform for research and practice on experimental and computational publishing, to reflect collectively on affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints.
@@ -135,7 +134,7 @@ quite open about possibilities of what to host and do with the server space so, 
 # Uses
 
 ---
-# People Involved
+# Collaborators
 #### Organising bodies: 
 Winnie Soon, [CCI](https://www.arts.ac.uk/creative-computing-institute), UaL.
 Geoff Cox, [CSNI](https://www.centreforthestudyof.net/?page_id=756) at London South Bank Uni.
