@@ -56,7 +56,8 @@ ServPub is an experimental site for research and practice on experimental and co
 
 ##### 8 Dec 2023: Working Session X Varia
 - Wiki2print install on wiki2Print pi
-
+##### Date: xx January 2024
+- Transmediale Workshop
 # Timeline
 ```timeline-labeled
 [line-4, body-4]

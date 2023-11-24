@@ -39,6 +39,11 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 </style>
 ![[servpubProjectMap.png]]
 ---
+ServPub is an experimental platform for research and practice on experimental and computational publishing, to reflect collectively on affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints.
+
+ServPub will be run by artists, coders, activists, collectives, scholars, researchers using FOSS, who share feminist values and practices. We aim to build shared knowledge and resources which operate at small scale and as part of grassroots community networks to explore alternatives. Participating communities/institutions include CSNI at LSBU, Creative Computing Institute at UAL, SHAPE at Aarhus University, In-grid, Systerserver, and Varia.
+
+---
 # Timeline
 ```timeline-labeled
 [line-4, body-4]
@@ -74,6 +79,7 @@ Date: xx January 2024
 Title: Transmediale Workshop
 Content: ??
 ```
+---
 #### 26 May 2023: Public Workshop 1 (CCI)
 #### 19 July 2023: Working Session 1 (online)
 
@@ -86,29 +92,41 @@ Content: ??
 #### 8 Dec 2023: Working Session X Varia
 
 --
-# Stages
-##### 26 May 2023: Public Workshop 1 (CCI)
+# Timeline
+### 26 May 2023: Public Workshop 1 (CCI)
 - InGrid to configure local remote access to the pies.
 - Testing Wifi login at UaL/CCI campus (14 May)
-- prepare any questions ahead of workshop
+- Discussion with Mara & Luke
 - Attending Networking setup workshop on 26 June (Hybrid)
 --
-# Stages
-##### 19 July 2023: Working Session 1 (online)
+# Timeline
+### 19 July 2023: Working Session 1 (online)
 - Getting the pi online 
 - Hosting "ServPub"
 - tinc
-
-##### 4 Aug 2023: Working Session 2 (CCI)
 --
-# Stages
-#### Oct 2023: Working session 3 
-
-#### 24 Nov 2023: Public Workshop 2 "Interrupted Infra"
+# Timeline
+### 4 Aug 2023: Working Session 2 (CCI)
+ tinc on sysadmin machines (mac & win)
+- configure tinc
+- configure nginX
+- servpub.net online
 --
-# Stages
-#### 8 Dec 2023: Working Session X Varia
+# Timeline
+### 6 Oct 2023:
+- Big regroup meeting (online)
+___
+
+### Oct - Nov 2023: Several working sessions
+- SSL & HTML Certificates
+- Populating Documentation 
+- planning workshop
+--
+# Timeline - Future
+### 8 Dec 2023: Working Session X Varia
 - Wiki2print install on wiki2Print pi
+### January 2024
+-  Transmediale Vaaria Workshop 
 ---
 # Purpose
 ##### Using, hosting, publishing, sharing
@@ -131,22 +149,18 @@ Christian Ulrik Andersen, [DARC](https://darc.au.dk) & [Shape](https://shape.au.
 
 ---
 # Resources:
-#### From CCI:
-- x2 Raspberry Pi4
-- USB Keyboard & Mouse
-- Ethernet cable
-- 4G Dongle
-- SD cards (x2 32GB, x1 15GB)
-#### From Batool & George:
-- x2 HDMI Display (+cables)
-- USB Keyboard & mouse
-#### From Systerserver
-- Public IP
-- Rosa Manual 
+| _From CCI_ | _From In-grid_ | _From Systerserver_ |
+| ----------- | ----------- | ----------- |
+| x2 raspberry pies & peripherals | Screens & peripherals| Public IP |
+| SD cards & 4G dongle| space| Rosa Manual |
+
+> [!error] Electricity
+> Is a resource that we happen to have access to at no extra cost at our studio buildings
+<!-- element style="width:70%"-->
+
 ---
 # Resources:
-```md
-> [!tip] This tip has a custom Header
-> This is an Tip with a custom Title
-<!-- element style="width:100%"-->
-```
+
+> [!warning] Time
+> A resource we had to share, split and make
+<!-- element style="width:70%"-->
