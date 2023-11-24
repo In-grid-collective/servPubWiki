@@ -92,21 +92,23 @@ Content: ??
 
 --
 # Timeline
-### 26 May 2023: Public Workshop 1 (CCI)
+### 26 May 2023: Public Workshop 1 (CCI / Hybrid)
 - InGrid to configure local remote access to the pies.
 - Testing Wifi login at UaL/CCI campus (14 May)
 - Discussion with Mara & Luke
-- Attending Networking setup workshop on 26 June (Hybrid)
+- Generally understanding things
 --
 # Timeline
 ### 19 July 2023: Working Session 1 (online)
-- Getting the pi online 
-- Hosting "ServPub"
-- tinc
+- ssh-ing
+- hostnames
+- tmux
+- NginX 
+- install tinc on pubdoc (Linux)
 --
 # Timeline
 ### 4 Aug 2023: Working Session 2 (CCI)
- tinc on sysadmin machines (mac & win)
+- tinc on sysadmin machines (mac & win)
 - configure tinc
 - configure nginX
 - servpub.net online
@@ -114,24 +116,29 @@ Content: ??
 # Timeline
 ### 6 Oct 2023:
 - Big regroup meeting (online)
-___
+
 ### Oct - Nov 2023: Several working sessions
 - SSL & HTML Certificates
 - Populating Documentation 
 - planning workshop
 --
 # Timeline - Future
-### 8 Dec 2023: Working Session X Varia
+### 8 Dec 2023: Working Session x Varia
 - Wiki2print install on wiki2Print pi
 ### January 2024
 -  Transmediale Vaaria Workshop 
 ---
 # Purpose
-##### Using, hosting, publishing, sharing
-quite open about possibilities of what to host and do with the server space so, any suggestions we should pose to them.
+### Using, hosting, publishing, sharing
+possibilities of what to host and do with the server space
 
----
-# Uses
+prototyping space for networking projects
+
+--
+# Ideas to Host
+- Docs
+- WriteFreely
+- Etherpad (synced with docs?)
 
 ---
 # Collaborators
@@ -159,9 +166,8 @@ Christian Ulrik Andersen, [DARC](https://darc.au.dk) & [Shape](https://shape.au.
 --
 # Resources:
 
-> [!warning] Time
-> A resource we had to share, split and make
-<!-- element style="width:70%"-->
+## Time!
+A resource we had to share, split and make
 
 ---
 # Agenda:
