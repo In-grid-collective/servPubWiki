@@ -141,6 +141,12 @@ SSH or Secure Shell is a network communication protocol that enables two comput
 - Have SSH installed on laptop (most OS have it by default now, if not then manually install, below)
 - To be on the same local network
 
+--
+
+## Our Pi is already serving up a simple website!
+
+You will need to be on the same network to see this in your browser. Which you can do now during the break. 
+
 ---
 ### Break, things to do:~
 
