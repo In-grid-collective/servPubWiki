@@ -22,10 +22,16 @@ theme: moon
 	ul,
 	p{
 		font-size: 0.8em!important;
+		color:white!important;
 	}
 	h1,h2,h3{
         font-family : "GeneraleStationRegular"!important;
         font-size: 1.5em!important;
+}
+h4{
+	font-family : "GeneraleStationRegular"!important;
+        font-size: 0.8em!important;
+        
 }
 	code{
 	     padding: 0.5em 1em!important;
