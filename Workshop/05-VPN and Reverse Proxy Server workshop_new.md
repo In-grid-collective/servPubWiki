@@ -500,14 +500,12 @@ sudo systemctl enable tinc@systerserver
 
 We are now going to run a reverse proxy server with NginX that will enamble us to forward our webtraffic from their public IP that the DNS server point to, to our internal vpn subnet IP.
 
-#diagram
-
-if you haven't already install Nginx, like we did for the pi [[02-Web Server Setup on Pi#NginX]]
+To do this we are jumping back onto Jean
 
 --
 ## Reverse Proxy Configuration
 
-On the server hosting the tinc vpn (in our case Jean) add an nginx config file at ``/etc/nginx/sites-available/<SERVERNAME>.conf``
+On the server hosting the tinc vpn (Jean) create an nginx config file at ``/etc/nginx/sites-available/<SERVERNAME>.conf``
 
 To do this use the command
 
@@ -525,7 +523,7 @@ sudo nano sites-available/systerserver.conf
 
 --
 
-### Decide on proxy configuration.
+### Decide on proxy configuration
 
 Choosing your NGINX reverse proxy setup is very much up to you but we will show two setups:
 - A simple one with just http.
@@ -533,7 +531,7 @@ Choosing your NGINX reverse proxy setup is very much up to you but we will show 
 
 --
 
-#### simple http conf:
+simple http conf
 
 ``` nginx
 server {
@@ -563,8 +561,7 @@ server {
 ```
 
 --
-
-#### More complex https, with http redirect, and certificate:
+More complex https, with http redirect, and certificate:
 
 ``` nginx
 
@@ -647,10 +644,9 @@ to its neighbour folder at:
 `/etc/nginx/sites-enabled/<SERVERNAME>.conf` 
 
 --
+### linking the nginx .conf
 
-#### linking the nginx .conf
-
-To do this use the ln command:
+To do this use the in command:
 
 ```shell
 sudo ln sites-available/<NETNAME>.conf sites-enabled/<NETNAME>.conf
