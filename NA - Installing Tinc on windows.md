@@ -18,7 +18,7 @@ sudo apt install net-tools
 
 ## Install tinc
 
-Then follow the [[05-VPN and Reverse Proxy Server#Install instructions for Linux]], and check out the difference in commands below.
+Then follow the [[05-VPN and Reverse Proxy Server#Install instructions for Linux]], and come back here when you reach [[05-VPN and Reverse Proxy Server#Start tinc]], as you cannot automatically run tinc with systemd on the vm. Instead run the command below every time you want to start it.
 
 ## Run tinc
 
