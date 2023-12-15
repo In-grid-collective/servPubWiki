@@ -29,9 +29,6 @@ in this example the user is called "pubdoc"
 ### Basic Commands
 The following commands will help us get started, but are just the tip of the [iceberg](https://www.geeksforgeeks.org/linux-commands/?ref=lbp)
 
-
-
-
 Show the name of the currently logged in user:
 
 ```shell

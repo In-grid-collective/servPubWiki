@@ -184,5 +184,6 @@ Feedback: Documentation & Discussion - Notes
 # Documentation Review & Feedback
 
 link: https://git.systerserver.net/queer/networks
+--
 
-
+![[qr-code.svg]]
