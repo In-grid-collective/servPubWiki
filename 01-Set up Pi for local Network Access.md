@@ -79,7 +79,9 @@ and
 sudo apt-get upgrade
 ```
 
-## Enabling SSH connection:
+##  Enabling SSH 
+ 
+connection:
 On the the server, execute: 
 
 ```shell

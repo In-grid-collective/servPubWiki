@@ -35,9 +35,9 @@ sudo apt-get install hostapd && sudo apt-get install dnsmasq && sudo apt install
 If you want to check they have installed use the command below!
 
 ```shell
-dpkg –list | grep hostapd
-dpkg –list | grep dnsmasq
-dpkg –list | grep dnsutils
+dpkg –-list | grep hostapd
+dpkg –-list | grep dnsmasq
+dpkg –-list | grep dnsutils
 ```
 
 Stop them whilst we edit their configurations.

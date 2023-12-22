@@ -652,13 +652,13 @@ to its neighbour folder at:
 To do this use the in command:
 
 ```shell
-sudo ln sites-available/<NETNAME>.conf sites-enabled/<NETNAME>.conf
+sudo ln ./sites-available/<NETNAME>.conf ./sites-enabled/<NETNAME>.conf
 ```
 
 Ours looks like:
 
 ```shell
-sudo ln sites-available/systerserver.conf sites-enabled/systerserver.conf
+sudo ln ./sites-available/systerserver.conf ./sites-enabled/systerserver.conf
 ```
 
 --
