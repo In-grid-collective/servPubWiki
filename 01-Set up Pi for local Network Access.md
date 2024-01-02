@@ -258,10 +258,10 @@ We need to check if we should do this at all, especially if we need some form of
 Access the config file by:
 
 ``` shell
-sshd_config
+sudo nano -l /etc/ssh/sshd_config
 ```
 
-And in the 'PasswordAuthentication' line put 'no', then save and exit:
+And in uncomment 'PasswordAuthentication' on line 57 and set to 'no', then save and exit:
 
 ``` config
 PasswordAuthentication no
