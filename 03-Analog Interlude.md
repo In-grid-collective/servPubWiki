@@ -52,7 +52,7 @@ Going forward, we will also have to name:
 - Separate user account (named after members)
 - The domain (which will be publicly accessible)
 # Creating Users
-##### DOCUMENTATION NEEDED HERE:
+
 Using [this guide](https://alexandria.anarchaserver.org/index.php/Access_server) from Systerserver, we can create users and give them different access levels. 
 Before creating any new users, make sure you are at root level (or the root user) of the machine. To do that, do:
 ```shell

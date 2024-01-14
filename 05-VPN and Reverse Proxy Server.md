@@ -261,7 +261,7 @@ e.g.:
 sudo systemctl enable tinc@systerserver
 ```
 
-# NginX
+# NginX for Reverse Proxy
 
 Apache and NginX seem to be the two main competitors for web server software. There main pros and cons are outlined in [this article](https://www.hostinger.co.uk/tutorials/nginx-vs-apache-what-to-use/#:~:text=The%20main%20difference%20between%20NGINX,to%20have%20generally%20better%20performance) and [this article](https://www.hostinger.co.uk/tutorials/nginx-vs-apache-what-to-use/#:~:text=The%20main%20difference%20between%20NGINX,to%20have%20generally%20better%20performance.).
 
