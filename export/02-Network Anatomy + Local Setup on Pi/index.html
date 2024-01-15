@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="plugin/chalkboard/style.css">
+
+	<link rel="stylesheet" href="plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="bg drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<header>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/generale-station" type="text/css"></link>
+</header>
+
+<style>
+
+	code.nginx{ 
+		font-size: 0.4em!important; 
+		line-height: 1.5em!important; 
+	} 
+	table{ 
+		font-size: 0.5em!important; 
+		margin: 40px 0!important;
+		color:white!important;
+	}
+
+    
+	.tiny-font{
+		font-size: 0.5em;
+	}
+
+	.markdown-preview-view code{
+	         font-size: 0.5em;
+	}
+	
+	pre{
+	     font-size: 0.7em!important;
+	}
+	ul,
+	p{
+		font-size: 0.8em!important;
+		color:white!important;
+	}
+	h1,h2,h3{
+        font-family : "GeneraleStationRegular"!important;
+        font-size: 1.5em!important;
+}
+	code{
+	     padding: 0.5em 1em!important;
+	}
+
+.slide-background{
+background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 4%, rgba(52,1,45,1) 100%)!important;
+
+}
+
+</style>
+
+
+
+
+## Network Anatomy 
+
+We will start with an overview of servpub to introduce different elements of internet infrastructure and associated terms.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+| **Local** Devices in **Local** Area Networks |  Remote Devices on the Public Internet  |
+| ----------- | ----------- |
+| Devices that are connected via the same wi-fi or ethernet in a limited geographical area. | Devices that are connected via the wider public internet.  |
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="media/slideAsset 6.png" alt="" style="object-fit: scale-down">
+</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="media/slideAsset 2.png" alt="" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+| Term     | Example | Description |
+| ----------- | -----------  | ----------- |
+| IP Address   |  192.0.2.1 | IP (Internet Protocol) addresses work a bit like a street address in that they allow devices to find each other on a network.      |
+| Static IP |  89.106.208.4 | Unlike standard dynamic IPs, a static IP is assigned to a device and it remains the same. |
+| Domain Name |  servpub.net | IP addresses can be mapped to a name/text via a Domain Name System (DNS) format.   |
+| Ports | 80 | Port 80 is the default port number assigned to internet communication protocol, Hypertext Transfer Protocol (HTTP). Ports are part of the TCP transport layer.|
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="media/slideAsset 7.png" alt="" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+| Term     | Example | Description |
+| ----------- | -----------  | ----------- |
+| Tinc |   | VPN software |
+| Local IP Addresses   |  10.0.0.0| IPs in this range are reserved for private networks     |
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="media/slideAsset 4.png" alt="" style="object-fit: scale-down">
+</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="media/slideAsset 5.png" alt="" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+| Term     |  Description |
+| ----------- | ----------- |
+| Static Server |  A Server for serving up files like .html .jpeg .css .js etc  |
+| Proxy Server | A proxy server is a go‑between or intermediary server that forwards requests for content from multiple clients to different servers|
+| Reverse Proxy Server  |  A **reverse proxy server** is a type of proxy server that typically sits behind the firewall in a private network and directs client requests to the appropriate backend server    |
+| Nginx |  **Nginx** is open source software for web serving |
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Local Server on the Pi
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+##  Local Network Access with SSH
+
+
+SSH or Secure Shell is a network communication protocol that enables two computers to communicate. We will use SSH to access the Pi remotely via the local network
+
+<img src="media/Pasted image 20231108164245.png" alt="" style="object-fit: scale-down">
+
+*Image courtesy of Mara, Systerserver*
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Prerequisites
+
+- Raspberry pi + peripherals: HDMI screen, keyboard, mouse etc. 
+- Pi OS booted: The Rosa Server Guide recommends [Armbian OS](https://www.armbian.com/rpi4b/)
+- Knowledge of terminal/bash
+- Have SSH installed on laptop (most OS have it by default now, if not then manually install)
+- To be on the same local network
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## So far
+
+We have got a Pi setup with:
+- Armbian OS
+
+We prepared this ahead of today in the interest of time. This is a process of downloading and installing Armbian, which is a Linux operating system. Full instructions live on our docs.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Our Pi is already serving up a simple website!
+
+You will need to be on the same network to see this in your browser. Which you can do now during the break.
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Break, things to do:~
+
+If you have a windows machine and would like to follow along, download Git for Windows Bash: https://gitforwindows.org/
+
+Newer macs and windows laptops have SSH installed. Check version in Command Prompt (Windows) or terminal (Linux or Mac OS):
+
+``` shell
+ssh -v
+```
+
+
+If not, we can assist. Linux users can install the client package to your laptop with this line if needed:
+
+``` shell
+sudo apt install -y openssh-client
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Accessing the Pi
+The next thing we need to do is access our pi via ssh, but to do that we need to understand a bit about the terminal.
+</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Terminal
+
+Linux and Mac OS systems have Unix Shells that provide us a command line interface. e.g. Bash Shells or Zsh 
+
+Windows uses Power Shell by default, which has a different command language. If you are on Windows you will need a Bash shell installed for the following commands.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Who are you?
+
+Show the name of the currently logged in user:
+
+```shell
+whoami
+```
+
+Show the name of the machine is given on the network: 
+
+```shell
+hostname
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Folder Hierarchies
+
+Much of working on the command line involves navigating around your system without the use of a Graphical User Interface (GUI). 
+
+However, we will essentially be navigating around folder hierarchies like below:
+
+<pre style="background-color:black; padding:20px">
+root/
+├─ directoryname/
+       ├─ anotherdirectory/
+                  ├─ aFileName.txt
+</pre>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+**Directory** : also known as a folder
+
+Print working directory that you are currently in:
+
+```shell
+pwd
+```
+
+
+List current directory contents:
+
+``` shell
+ls
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### **Root directory**  
+"Highest" directory in the hierarchy. You can also think of it as the start of a particular folder structure. Root directory of your machine denoted by a tilde `~` on the command line.
+
+Change directory to root :
+
+```shell
+cd 
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### **directory path**  
+Route to a folder
+
+Change directory using the "path" to that folder/directory. If the path starts with `/`  it will start at the root directory:
+
+```shell
+cd /directoryname/anotherdirectory
+```
+
+Change directory to the directory above the one you are currently in:
+
+```shell
+cd ..
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Installing SSH 
+
+We have installed an SSH server on the (Pi) and you will need an ssh client package (on your laptop). If you haven't already checked if you have ssh, try to check the ssh version:
+
+``` shell
+ssh -v
+```
+
+If you get a "command not found", install the client package to your laptop with this line on linux:
+
+``` shell
+sudo apt install -y openssh-client
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Connecting from a client
+
+The first thing we need to do is find out the IP address of the device we want to access - the Pi. One way to do this is, through is this command line on the pi:
+
+```shell
+hostname -I
+```
+
+We have already done this, for those in the room we have added the Pi address for you on the Pad.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Now that we know the IP address of the Pi, we can SSH into it, using the following command:
+
+``` shell
+ssh pi@<pi ip>
+```
+
+eg.
+
+``` shell
+ssh pi@100.10.1.90
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+You are now logging into the Pi, so you'll be asked for a password.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Once you've successfully entered the PW, you should see your terminal username change from your device's local user to something like:
+
+
+``` shell
+pi@raspberry~$.
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## We're in!
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+To exit the Pi (not now!) use the following command:
+
+``` shell
+exit
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Tmux
+
+We are now going to join in on a shared terminal session. To do this we will be using a terminal multiplexer called Tmux. We have already installed this on the Pi - again, fuller instructions exist in our docs.
+
+<img src="Pasted image 20231123170353.png" alt="" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+To access a shared session, we all have to be logged in as the same user simultaneously. The tmux session will be registered under that user - in our case we want to create a session as `sudo`
+
+`sudo` stands for [Super User DO](https://www.geeksforgeeks.org/sudo-command-in-linux-with-examples/). This command is used to allow you to run commands that only super users are allowed to run, and is often followed by another command you want to run. When you use `sudo` you will be prompted to enter your super user password to execute the command:
+
+```shell
+ sudo <command>
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+We will enter into sudo mode to run all commands as a super user run:
+
+```shell
+ sudo su
+```
+
+This will then prompt you to enter your password and after which you can run commands as a super user.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+We have started a tmux session, and you can join with the following command:
+
+```shell 
+tmux attach
+```
+
+
+
+<div class="callout callout-color-default">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-pencil-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Note
+
+</div>
+</div>
+<div class="callout-content">
+
+Everyone in a Tmux session is acting as the same user. However we could create split screens and multiple panes within Tmux so different people can work on different things.
+
+</div>
+</div>
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Server Software 
+
+
+We will be using [NginX](https://www.nginx.com/)  which is a web serving software. You can use Nginx to create various types of servers. We have created a simple static server using Nginx on our both pis. So Far:
+
+- We have installed Nginx
+- And configured a simple static server
+- It is serving up html
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Our Static Website
+
+Inside of www we will see our wiki2print folder which is serving up our html:
+
+<pre style="background-color:black; padding:20px">
+var/
+├─ www/
+       ├─ wiki2print/
+                  ├─ index.html
+</pre>
+
+Change directory to the root:
+
+```shell
+cd /var/www/wiki2print
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Print out the contents of the index.html to terminal:
+
+```shell
+cat index.html
+```
+
+How is this being served up to us?
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Nginx configuration
+
+All Nginx server configuration files should be created here:
+
+```shell
+cd /etc/nginx/sites-enabled
+```
+
+Do `ls` to list all files. We can edit our config using nano:
+
+```shell
+nano wiki2print.conf
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+The server block is where we define our server set up. Take note of the root folder path, that is where our website is being served out of: 
+
+```nginx
+
+server {
+		# 80 the default port for listening for http traffic
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        # the root folder that your website will be served out of
+        root /var/www/wiki2print;
+
+		# Allowed file formats for the index / home page
+        index index.html index.htm;
+
+		# The server name that you would set
+        server_name wiki2print.local;
+
+		# A location directive for any incoming URI requests
+        location / {
+
+                # First attempt to serve request as file, then as directory,
+                # then fall back to displaying a 404 not found error
+                try_files `$uri $`uri/ =404;
+        }
+        
+ }
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Systemctl & Nginx
+
+We will be using [systemd](https://en.wikipedia.org/wiki/Systemd) the Linux system and service manager. We can use systemctl to manage systemd services. 
+
+Check status of Nginx:
+
+```shell
+sudo systemctl status nginx
+```
+
+Reload any Nginx configuration files that have changed (in sites-enabled):
+
+```shell
+sudo systemctl reload nginx
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Let's go back to edit our index.html file!
+
+```shell
+cd /var/www/wiki2print
+```
+
+
+Let's open it up in Nano command line text editor to make some changes:
+
+```shell
+nano index.html
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Nano Quick Start
+
+- You will see the nano editor open. At the bottom of the window, you will find some shortcuts to use with the Nano editor. The `^` (caret) means that you must press **CTRL** (Windows) or **control** (macOS) to use the chosen command.
+- Press **CTRL + O** to save the changes made in the file and continue editing.
+- To exit from the editor, press **CTRL + X**. If there are changes, it will ask you whether to save them or not. Input **Y** for **Yes**, or **N** for **No**, then press **Enter**. If there are no changes, you will exit the editor right away.
+
+
+Every time we save we should be able to refresh our browsers to see the change!
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### More Terminal Commands
+
+Make new directory:
+
+ ```shell
+mkdir directoryname
+```
+
+
+Make new file:
+
+```shell
+touch example.txt
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Copy a text file called `example.txt` which is in a sub directory "exampleFolder" to a new location  `/path/to/folder`
+
+```shell
+cp exampleFolder/example.txt /path/to/folder
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### !  be careful   !
+Remove a file:
+
+```shell
+rm <file.txt>
+```
+
+
+Remove an empty directory:
+
+```shell
+rmdir <directoryname>
+```
+
+Remove a directory and all the items inside of it:
+
+```shell
+rm -r <directoryname>
+```
+</div></script></section></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+	<script src="plugin/chalkboard/plugin.js"></script>
+	<script src="plugin/reveal-pointer/pointer.js"></script>
+	<script src="plugin/elapsed-time-bar/elapsed-time-bar.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer,
+		  RevealChalkboard, 
+		  ElapsedTimeBar
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+				{ icon: '<i class="fa fa-pen-square"></i>',
+				title: 'Toggle chalkboard (B)',
+				action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+				title: 'Toggle notes canvas (C)',
+				action: 'RevealChalkboard.toggleNotesCanvas();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":true,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
