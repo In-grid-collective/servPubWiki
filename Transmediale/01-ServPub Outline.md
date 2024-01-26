@@ -40,6 +40,7 @@ h4{
 	     padding: 0.5em 1em!important;
 	}
 
+
 .slide-background{
 background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 4%, rgba(52,1,45,1) 100%)!important;
 }
@@ -146,20 +147,17 @@ Geoff Cox, [CSNI](https://www.centreforthestudyof.net/?page_id=756) at London So
 Christian Ulrik Andersen, [DARC](https://darc.au.dk) & [Shape](https://shape.au.dk) at Aarhus Uni
 
 #### Participating Collectives: 
+[In-Grid](https://www.in-grid.io/) Project Implementation
 [Systerserver](https://systerserver.net) (Mara and Ooooo) workshop guide & 
 [Varria](https://cc.vvvvvvaria.org) Luke: First workshop guide - local setup / (Manetta and Simon): wiki-to-print 
 
 ---
-# In-Grid
+# In-Grid 
 
---- start-multi-column: Image
-column-settings  
-number of columns: 3  
-![[Batool.png|100]]![[Becky.png|100]]![[George.png|100]]
---- break-column ---\
- ![[Katie.png|100]] ![[Sunni.png|100]]
- --- end-column ---
-[In-Grid](https://www.in-grid.io/) Project Implementation
++ 
+![[Batool.png|110]] ![[Becky.png|110]]![[George.png|110]]![[Katie.png|110]]![[Sunni.png|110]]
+ 
+Batool/ Becky/ George/ Katie/ Sunni
 
 
 ---
