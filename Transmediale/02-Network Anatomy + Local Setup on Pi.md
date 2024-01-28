@@ -51,25 +51,92 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 
 
 <!-- .slide: class="bg" -->
+![[servpubProjectMap.png]]
+
+--
+## ServPub 
+...is an experimental platform for research and practice on experimental and computational publishing, to reflect collectively on affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints.
+
+ServPub will be run by artists, coders, activists, collectives, scholars, researchers using FOSS, who share feminist values and practices. We aim to build shared knowledge and resources which operate at small scale and as part of grassroots community networks to explore alternatives. 
+
+
+---
+# Collaborators
+
+<br/>
+#### Organising bodies: 
+Winnie Soon, [CCI](https://www.arts.ac.uk/creative-computing-institute), UaL.
+<br/>
+Geoff Cox, [CSNI](https://www.centreforthestudyof.net/?page_id=756) at London South Bank Uni.
+<br/>
+Christian Ulrik Andersen, [DARC](https://darc.au.dk) & [Shape](https://shape.au.dk) at Aarhus Uni
+
+--
+#### Participating Collectives: 
+[In-Grid](https://www.in-grid.io/) Project Implementation w/
+<br/>
+[Systerserver](https://systerserver.net) Mara and Ooooo: Infrastructure/VPN 
+<br/>
+[Varria](https://cc.vvvvvvaria.org) Luke: First workshop guide - local setup 
+<br/>
+[Varria](https://cc.vvvvvvaria.org) Manetta and Simon: wiki-to-print 
+
+---
+# In-Grid 
+
+
+Batool/ Becky/ George/ Katie/ Sunni
+
++ 
+![[Batool.png|110]] ![[Becky.png|110]]![[George.png|110]]![[Katie.png|110]]![[Sunni.png|110]]
+ 
+_In-grid is a group of many - these are the members who are actively involved in this project_
+
+---
+
+# Resources:
+| _From CCI_ | _From In-grid_ | _From Systerserver_ |
+| ---- | ---- | ---- |
+| x2 raspberry pies & peripherals | Screens & peripherals | Public IP |
+| SD cards & 4G dongle | Space + electricity | Rosa Manual - (Varia, HYPHA, LURK, esc, Feminist Hack Meetings, Constant) |
+
+
+--
+# Resources:
+
+## Time!
+A resource we all had to share, split and make
+
+
+--
+
+## Timeline
+
+<br/>
+
+- May - Public workshop 1 (CCI), project launch
+- August - Semi-public workshop -  tinc & nginx
+- November - Public workshop (LSBU) wiki node joins VPN
+- December - wiki-to-print becomes wiki4print (installation)
+- Jan - Transmediale, content/form
+
+<br/>
+
+_Between these public facing events there were many meetings, working sessions, discussions and collective debugging._
+---
 
 ## Network Anatomy 
 
-We will start with an overview of servpub to introduce different elements of internet infrastructure and associated terms.
+Here is an overview of servpub to introduce different elements of internet infrastructure and associated terms.
 
 
 ---
 
-
-| __Local__ Devices in __Local__ Area Networks |  Remote Devices on the Public Internet  |
-| ----------- | ----------- |
-| Devices that are connected via the same wi-fi or ethernet in a limited geographical area. | Devices that are connected via the wider public internet.  |
-
-
----
 
 
 ![[slideAsset 6.png]]
-
+--
+![[piBerlin.jpeg]]
 ---
 ![[slideAsset 2.png]]
 
@@ -93,12 +160,15 @@ We will start with an overview of servpub to introduce different elements of int
 
 
 
-| Term     | Example | Description |
-| ----------- | -----------  | ----------- |
-| Tinc |   | VPN software |
-| Local IP Addresses   |  10.0.0.0| IPs in this range are reserved for private networks     |
+| Term | Example | Description |
+| ---- | ---- | ---- |
+| Tinc |  | VPN software |
+| Local IP Addresses | 10.0.0.0 | IPs in this range are reserved for private networks |
 
 
+--
+
+![[ifconfigberlin.jpeg]]
 
 
 ---
@@ -120,447 +190,27 @@ We will start with an overview of servpub to introduce different elements of int
 
 ---
 
-## Local Server on the Pi
+## Collective working
 
---
-
-##  Local Network Access with SSH
-
-
-SSH or Secure Shell is a network communication protocol that enables two computers to communicate. We will use SSH to access the Pi remotely via the local network
-
-![[Pasted image 20231108164245.png]]
-*Image courtesy of Mara, Systerserver*
-
---
-## Prerequisites
-
-- Raspberry pi + peripherals: HDMI screen, keyboard, mouse etc. 
-- Pi OS booted: The Rosa Server Guide recommends [Armbian OS](https://www.armbian.com/rpi4b/)
-- Knowledge of terminal/bash
-- Have SSH installed on laptop (most OS have it by default now, if not then manually install)
-- To be on the same local network
-
---
-## So far
-
-We have got a Pi setup with:
-- Armbian OS
-
-We prepared this ahead of today in the interest of time. This is a process of downloading and installing Armbian, which is a Linux operating system. Full instructions live on our docs.
-
---
-
-## Our Pi is already serving up a simple website!
-
-You will need to be on the same network to see this in your browser. 
-
-Enter in URL Bar:    
-
-Which you can do now during the break. 
-
-
----
-### Break, things to do:~
-
-If you have a windows machine and would like to follow along, download Git for Windows Bash: https://gitforwindows.org/
-
-Newer macs and windows laptops have SSH installed. Check version in Command Prompt (Windows) or terminal (Linux or Mac OS):
-
-``` shell
-ssh -v
-```
-
-
-If not, we can assist. Linux users can install the client package to your laptop with this line if needed:
-
-``` shell
-sudo apt install -y openssh-client
-```
-
-
----
-
-
-## Accessing the Pi
-The next thing we need to do is access our pi via ssh, but to do that we need to understand a bit about the terminal.
-
-
----
-## Terminal
-
-Linux and Mac OS systems have Unix Shells that provide us a command line interface. e.g. Bash Shells or Zsh 
-
-Windows uses Power Shell by default, which has a different command language. If you are on Windows you will need a Bash shell installed for the following commands. 
-
-
---
-
-## Who are you?
-
-Show the name of the currently logged in user:
-
-```shell
-whoami
-```
-
-Show the name of the machine is given on the network: 
-
-```shell
-hostname
-```
-
-
---
-## Folder Hierarchies
-
-Much of working on the command line involves navigating around your system without the use of a Graphical User Interface (GUI). 
-
-However, we will essentially be navigating around folder hierarchies like below:
-
-<pre style="background-color:black; padding:20px">
-root/
-├─ directoryname/
-       ├─ anotherdirectory/
-                  ├─ aFileName.txt
-</pre>
-
-
---
-
-__Directory__ : also known as a folder
-
-Print working directory that you are currently in:
-
-```shell
-pwd
-```
-
-
-List current directory contents:
-
-``` shell
-ls
-```
-
---
-### __Root directory__  
-"Highest" directory in the hierarchy. You can also think of it as the start of a particular folder structure. Root directory of your machine denoted by a tilde `~` on the command line.
-
-Change directory to root :
-
-```shell
-cd 
-```
-
-
---
-
-### __directory path__  
-Route to a folder
-
-Change directory using the "path" to that folder/directory. If the path starts with `/`  it will start at the root directory:
-
-```shell
-cd /directoryname/anotherdirectory
-```
-
-Change directory to the directory above the one you are currently in:
-
-```shell
-cd ..
-```
-
-
----
-
-## Installing SSH 
-
-We have installed an SSH server on the (Pi) and you will need an ssh client package (on your laptop). If you haven't already checked if you have ssh, try to check the ssh version:
-
-``` shell
-ssh -v
-```
-
-If you get a "command not found", install the client package to your laptop with this line on linux:
-
-``` shell
-sudo apt install -y openssh-client
-```
-
---
-
-## Connecting from a client
-
-The first thing we need to do is find out the IP address of the device we want to access - the Pi. One way to do this is, through is this command line on the pi:
-
-```shell
-hostname -I
-```
-
-We have already done this, for those in the room we have added the Pi address for you on the Pad.
-
---
-
-Now that we know the IP address of the Pi, we can SSH into it, using the following command:
-
-``` shell
-ssh pi@<pi ip>
-```
-
-eg.
-
-``` shell
-ssh pi@100.10.1.90
-```
-
---
-You are now logging into the Pi, so you'll be asked for a password. 
-
---
-
-Once you've successfully entered the PW, you should see your terminal username change from your device's local user to something like:
-
-
-``` shell
-pi@raspberry~$.
-```
-
-
---
-
-## We're in!
-
---
-
-To exit the Pi (not now!) use the following command:
-
-``` shell
-exit
-```
-
-
----
-## Tmux
-
-We are now going to join in on a shared terminal session. To do this we will be using a terminal multiplexer called Tmux. We have already installed this on the Pi - again, fuller instructions exist in our docs.
+Part of our process was working collectively on the command line, using a software to enable this:
 
 ![[Pasted image 20231123170353.png]]
 
+We also spent many hours on _**etherpads**_ jotting notes and chatting through ideas, meeting in person and online using platforms like _**jitsi**_.
 
---
-To access a shared session, we all have to be logged in as the same user simultaneously. The tmux session will be registered under that user - in our case we want to create a session as `sudo`
-
-`sudo` stands for [Super User DO](https://www.geeksforgeeks.org/sudo-command-in-linux-with-examples/). This command is used to allow you to run commands that only super users are allowed to run, and is often followed by another command you want to run. When you use `sudo` you will be prompted to enter your super user password to execute the command:
-
-```shell
- sudo <command>
-```
-
---
-
-We will enter into sudo mode to run all commands as a super user run:
-
-```shell
- sudo su
-```
-
-This will then prompt you to enter your password and after which you can run commands as a super user.
-
---
-
-We have started a tmux session, and you can join with the following command:
-
-```shell 
-tmux attach
-```
-
-
-
-> [!Note]
-> Everyone in a Tmux session is acting as the same user. However we could create split screens and multiple panes within Tmux so different people can work on different things. 
 
 
 ---
 
-## Server Software 
+## Documentation
 
+Another element of this work is the creation of cowritten documentation, intended to allow others recreate and remix this work. It is available at:
+<br/>
 
-We will be using [NginX](https://www.nginx.com/)  which is a web serving software. You can use Nginx to create various types of servers. We have created a simple static server using Nginx on our both pis. So Far:
+https://git.systerserver.net/queer/networks
 
-- We have installed Nginx
-- And configured a simple static server
-- It is serving up html
 
 
---
+---
 
-
-## Our Static Website
-
-Inside of www we will see our wiki2print folder which is serving up our html:
-
-<pre style="background-color:black; padding:20px">
-var/
-├─ www/
-       ├─ wiki2print/
-                  ├─ index.html
-</pre>
-
-Change directory to the root:
-
-```shell
-cd /var/www/wiki2print
-```
-
-
---
-
-Print out the contents of the index.html to terminal:
-
-```shell
-cat index.html
-```
-
-How is this being served up to us?
-
---
-### Nginx configuration
-
-All Nginx server configuration files should be created here:
-
-```shell
-cd /etc/nginx/sites-enabled
-```
-
-Do `ls` to list all files. We can edit our config using nano:
-
-```shell
-nano wiki2print.conf
-```
-
---
-
-The server block is where we define our server set up. Take note of the root folder path, that is where our website is being served out of: 
-
-```nginx
-
-server {
-		# 80 the default port for listening for http traffic
-        listen 80 default_server;
-        listen [::]:80 default_server;
-
-        # the root folder that your website will be served out of
-        root /var/www/wiki2print;
-
-		# Allowed file formats for the index / home page
-        index index.html index.htm;
-
-		# The server name that you would set
-        server_name wiki2print.local;
-
-		# A location directive for any incoming URI requests
-        location / {
-
-                # First attempt to serve request as file, then as directory,
-                # then fall back to displaying a 404 not found error
-                try_files $uri $uri/ =404;
-        }
-        
- }
-```
-
-
---
-
-###  Systemctl & Nginx
-
-We will be using [systemd](https://en.wikipedia.org/wiki/Systemd) the Linux system and service manager. We can use systemctl to manage systemd services. 
-
-Check status of Nginx:
-
-```shell
-sudo systemctl status nginx
-```
-
-Reload any Nginx configuration files that have changed (in sites-enabled):
-
-```shell
-sudo systemctl reload nginx
-```
-
-
---
-
-Let's go back to edit our index.html file!
-
-```shell
-cd /var/www/wiki2print
-```
-
-
-Let's open it up in Nano command line text editor to make some changes:
-
-```shell
-nano index.html
-```
-
---
-
-### Nano Quick Start
-
-- You will see the nano editor open. At the bottom of the window, you will find some shortcuts to use with the Nano editor. The `^` (caret) means that you must press **CTRL** (Windows) or **control** (macOS) to use the chosen command.
-- Press **CTRL + O** to save the changes made in the file and continue editing.
-- To exit from the editor, press **CTRL + X**. If there are changes, it will ask you whether to save them or not. Input **Y** for **Yes**, or **N** for **No**, then press **Enter**. If there are no changes, you will exit the editor right away.
-
-
-Every time we save we should be able to refresh our browsers to see the change!
-
---
-
-### More Terminal Commands
-
-Make new directory:
-
- ```shell
-mkdir directoryname
-```
-
-
-Make new file:
-
-```shell
-touch example.txt
-```
-
---
-
-Copy a text file called `example.txt` which is in a sub directory "exampleFolder" to a new location  `/path/to/folder`
-
-```shell
-cp exampleFolder/example.txt /path/to/folder
-```
-
---
-
-### !  be careful   !
-Remove a file:
-
-```shell
-rm <file.txt>
-```
-
-
-Remove an empty directory:
-
-```shell
-rmdir <directoryname>
-```
-
-Remove a directory and all the items inside of it:
-
-```shell
-rm -r <directoryname>
-```
-
-
+## Future...
