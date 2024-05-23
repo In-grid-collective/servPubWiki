@@ -261,7 +261,7 @@ Access the config file by:
 sudo nano -l /etc/ssh/sshd_config
 ```
 
-And in uncomment 'PasswordAuthentication' on line 57 and set to 'no', then save and exit:
+And in uncomment 'PasswordAuthentication' on line 57 ish exitand set to 'no', then save and exit:
 
 ``` config
 PasswordAuthentication no

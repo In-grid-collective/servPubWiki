@@ -53,11 +53,11 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 <!-- .slide: class="bg" -->
 ![[servpubProjectMap.png]]
 
---
+---
 ## ServPub 
-...is an experimental platform for research and practice on experimental and computational publishing, to reflect collectively on affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints.
+...is a platform for research and practice on experimental decentralised computational publishing, to reflect collectively on affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints.
 
-ServPub will be run by artists, coders, activists, collectives, scholars, researchers using FOSS, who share feminist values and practices. We aim to build shared knowledge and resources which operate at small scale and as part of grassroots community networks to explore alternatives. 
+ServPub is run by artists, coders, activists, collectives, scholars and researchers using FLOSS, who share feminist values and practices. We aim to build shared knowledge and resources which operate at small scale and as part of grassroots community networks to explore alternatives. 
 
 
 ---
@@ -71,15 +71,19 @@ Geoff Cox, [CSNI](https://www.centreforthestudyof.net/?page_id=756) at London So
 <br/>
 Christian Ulrik Andersen, [DARC](https://darc.au.dk) & [Shape](https://shape.au.dk) at Aarhus Uni
 
---
+---
 #### Participating Collectives: 
 [In-Grid](https://www.in-grid.io/) Project Implementation w/
 <br/>
 [Systerserver](https://systerserver.net) Mara and Ooooo: Infrastructure/VPN 
 <br/>
-[Varria](https://cc.vvvvvvaria.org) Luke: First workshop guide - local setup 
+[Varia](https://cc.vvvvvvaria.org) Luke: First workshop guide - local setup 
 <br/>
-[Varria](https://cc.vvvvvvaria.org) Manetta and Simon: wiki-to-print 
+[CC](https://cc.vvvvvvaria.org/) Manetta and Simon: wiki-to-print 
+
+---
+
+![[servpubProjectMap.png]]
 
 ---
 # In-Grid 
@@ -97,18 +101,18 @@ _In-grid is a group of many - these are the members who are actively involved in
 # Resources:
 | _From CCI_ | _From In-grid_ | _From Systerserver_ |
 | ---- | ---- | ---- |
-| x2 raspberry pies & peripherals | Screens & peripherals | Public IP |
+| x2 raspberry pies & peripherals | Screens & peripherals | Public IP / Server (Jean) |
 | SD cards & 4G dongle | Space + electricity | Rosa Manual - (Varia, HYPHA, LURK, esc, Feminist Hack Meetings, Constant) |
 
 
---
+---
 # Resources:
 
 ## Time!
 A resource we all had to share, split and make
 
 
---
+---
 
 ## Timeline
 
@@ -122,7 +126,8 @@ A resource we all had to share, split and make
 
 <br/>
 
-_Between these public facing events there were many meetings, working sessions, discussions and collective debugging._
+_Between these public facing events there were many meetings, co-working sessions, discussions and collective debugging._
+
 ---
 
 ## Network Anatomy 
@@ -135,12 +140,17 @@ Here is an overview of servpub to introduce different elements of internet infra
 
 
 ![[slideAsset 6.png]]
---
-![[piBerlin.jpeg]]
+
 ---
+
+![[piBerlin.jpeg]]
+
+---
+
 ![[slideAsset 2.png]]
 
---
+
+---
 
 
 
@@ -154,19 +164,21 @@ Here is an overview of servpub to introduce different elements of internet infra
 
 
 ---
+
 ![[slideAsset 7.png]]
 
---
+---
 
 
 
 | Term | Example | Description |
 | ---- | ---- | ---- |
 | Tinc |  | VPN software |
-| Local IP Addresses | 10.0.0.0 | IPs in this range are reserved for private networks |
+| Subnet IP Addresses | 10.10.12.* | IPs in this range are reserved for private networks |
 
 
---
+---
+
 
 ![[ifconfigberlin.jpeg]]
 
@@ -179,7 +191,9 @@ Here is an overview of servpub to introduce different elements of internet infra
 
 
 ![[slideAsset 5.png]]
---
+
+---
+
 
 | Term     |  Description |
 | ----------- | ----------- |
