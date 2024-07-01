@@ -43,3 +43,4 @@ fig by Mara from Systerserver
 - [x] setup documentation of project (here?)
 - [x] secure 4g dongle for workshop
 
+NOTE: how to for [exporting slides to PDF](https://revealjs.com/pdf-export/) from Obsidian
