@@ -1,7 +1,7 @@
 _this guide is a work in progress compiled from research on setting up local servers, it will change to reflect the actual steps in-grid takes as we work on this project_
 # Local machine remote access
 
-![[Pasted image 20231108164245.png]]
+![Pasted image 20231108164245](Pasted%20image%2020231108164245.png)
 ## Prerequisites
 
 - Raspberry pi + peripherals: HDMI screen, keyboard, mouse etc. 
@@ -40,7 +40,7 @@ sudo apt install -y openssh-server
 sudo apt install -y openssh-client
 ```
 
-If you are installing ssh for windows or mac refer to [[NA- Installing SSH on other devices.md]]
+If you are installing ssh for windows or mac refer to [NA- Installing SSH on other devices](NA-%20Installing%20SSH%20on%20other%20devices.md.md)
 ## Change Default PW:
 
 Defaults are 
@@ -291,7 +291,7 @@ Then ask them if they can help for a minute.
 
 ### Create a new set of ssh keys
 
-Maybe see [[Documentation_01-Local Config#Security via SSH Keys]] for more info, but you can also just follow the steps below.
+Maybe see [](Documentation_01-Local%20Config#Security%20via%20SSH%20Keys) for more info, but you can also just follow the steps below.
 
 Create a new key:
 
@@ -309,7 +309,7 @@ They will need to log in via ssh in:
 
 # Tmux installation
 
-Tmux is a terminal multiplexer, for collective editing in a terminal. Again, we are going to install this on the server (the pi). To use it you must be SSHed into the server as above  [[01-Set up Pi for local Network Access.md#Security via SSH Keys]].
+Tmux is a terminal multiplexer, for collective editing in a terminal. Again, we are going to install this on the server (the pi). To use it you must be SSHed into the server as above  [](01-Set%20up%20Pi%20for%20local%20Network%20Access.md.md#Security%20via%20SSH%20Keys).
 
 So, assuming you are SSHed into your server, follow these steps.
 

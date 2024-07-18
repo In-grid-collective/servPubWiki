@@ -5,7 +5,7 @@ Windows uses Power Shell by default, which has a different command language. If 
 
 Much of working on the command line involves navigating around your system without the use of a Graphical User Interface (GUI). Below we have a graphical representation of a folder hierarchy with a plain text .txt file:
 
-![[directoryStructures.png]]
+![directoryStructures.png](directoryStructures.png)
 
 root/
 ├─ directoryname/
@@ -14,7 +14,7 @@ root/
 
 In reality when working on the command line your root folder for your user account on your system will looking something like below, the root folder is always denoted by a tilde `~` 
 
-![[commandLineRoot.png]]
+![commandLineRoot.png](commandLineRoot.png)
 in this example the user is called "pubdoc" 
 
 

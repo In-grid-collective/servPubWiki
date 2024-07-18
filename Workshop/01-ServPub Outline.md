@@ -42,7 +42,7 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 }
 </style>
 
-![[servpubProjectMap.png]]
+![servpubProjectMap](servpubProjectMap.png)
 ---
 ServPub is an experimental platform for research and practice on experimental and computational publishing, to reflect collectively on affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints.
 
@@ -54,7 +54,7 @@ ServPub will be run by artists, coders, activists, collectives, scholars, resear
 [line-4, body-4]
 Date: 26 May 2023
 Title: Public Workshop 1 (CCI)
-Content: [[Meeting Notes_Workshop UaL CCI.md]]
+Content: [Meeting Notes_Workshop UaL CCI](Meeting%20Notes_Workshop%20UaL%20CCI.md.md)
 
 Date: 19 July 2023
 Title: Working Session 1 (online)
@@ -186,4 +186,4 @@ Feedback: Documentation & Discussion - Notes
 link: https://git.systerserver.net/queer/networks
 --
 
-![[qr-code.svg]]
+![qr-code.svg](qr-code.svg)

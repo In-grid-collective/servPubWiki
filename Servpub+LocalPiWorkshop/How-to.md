@@ -53,10 +53,10 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 ## Getting Set Up
 
 
-- Use the [[https://www.raspberrypi.com/documentation/computers/getting-started.html#getting-started-with-your-raspberry-pi]] documentation
-- Flash your Operating System(OS) to the SD card using [[https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager]]. If you have enough space on your SD card, you can have the full Desktop Gui. Choose the recommended OS for your Pi version if you don't have strong preferences. 
-- At the very least you will need a USB keyboard to get your pi on your wifi/local network before you can SSH into it. [[https://www.raspberrypi.com/documentation/computers/getting-started.html#keyboard]]
-- Once you SD card is ready with the OS, put the SD card back in your pi, plug in the pi to the power, and it will do it's "First Boot". The main things you need to do are [[https://www.raspberrypi.com/documentation/computers/getting-started.html#user]] and [[https://www.raspberrypi.com/documentation/computers/getting-started.html#wi-fi]]
+- Use the [](https://www.raspberrypi.com/documentation/computers/getting-started.html#getting-started-with-your-raspberry-pi) documentation
+- Flash your Operating System(OS) to the SD card using [](https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager). If you have enough space on your SD card, you can have the full Desktop Gui. Choose the recommended OS for your Pi version if you don't have strong preferences. 
+- At the very least you will need a USB keyboard to get your pi on your wifi/local network before you can SSH into it. [](https://www.raspberrypi.com/documentation/computers/getting-started.html#keyboard)
+- Once you SD card is ready with the OS, put the SD card back in your pi, plug in the pi to the power, and it will do it's "First Boot". The main things you need to do are [](https://www.raspberrypi.com/documentation/computers/getting-started.html#user) and [](https://www.raspberrypi.com/documentation/computers/getting-started.html#wi-fi)
 
 Note: If you like me don't have an external wired mouse, or only have one USB port for a keyboard (and no USB hub). You can do `ctrl + alt + t` to open up a terminal window and then do all the rest of the set up from the commandline.
 
@@ -92,7 +92,7 @@ Look for *System Options*, find and select *Hostname*. Type in your new hostname
 
 You navigate with the arrow buttons ← ↑  ↓  → and press ENTER to select an option. 
 
-Full documentation on System Options [[https://www.raspberrypi.com/documentation/computers/configuration.html#system-options]]
+Full documentation on System Options [](https://www.raspberrypi.com/documentation/computers/configuration.html#system-options)
 
 You can exit out of the config by selecting *Finish* and pressing ENTER.
 
@@ -122,7 +122,7 @@ hostname
 ```
 
 
-Full documentation on SSH with the pi [[https://www.raspberrypi.com/documentation/computers/remote-access.html#ssh]]
+Full documentation on SSH with the pi [](https://www.raspberrypi.com/documentation/computers/remote-access.html#ssh)
 
 ## Connecting from a client:
 
@@ -164,7 +164,7 @@ Hit enter.
 ---
 ## Tmux installation
 
-Tmux is a terminal multiplexer, for collective editing in a terminal. Again, we are going to install this on the server (the pi). To use it you must be SSHed into the server as above  [[01-Set up Pi for local Network Access.md#Security via SSH Keys]].
+Tmux is a terminal multiplexer, for collective editing in a terminal. Again, we are going to install this on the server (the pi). To use it you must be SSHed into the server as above  [](01-Set%20up%20Pi%20for%20local%20Network%20Access.md.md#Security%20via%20SSH%20Keys).
 
 So, assuming you are SSHed into your server, follow these steps. We are going to install TMUX as sudo:
 

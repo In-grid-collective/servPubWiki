@@ -68,10 +68,10 @@ We will start with an overview of servpub to introduce different elements of int
 ---
 
 
-![[slideAsset 6.png]]
+![slideAsset 6](slideAsset%206.png)
 
 ---
-![[slideAsset 2.png]]
+![slideAsset 2](slideAsset%202.png)
 
 --
 
@@ -87,7 +87,7 @@ We will start with an overview of servpub to introduce different elements of int
 
 
 ---
-![[slideAsset 7.png]]
+![slideAsset 7](slideAsset%207.png)
 
 --
 
@@ -103,12 +103,12 @@ We will start with an overview of servpub to introduce different elements of int
 
 ---
 
-![[slideAsset 4.png]]
+![slideAsset 4](slideAsset%204.png)
 
 ---
 
 
-![[slideAsset 5.png]]
+![slideAsset 5](slideAsset%205.png)
 --
 
 | Term     |  Description |
@@ -129,7 +129,7 @@ We will start with an overview of servpub to introduce different elements of int
 
 SSH or Secure Shell is a network communication protocol that enables two computers to communicate. We will use SSH to access the Pi remotely via the local network
 
-![[Pasted image 20231108164245.png]]
+![Pasted image 20231108164245](Pasted%20image%2020231108164245.png)
 *Image courtesy of Mara, Systerserver*
 
 --
@@ -345,7 +345,7 @@ exit
 
 We are now going to join in on a shared terminal session. To do this we will be using a terminal multiplexer called Tmux. We have already installed this on the Pi - again, fuller instructions exist in our docs.
 
-![[Pasted image 20231123170353.png]]
+![Pasted image 20231123170353](Pasted%20image%2020231123170353.png)
 
 
 --
