@@ -45,7 +45,7 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 # Intro In-grid
 In-grid is a trans\*feminist collective of artists/educators/technologists working in and around digital infrastructures. In-grid has been working together since 2019, and is made up of a fluid group of people dispersed globally.
 
-![](in-gridGroup.png)
+![](EasstWorkshop/media/in-gridGroup.png)
 
 
 ---
