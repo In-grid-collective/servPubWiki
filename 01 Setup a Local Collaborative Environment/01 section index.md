@@ -3,7 +3,7 @@ _this guide is a work in progress compiled from research on setting up local ser
 
 ### description of this section
 
- ![Pasted image 20231108164245](Pasted%20image%2020231108164245.png)
+ ![[Pasted image 20231108164245.png]]
 ### Prerequisites
 - Raspberry pi + peripherals: HDMI screen, keyboard, mouse etc. 
 - Pi OS booted: The Rosa Server Guide recommends [Armbian OS](https://www.armbian.com/rpi4b/)

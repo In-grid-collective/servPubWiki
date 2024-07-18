@@ -1,7 +1,7 @@
 ## About
 ServPub is an experimental site for research and practice on experimental and computational publishing, thinking collectively about affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints. It is run and operated by artists, coders, activists, collectives, scholars, researchers using FOSS, who share feminist values and practices. We aim to build shared knowledge and resources which operate at small scale and as part of grassroots community networks to explore alternatives to the big tech cloud (what's the opposite of outsourcing?).
 
-![Rosa-tinc-down.jpg](Rosa-tinc-down.jpg)
+![[Rosa-tinc-down.jpg]]
 fig by Mara from Systerserver
 
 
@@ -25,8 +25,8 @@ fig by Mara from Systerserver
 #### Collective Documentation
 - [ ] Documentation of ServPub pending completion:
 	- [ ] Becky: NginX and automation
-	- [x] Batool: Creating users here: [03-Analog Interlude](03-Analog%20Interlude.md)
-	- [ ] missing steps of getting certificates [04-Static IP & Domain Setup](04-Static%20IP%20&%20Domain%20Setup.md)
+	- [[03-Analog Interlude.md|x]]
+	- [[04-Static IP & Domain Setup.md| ]]
 	- [x] redirecting http to https 
 	- [x] how to replace lost SSH
 - [x] Put documentation (even as draft) on Systerservers Git

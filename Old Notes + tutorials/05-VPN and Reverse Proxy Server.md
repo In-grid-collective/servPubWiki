@@ -15,7 +15,7 @@ tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encrypti
 
 You need to install tinc for all nodes, both server and client. 
 
-If you would like to install on Mac, check out [NA-Installing tinc on Mac](NA-Installing%20tinc%20on%20Mac.md). It's a little bit more complicated than Linux. If you want to install on Windows, it may be better to run tinc from a linux console [like this](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
+If you would like to install on Mac, check out [[NA-Installing tinc on Mac.md]]. It's a little bit more complicated than Linux. If you want to install on Windows, it may be better to run tinc from a linux console [like this](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
 
 ## Install instructions for Linux:
 The tinc install instructions in this guide zine work well. This is what we have used to install tinc on a pi. [https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf) 
@@ -263,15 +263,15 @@ sudo systemctl enable tinc@systerserver
 
 # NginX for Reverse Proxy
 
-Apache and NginX seem to be the two main competitors for web server software. There main pros and cons are outlined in [this article](https://www.hostinger.co.uk/tutorials/nginx-vs-apache-what-to-use/#:~:text=The%20main%20difference%20between%20NGINX,to%20have%20generally%20better%20performance) and [this article](https://www.hostinger.co.uk/tutorials/nginx-vs-apache-what-to-use/#:~:text=The%20main%20difference%20between%20NGINX,to%20have%20generally%20better%20performance.).
+Apache and NginX seem to be the two main competitors for web server software. There main pros and cons are outlined in [[https://www.hostinger.co.uk/tutorials/nginx-vs-apache-what-to-use/#:~:text=The main difference between NGINX,to have generally better performance]] and [[https://www.hostinger.co.uk/tutorials/nginx-vs-apache-what-to-use/#:~:text=The main difference between NGINX,to have generally better performance.]].
 
 The gist is that NginX seems to be "better" in terms of performance and speed, but it doesn't seem to have full support on windows computers and needs an external processor for dynamic websites (not sure if we need that though). Basically NginX is faster because it does less out of the box, which is why we will be using it now.
 
-if you havent already install Nginx, like we did for the pi [](02-Web%20Server%20Setup%20on%20Pi.md#NginX)
+if you havent already install Nginx, like we did for the pi [[02-Web Server Setup on Pi.md#NginX]]
 
 ## Reverse Proxy Configuration
 
-Make sure you have installed Nginx. If you do not have it installed refer to [](02-Web%20Server%20Setup%20on%20Pi.md#NGINX)
+Make sure you have installed Nginx. If you do not have it installed refer to [[02-Web Server Setup on Pi.md#NGINX]]
 
 Add an nginx config file at ``/etc/nginx/sites-available/<SERVERNAME>.conf``
 

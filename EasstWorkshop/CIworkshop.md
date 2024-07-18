@@ -45,7 +45,7 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 # Intro In-grid
 In-grid is a trans\*feminist collective of artists/educators/technologists working in and around digital infrastructures. In-grid has been working together since 2019, and is made up of a fluid group of people dispersed globally.
 
-![](EasstWorkshop/media/in-gridGroup.png)
+![[EasstWorkshop/media/in-gridGroup.png]]
 
 
 ---
@@ -94,7 +94,7 @@ When it comes to making collaborative community driven sociotechnical infrastruc
 #### Diagram: of socio-technical relations of Servpub project 
 
 
-![servpubDiagram2024](servpubDiagram2024.png)
+![[servpubDiagram2024.png]]
 
 ---
 # 1. Intro terminal software
@@ -106,14 +106,14 @@ Lets give a little context of working with computers
 
 ### GUI
 
-![Pasted image 20240715084416](Pasted%20image%2020240715084416.png)
+![[Pasted image 20240715084416.png]]
 
 So most people are probably used to working through a **graphical user interface** (GUI), which is a relatively recent way of interfacing with a computer. This is great for accessibility but also tends to scope and direct the abilities and capacities you have on your computer, as in there are only so many buttons or things you can show in a communicable way. 
 
 ---
 ### Terminal
 
-![Pasted image 20240715090055](Pasted%20image%2020240715090055.png)
+![[Pasted image 20240715090055.png]]
 
 Terminal is a more classic way of working with a machine, and roughly speaking is the step between punch-card/magnetic tape style computing and a GUI. It is a very simple but powerful interface that lets you run basically any command on your system through a text interface. Compared to a GUI this space is more "risky" as you can do anything from anywhere, such as deleting the entire hard disc (not advised). It also means that there are no limitations to your system administration so you have access to a granular level of working. 
 
@@ -249,7 +249,7 @@ It basically lets you work on another computers terminal remotely. This is the w
 ---
 
 ## SSH Protocol
-![SSHDiagram](SSHDiagram.jpg)
+![[SSHDiagram.jpg]]
 
 ---
 The SSH protocol enables us to talk securely to our server by encrypting and authenticating all of our communication/interfacing through the network. 
@@ -345,7 +345,7 @@ Sharing a server space presents the added complexity of doing all of the above w
 
 ---
 
-![ConnectionsDiagram](ConnectionsDiagram.jpg)
+![[ConnectionsDiagram.jpg]]
 
 ---
 # 5. Entering into sudo
@@ -356,7 +356,7 @@ This means that we have all the security permissions for that system. This is a 
 When we come to writing protocols for sudo, what does it mean for us to be a "superuser" or an admin, and what care and consideration should we take on in these protocols?
 
 ---
-![Usersdiagram](Usersdiagram.jpg)
+![[Usersdiagram.jpg]]
 ---
 ## Becoming sudo
 

@@ -20,7 +20,7 @@ sudo port install tinc-devel
 
 Configuration files will be located in `/opt/local/etc/tinc`
 
-Tinc can now be configured and executed. For next steps refer to [](05-VPN%20and%20Reverse%20Proxy%20Server.md#Tinc%20creating%20the%20initial%20network%20and%20inviting%20nodes)
+Tinc can now be configured and executed. For next steps refer to [[05-VPN and Reverse Proxy Server.md#Tinc creating the initial network and inviting nodes]]
 
 
 ## Debug help
@@ -84,7 +84,7 @@ In the past you'd need to install tuntaposx which is now an unsupported package:
 
 [https://tuntaposx.sourceforge.net/](https://tuntaposx.sourceforge.net/) 
 
-Further info found from here:  [https://tunnelblick.net/cTunTapConnections.html#:~:text=all%20PowerPC%20Macs.-,What%20Apple%20announced,use%20of%20one%20system%20extension](https://tunnelblick.net/cTunTapConnections.html#:~:text=all%20PowerPC%20Macs.-,What%20Apple%20announced,use%20of%20one%20system%20extension).
+Further info found from here:  [[https://tunnelblick.net/cTunTapConnections.html#:~:text=all PowerPC Macs.-,What Apple announced,use of one system extension](https://tunnelblick.net/cTunTapConnections.html#:~:text=all PowerPC Macs.-,What Apple announced,use of one system extension]].
 
   
 

@@ -3,7 +3,7 @@
 ServPub is an experimental site for research and practice on experimental and computational publishing, thinking collectively about affective infrastructures, minor tech and autonomous networks within, and beyond, institutional constraints. It is run and operated by artists, coders, activists, collectives, scholars, researchers using FOSS, who share feminist values and practices. We aim to build shared knowledge and resources which operate at small scale and as part of grassroots community networks to explore alternatives to the big tech cloud (what's the opposite of outsourcing?).
 
 
-![Rosa-tinc-down.jpg](Rosa-tinc-down.jpg)
+![[Rosa-tinc-down.jpg]]
 
 # People Involved
 ##### Organising bodies: 
@@ -63,7 +63,7 @@ ServPub is an experimental site for research and practice on experimental and co
 [line-4, body-4]
 Date: 26 May 2023
 Title: Public Workshop 1 (CCI)
-Content: [Meeting Notes_Workshop UaL CCI](Meeting%20Notes_Workshop%20UaL%20CCI.md)
+Content: [[Meeting Notes_Workshop UaL CCI.md]]
 
 Date: 19 July 2023
 Title: Working Session 1 (online)
@@ -115,4 +115,4 @@ CCI has invited In-Grid, SysterServer, Autonomic to a session of exchanging know
 Note: there will be some CCI students present at the workshop.
 
 #### Workshop notes:
-[Meeting Notes_Workshop UaL CCI](Meeting%20Notes_Workshop%20UaL%20CCI.md)
+[[Meeting Notes_Workshop UaL CCI.md]]
