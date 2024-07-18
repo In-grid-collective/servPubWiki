@@ -44,7 +44,7 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 ---
 
 # Follow 
-![[PADQR.png]]
+![PADQR.png](PADQR.png)
 --
 
 # Intro
@@ -76,7 +76,7 @@ We have basically got a pi setup with:
 - NginX installed & pointing to a static site
 --
 ## In this session
-![[slideAsset 7.png]]
+![slideAsset 7](slideAsset%207.png)
 We will be setting up:
 - The VPN  using  [Tinc](https://www.cyberciti.biz/faq/ubuntu-install-tinc-and-set-up-a-basic-vpn/)
 -  Reverse Proxy Server using [NginX](https://www.nginx.com/resources/glossary/reverse-proxy-server/)

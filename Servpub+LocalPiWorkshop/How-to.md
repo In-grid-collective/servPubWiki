@@ -164,7 +164,7 @@ Hit enter.
 ---
 ## Tmux installation
 
-Tmux is a terminal multiplexer, for collective editing in a terminal. Again, we are going to install this on the server (the pi). To use it you must be SSHed into the server as above  [[01-Set up Pi for local Network Access#Security via SSH Keys]].
+Tmux is a terminal multiplexer, for collective editing in a terminal. Again, we are going to install this on the server (the pi). To use it you must be SSHed into the server as above  [](01-Set%20up%20Pi%20for%20local%20Network%20Access.md#Security%20via%20SSH%20Keys).
 
 So, assuming you are SSHed into your server, follow these steps. We are going to install TMUX as sudo:
 

@@ -20,7 +20,7 @@ sudo port install tinc-devel
 
 Configuration files will be located in `/opt/local/etc/tinc`
 
-Tinc can now be configured and executed. For next steps refer to [[05-VPN and Reverse Proxy Server#Tinc creating the initial network and inviting nodes]]
+Tinc can now be configured and executed. For next steps refer to [](05-VPN%20and%20Reverse%20Proxy%20Server.md#Tinc%20creating%20the%20initial%20network%20and%20inviting%20nodes)
 
 
 ## Debug help

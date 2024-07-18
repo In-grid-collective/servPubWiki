@@ -246,7 +246,7 @@ sudo reboot
 
 modified from [HERE](https://dev.to/ivishalgandhi/local-home-lab-dns-setup-with-dnsmasq-and-nginx-8b5)
 
-The next step is to enable our local WIFI network to reroute URLs and traffic from domain names towards specific programs running on local ports. If your program on this server is already hosted online their may be no point in this but if it is a local setup it can make things more accessible. You might want to do this with a program like the one installed with [[NA-Suggested tools to host]], but it can be done to any other program running through a local port. 
+The next step is to enable our local WIFI network to reroute URLs and traffic from domain names towards specific programs running on local ports. If your program on this server is already hosted online their may be no point in this but if it is a local setup it can make things more accessible. You might want to do this with a program like the one installed with [NA-Suggested tools to host](NA-Suggested%20tools%20to%20host.md), but it can be done to any other program running through a local port. 
 
 The options to access container applications before implementing DNSMasq and NGINX
 
@@ -316,7 +316,7 @@ sudo systemctl restart dnsmasq.service
 
 ### NGINX Reverse Proxy
 
-This step expects that you have a program installed on your server and it is running on a port. We are running Writefreely installed from the tutorial [[NA-Suggested tools to host]] and it runs on port `8080`. 
+This step expects that you have a program installed on your server and it is running on a port. We are running Writefreely installed from the tutorial [NA-Suggested tools to host](NA-Suggested%20tools%20to%20host.md) and it runs on port `8080`. 
 
 Firstly we will create a new sites available conf for NGINX, replacing `example` with the name of the site:
 

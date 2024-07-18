@@ -51,7 +51,7 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 
 
 <!-- .slide: class="bg" -->
-![[ServpubTerrain.png]]
+![ServpubTerrain](ServpubTerrain.png)
 
 ---
 ## ServPub 
@@ -83,7 +83,7 @@ Christian Ulrik Andersen, [DARC](https://darc.au.dk) & [Shape](https://shape.au.
 
 ---
 
-![[ServpubTerrain.png]]
+![ServpubTerrain](ServpubTerrain.png)
 [servpub.net](https://servpub.net)  |  [wiki4print.servpub.net](https://wiki4print.servpub.net/)
 
 ---
@@ -93,7 +93,7 @@ Christian Ulrik Andersen, [DARC](https://darc.au.dk) & [Shape](https://shape.au.
 Batool / Becky / George / Katie / Sunni / Johanna
 
 +
-![[Batool.png|110]] ![[Becky.png|110]]![[George.png|110]]![[Katie.png|110]]![[Sunni.png|110]] ![[Johanna.png|110]]
+![110](Batool.png) ![110](Becky.png)![110](George.png)![110](Katie.png)![110](Sunni.png) ![110](Johanna.png)
  
 _In-grid is a group of many - these are the members who are actively involved in this project_
 
@@ -141,15 +141,15 @@ Here is an overview of servpub to introduce different elements of internet infra
 
 
 
-![[slideAsset 6.png]]
+![slideAsset 6](slideAsset%206.png)
 
 ---
 
-![[piBerlin.jpeg]]
+![piBerlin.jpeg](piBerlin.jpeg)
 
 ---
 
-![[slideAsset 2.png]]
+![slideAsset 2](slideAsset%202.png)
 
 
 ---
@@ -167,7 +167,7 @@ Here is an overview of servpub to introduce different elements of internet infra
 
 ---
 
-![[slideAsset 7.png]]
+![slideAsset 7](slideAsset%207.png)
 
 ---
 
@@ -182,17 +182,17 @@ Here is an overview of servpub to introduce different elements of internet infra
 ---
 
 
-![[ifconfigberlin.jpeg]]
+![ifconfigberlin.jpeg](ifconfigberlin.jpeg)
 
 
 ---
 
-![[slideAsset 4.png]]
+![slideAsset 4](slideAsset%204.png)
 
 ---
 
 
-![[slideAsset 5.png]]
+![slideAsset 5](slideAsset%205.png)
 
 ---
 
@@ -224,7 +224,7 @@ Soon to be hosted on servpub.net
 Part of our process was working collectively on the command line, using a software to enable this:
 
 
-![[Pasted image 20231123170353.png]]
+![Pasted image 20231123170353](Pasted%20image%2020231123170353.png)
 
 We also spent many hours on _**etherpads**_ jotting notes and chatting through ideas, meeting in person and online using platforms like _**jitsi**_.
 
@@ -435,7 +435,7 @@ exit
 
 We are now going to join in on a shared terminal session. To do this we will be using a terminal multiplexer called Tmux. We have already installed this on the Pi - again, fuller instructions exist in our docs.
 
-![[Pasted image 20231123170353.png]]
+![Pasted image 20231123170353](Pasted%20image%2020231123170353.png)
 
 --
 ### Let's make a TMUX session

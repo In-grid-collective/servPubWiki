@@ -3,7 +3,7 @@ This section is here to clarify some of the terminology we use throughout the su
 
 ## IP addresses
 
-IP (Internet Protocol) addresses work like a bit like a street address in that they allow devices find each other online. Every internet device has a unique IP address. These addresses can be converted into text via a Domain Name System (DNS) format. ``See`` [[04-Static IP & Domain Setup#Domains]] ``for more info on Domains.``
+IP (Internet Protocol) addresses work like a bit like a street address in that they allow devices find each other online. Every internet device has a unique IP address. These addresses can be converted into text via a Domain Name System (DNS) format. ``See`` [](04-Static%20IP%20&%20Domain%20Setup.md#Domains) ``for more info on Domains.``
 
 There are are two types of IP addresses - **static** and **dynamic** - which each have their own use cases. The main difference is in their names. Dynamic IP addresses constantly change, and static IP addresses are fixed. 
 

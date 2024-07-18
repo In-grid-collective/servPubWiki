@@ -39,8 +39,8 @@ ACTION: Reminder if you are on Windows download Git for Windows so you can follo
 	- ssh -> pw login (if install is needed then can also introduce apt/mac: homebrew or other example)
 - Intro tmux -> join tmux session
 ##### Tinc: mount the 2nd Pi (50 mins) - George - b200l + kt = chaos
-- We have installed Tinc -> we did aptget & installed [[02-Web Server Setup on Pi#Tinc]] for linux
-- Configuring the pi for Tinc [[02-Web Server Setup on Pi#Configuration]]
+- We have installed Tinc -> we did aptget & installed [](02-Web%20Server%20Setup%20on%20Pi.md#Tinc) for linux
+- Configuring the pi for Tinc [](02-Web%20Server%20Setup%20on%20Pi.md#Configuration)
 - Watch us on Jean add the 2nd Pi
 - Someone pings Jean from the 2nd Pi using the local VPN IP
 ##### To-do:
@@ -78,10 +78,10 @@ ACTION: Reminder if you are on Windows download Git for Windows so you can follo
 To-do:
 - [ ] Documentation of ServPub pending completion:
 	- [ ] Becky: NginX (ongoing) and automation
-	- [ ] Batool: Creating users here: [[03-Analog Interlude]]
-	- [ ] certification [[04-Static IP & Domain Setup]]
-	- [ ] missing steps of getting certificates [[04-Static IP & Domain Setup]]
-	- [ ] redirecting http to https [[04-Static IP & Domain Setup]]
+	- [ ] Batool: Creating users here: [03-Analog Interlude](03-Analog%20Interlude.md)
+	- [ ] certification [04-Static IP & Domain Setup](04-Static%20IP%20&%20Domain%20Setup.md)
+	- [ ] missing steps of getting certificates [04-Static IP & Domain Setup](04-Static%20IP%20&%20Domain%20Setup.md)
+	- [ ] redirecting http to https [04-Static IP & Domain Setup](04-Static%20IP%20&%20Domain%20Setup.md)
 	- [ ] Add proper / full credits for Rosa Manual.
 	- [ ] Draft a "this is what you need to do before the workshop if you want to follow along with the terminal activity"
-	- [ ] Proof read / add to the Terminal commands cheat sheet, nano user in particular please [[NA-Terminal Unix Commands Cheat Sheet]]
+	- [ ] Proof read / add to the Terminal commands cheat sheet, nano user in particular please [NA-Terminal Unix Commands Cheat Sheet](NA-Terminal%20Unix%20Commands%20Cheat%20Sheet.md)
