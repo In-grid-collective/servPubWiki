@@ -51,7 +51,7 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 
 
 <!-- .slide: class="bg" -->
-![[servpubProjectMap.png]]
+
 
 ---
 ## ServPub 
