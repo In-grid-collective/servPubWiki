@@ -22,12 +22,12 @@
 	ul,
 	p{
 		font-family: 
-		"abordage"!important;
+		"Arial"!important;
 		font-size: 0.8em!important;
 		color:beige!important;
 	}
 	h1,h2,h3{
-        font-family : "GeneraleStation"!important;
+        font-family : "Courier"!important;
         font-size: 1.5em!important;
         color: coral!important;
 }
@@ -71,16 +71,19 @@ Today's workshop aims to bring together the combined panel's conceptual elements
 The end goal is to have collectively edited set of protocols that we publish to an html page on the server.
 
 ---
-## Blog <-- ( we will be posting to here )
+# Blog <-- ( we will be posting to here )
 
 The blog element aims to extend conversation from the panel through our own federated infrastructure, subverting and hacking the hierarchies of this conference. It brings this research together in a space that can sit both inside/outside\*beyond the conference.
 
 Access it at: [ci.servpub.net](https//:ci.servpub.net)
 
-We will also be posting our protocols to the platform at the end of the day.
+---
+# Protocols
+We will also be making and editing a set of protocols as we work through the steps of this workshop. 
+
+The protocols will be hosted on an html file on the server, and is accessible at this URL page: https://servpub.net/ci_protocols.html
 
 ---
-
 # What are these protocols?
 
 When it comes to making collaborative community driven sociotechnical infrastructure, there is always a complex network of relations that we have to work through. Negotiating every relation when we enter a space could be very complex and time consuming, as we will see, but setting protocols helps us firm up ways of working and relational conventions that ease this flow. Through setting these protocols together we mean to disobey the norms of network infrastructures and actively re-scope how we come to these systems and relations together.
@@ -245,9 +248,7 @@ It basically lets you work on another computers terminal remotely. This is the w
 ---
 
 ## SSH Protocol
-
-![[Pasted image 20240716062950.png]]
-> Maybe add a new diagram, or our own.
+![[SSHDiagram.jpg]]
 
 ---
 The SSH protocol enables us to talk securely to our server by encrypting and authenticating all of our communication/interfacing through the network. 
@@ -296,7 +297,7 @@ ssh <user_name>@<ip>
 ```
 eg.
 ``` shell
-ssh ci@100.10.1.90
+ssh ci@192.168.8.120
 ```
 
 You are now "logging into" the pi, so it will ask for the password here and that is `password`
@@ -337,13 +338,13 @@ Come up with the ssh protocols task
 ---
 # 4. Intro to shared server
 
-1. maintenance + sysadmin tasks
-2. Talk about the relational nature of being on a collective server (syster server etc.)
-3. Diagrams of different relations
-	1. link B2ools social technical image of servpub
+Caring for a server includes routine tasks like updating/upgrading the system software, tiding up files, creating new users & giving access permissions, paying attention to errors and bug reports.
 
-![[slideAsset 7.png]]
+Sharing a server space presents the added complexity of doing all of the above with consideration other collectives' and/or groups' pre-existing protocols (eg. Systerserver)
 
+---
+
+![[ConnectionsDiagram.jpg]]
 
 ---
 # 5. Entering into sudo
@@ -353,6 +354,8 @@ This means that we have all the security permissions for that system. This is a 
 
 When we come to writing protocols for sudo, what does it mean for us to be a "superuser" or an admin, and what care and consideration should we take on in these protocols?
 
+---
+![[Usersdiagram.jpg]]
 ---
 ## Becoming sudo
 
@@ -435,6 +438,9 @@ We should see a file called:
 ci_protocols.html
 
 ```
+
+---
+
 
 
 1. going to the html
