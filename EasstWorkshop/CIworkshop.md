@@ -45,8 +45,7 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 # Intro In-grid
 In-grid is a trans\*feminist collective of artists/educators/technologists working in and around digital infrastructures. In-grid has been working together since 2019, and is made up of a fluid group of people dispersed globally.
 
-![group image](./media/in-gridGroup.png)
-
+![in-gridGroup](./media/in-gridGroup.png)
 
 ---
 # Combined Panel
@@ -94,7 +93,7 @@ When it comes to making collaborative community driven sociotechnical infrastruc
 #### Diagram: of socio-technical relations of Servpub project 
 
 
-![[servpubDiagram2024.png]]
+![servpubDiagram2024](./media/servpubDiagram2024.png)
 
 ---
 # 1. Intro terminal software
@@ -106,14 +105,14 @@ Lets give a little context of working with computers
 
 ### GUI
 
-![[Pasted image 20240715084416.png]]
+![gui.png](./media/gui.png)
 
 So most people are probably used to working through a **graphical user interface** (GUI), which is a relatively recent way of interfacing with a computer. This is great for accessibility but also tends to scope and direct the abilities and capacities you have on your computer, as in there are only so many buttons or things you can show in a communicable way. 
 
 ---
 ### Terminal
 
-![[Pasted image 20240715090055.png]]
+![howdy.png](./media/howdyTerminal.png)
 
 Terminal is a more classic way of working with a machine, and roughly speaking is the step between punch-card/magnetic tape style computing and a GUI. It is a very simple but powerful interface that lets you run basically any command on your system through a text interface. Compared to a GUI this space is more "risky" as you can do anything from anywhere, such as deleting the entire hard disc (not advised). It also means that there are no limitations to your system administration so you have access to a granular level of working. 
 
@@ -151,7 +150,6 @@ There are similar programs to terminal already installed, but not the same langu
 As we said before terminal is a text/syntax-based way of interfacing your machine and we are going to introduce a few basic commands and concepts to get us going today.
 
 ---
-
 ## Say Hi!
 
 Let's simply use `echo` to get our terminal to say HI!.
@@ -235,9 +233,9 @@ cd folder1
 
 ## Writing Terminal Protocols
 
-Not sure yet but lets work out a plan!
-
-- [ ] add task
+> [!question] Prompt
+> In this unfamiliar space how do we keep track of where we are, what we've done & what commands we may need in the future?
+> ...or any other concerns!
 
 ---
 # 3. Intro to SSH
@@ -249,7 +247,7 @@ It basically lets you work on another computers terminal remotely. This is the w
 ---
 
 ## SSH Protocol
-![[SSHDiagram.jpg]]
+![SSHDiagram](./media/SSHDiagram.jpg)
 
 ---
 The SSH protocol enables us to talk securely to our server by encrypting and authenticating all of our communication/interfacing through the network. 
@@ -301,9 +299,10 @@ eg.
 ssh ci@192.168.8.120
 ```
 
-You are now "logging into" the pi, so it will ask for the password here and that is `password`
+You are now "logging into" the pi, so it will ask for the password here and that is `iloveinfra`
 
-- [ ] add password to pi user
+> [!question] Prompt
+> Input password to pi user
 
 ---
 ## Are we in there?
@@ -323,18 +322,16 @@ exit
 Hit enter. You will need to have exited the pi before setting up your ssh key. 
 
 ---
-
 ## Secure SSH keys
 
 We won't do it here as it takes a minute too long, but to do this securely we would set up a set of keys which, one private and one public, that will do the "hand shake" instead of a less secure password. 
 
 ---
-
 ## Writing SSH protocols
 
-Come up with the ssh protocols task 
-
-- [ ] add task
+> [!question] Prompt
+> How do we navigate another machine through our own "interface"?
+> What are the relational agreements to being on this other machine?
 
 ---
 # 4. Intro to shared server
@@ -345,7 +342,7 @@ Sharing a server space presents the added complexity of doing all of the above w
 
 ---
 
-![[ConnectionsDiagram.jpg]]
+![ConnectionsDiagram](./media/ConnectionsDiagram.jpg)
 
 ---
 # 5. Entering into sudo
@@ -356,7 +353,8 @@ This means that we have all the security permissions for that system. This is a 
 When we come to writing protocols for sudo, what does it mean for us to be a "superuser" or an admin, and what care and consideration should we take on in these protocols?
 
 ---
-![[Usersdiagram.jpg]]
+![Usersdiagram](./media/Usersdiagram.jpg)
+
 ---
 ## Becoming sudo
 
@@ -368,9 +366,11 @@ sudo su
 And then enter the password when prompted.
 
 ---
-## Writing sudo protocols.
+## Writing sudo protocols
 
-- [ ] Writing protocols
+> [!question] Prompt
+> Super User can Do! a lot... what permissions are we comfortable navigating?
+> How intimate are we with our machines?
 
 ---
 # 6. Intro to Tmux 
@@ -435,19 +435,56 @@ ls
 
 We should see a file called:
 
-```shell
-ci_protocols.html
+`ci_protocols.html`
 
-```
 
 ---
+## Editing the HTML
 
+Now we are in the right folder we can edit the file with **nano** which is a terminal base text editor. 
 
+To open the file with **nano** we do:
+``` shell
+nano ci_protocols.html
+```
 
-1. going to the html
-	2. nano inside
-	3. add cute messages + asci art
-	4. save and display.
+This will open the file in the terminal.
+
+---
+### This should look something like this
+
+![nanoOfHTML](./media/nanoOfHTML.png)
+
+> [!tip] 
+> Being terminal you have to navigate with the keyboard, and also copy and past by right clicking (not "CNTRL+C/P")
+
+---
+## Adding to the file
+
+From here we can then add text and images using basic HTML syntax.
+
+For the time being we are going to just add fun bits to see it work, as we have some more protocols to write and add.
+
+So for now add a message or paste in some ascii art with the help of these links:
+
+[ascii text gen](http://www.patorjk.com/software/taag/)
+
+[ascii image gen](https://www.ascii-art-generator.org/)
+
+> [!tip] Remember to paste in with a right click!
+
+---
+## Seeing our page!
+
+Now if we return to the file online at:
+
+https://servpub.net/ci_protocols.html
+
+we will see our beautiful inputs.
+
+---
+## Do we want to edit or change the Collective editing protocols?
+
 
 ---
 # 8. Exit safely 
@@ -470,24 +507,29 @@ Let's consider collectively how to ensure we exit safely, using a door rather th
 
 ### Writing the protocols
 
-- [ ] EXPLAIN ACTIVITY
+> [!question] prompt
+> How do we negotiate the space of working collectively as one user?
+> What other considerations need to be voiced?
 
 ---
 # 9. Publish protocols
 
-Now that we have edited the HTML, we can launch our page in a browser! This is now available to see at https://servpub.net/ci_protocols.html 
+Now we have all the protocols ready lets add them to the HTML file with **nano** again.
+
+Once we have edited the HTML, we can launch our page in a browser! 
+
+At https://servpub.net/ci_protocols.html 
 
 ---
 
 # We did it!
 
-Practicing infrastructuring collectively can be (intentionally) a slow, careful and unscalable process, so it's important to acknowledge our incremental changes, achievements and presence. 
+Practising infrastructuring collectively can be (intentionally) a slow, careful and unscalable process, so it's important to acknowledge our incremental changes, achievements and presence. 
 
 ---
 ### Reflections
 
 ---
-### Resources for maintainable practices.
+### Resources for maintainable practices
 
 Our (ongoing) documentation https://github.com/In-grid-collective/servPubWiki.git
-
