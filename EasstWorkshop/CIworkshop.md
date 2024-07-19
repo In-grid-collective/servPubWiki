@@ -90,6 +90,8 @@ We will also be making and editing a set of protocols as we work through the ste
 
 The protocols will be hosted on an html file on the server, and is accessible at this URL page: https://servpub.net/ci_protocols.html
 
+Until then we will edit them on this pad: [https://pad.vvvvvvaria.org/workshopProtocols](https://pad.vvvvvvaria.org/workshopProtocols) 
+
 ---
 # What are these protocols?
 
