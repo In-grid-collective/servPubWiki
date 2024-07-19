@@ -42,6 +42,14 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 
 <!-- .slide: class="bg" -->
 
+# Collective Infrastructures Panel
+#### Practicing Protocols workshop
+
+Please login to this wifi network: GL-MT300N-V2-cf0
+
+PW: goodlife
+
+---
 # Intro In-grid
 In-grid is a trans\*feminist collective of artists/educators/technologists working in and around digital infrastructures. In-grid has been working together since 2019, and is made up of a fluid group of people dispersed globally.
 
