@@ -52,8 +52,7 @@ PW: goodlife
 ---
 # Intro In-grid
 In-grid is a trans\*feminist collective of artists/educators/technologists working in and around digital infrastructures. In-grid has been working together since 2019, and is made up of a fluid group of people dispersed globally.
-
-![in-gridGroup](./media/in-gridGroup.png)
+![[in-gridGroup.png]]
 
 ---
 # Combined Panel
