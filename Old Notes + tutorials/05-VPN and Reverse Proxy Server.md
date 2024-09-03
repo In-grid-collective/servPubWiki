@@ -340,8 +340,8 @@ server {
 
 server{
         # SSL configuration, listen to https of port 443
-         listen 443 ssl default_server;
-         listen [::]:443 ssl default_server;
+         listen 443 ssl;
+         listen [::]:443 ssl;
 
 		# link to ssl certificate on vpn server
          ssl_certificate /etc/letsencrypt/live/servpub.net/fullchain.pem;
