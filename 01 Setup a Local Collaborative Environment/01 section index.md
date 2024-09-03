@@ -1,5 +1,5 @@
 
-_this guide is a work in progress compiled from research on setting up local servers, it will change to reflect the actual steps in-grid takes as we work on this project_
+_This guide is a work in progress compiled from research on setting up local servers, it will change to reflect the actual steps in-grid takes as we work on this project_
 
 ### description of this section
 
@@ -30,3 +30,8 @@ Reference for how to create users and make them sudo can be found here (link to 
 ## Names
 
 So far we have run into two names, the username on the server and the hostname. These are Servpub01 and pubdoc respectively. 
+
+
+* [ ] Should we have a more general overview here?
+- [ ] Should the users and collective work be here?
+- [ ] Make appendix section, make intro section
