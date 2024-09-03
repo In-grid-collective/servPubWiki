@@ -1,5 +1,5 @@
 
-_this guide is a work in progress compiled from research on setting up local servers, it will change to reflect the actual steps in-grid takes as we work on this project_
+_This guide is a work in progress compiled from research on setting up local servers, it will change to reflect the actual steps in-grid takes as we work on this project_
 
 ### description of this section
 
