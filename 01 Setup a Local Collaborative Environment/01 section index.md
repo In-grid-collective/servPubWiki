@@ -35,3 +35,5 @@ So far we have run into two names, the username on the server and the hostname. 
 * [ ] Should we have a more general overview here?
 - [ ] Should the users and collective work be here?
 - [ ] Make appendix section, make intro section
+- [ ] General notes, more guiding language
+- [ ] Terminal bash in the appendix
