@@ -7,7 +7,7 @@ _this guide is a work in progress compiled from research on setting up local ser
 ### Prerequisites
 - Raspberry pi + peripherals: HDMI screen, keyboard, mouse etc. 
 - Pi OS booted: The Rosa Server Guide recommends [Armbian OS](https://www.armbian.com/rpi4b/)
-- Knowledge of terminal/bash
+- Knowledge of terminal/bash 
 - have SSH installed on laptop (most OS have it by default now, if not then manually install, below)
 ##### Note on terms:
 - Server = the SBC/Pi
