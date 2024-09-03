@@ -11,7 +11,7 @@ sudo armbian-config
 ```
 
 It will take a second to load but will pop up with a screen like this:
-![armbian-config screenshot.png](armbian-config%20screenshot.png)
+![[armbian-config screenshot.png]]
 
 **Note:** If this fails to open you can try to install armbian-config on other Debian distributions from this [REPO](https://github.com/armbian/config). If you cannot get it to work on your system, then you won't be able to carry on.
 ## Setup hotspot

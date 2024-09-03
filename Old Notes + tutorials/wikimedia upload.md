@@ -3,7 +3,7 @@
 
 ###  update php.ini
 
-you can check the info from the [](https://www.mediawiki.org/wiki/Manual:Configuring_file_uploads#Set_maximum_size_for_file_uploads) but we will run through the steps here.
+you can check the info from the [[https://www.mediawiki.org/wiki/Manual:Configuring_file_uploads#Set_maximum_size_for_file_uploads]] but we will run through the steps here.
 
 #### Finding php.ini
 

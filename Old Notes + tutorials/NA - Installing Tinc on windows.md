@@ -1,7 +1,7 @@
 
 The easiest version we found for for this (as they do have a windows version) is to actually install it via an ubuntu virtual shell that is available on the windows store. Then follow the usual Linux install!
 
-I also cant get it to run automatically but there is a minor overview at [](NA%20-%20Installing%20Tinc%20on%20windows.md.md#Difference%20in%20Systemctl%20commands)
+I also cant get it to run automatically but there is a minor overview at [[NA - Installing Tinc on windows.md.md#Difference in Systemctl commands]]
 
 ## Install ubuntu VM shell
 
@@ -18,7 +18,7 @@ sudo apt install net-tools
 
 ## Install tinc
 
-Then follow the [](05-VPN%20and%20Reverse%20Proxy%20Server.md.md#Install%20instructions%20for%20Linux), and come back here when you reach [](05-VPN%20and%20Reverse%20Proxy%20Server.md.md#Start%20tinc), as you cannot automatically run tinc with systemd on the vm. Instead run the command below every time you want to start it.
+Then follow the [[05-VPN and Reverse Proxy Server.md.md#Install instructions for Linux]], and come back here when you reach [[05-VPN and Reverse Proxy Server.md.md#Start tinc]], as you cannot automatically run tinc with systemd on the vm. Instead run the command below every time you want to start it.
 
 ## Run tinc
 

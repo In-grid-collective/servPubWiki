@@ -1,13 +1,13 @@
 
 The next step is to setup the software needed to make a set up a server on your pi. You can use a number of different tools and programming languages to create servers.
 
-We will be using [NginX](https://www.nginx.com/)  which is a web serving software. You can use Nginx to create various types of servers. We will be creating a simple static server using Nginx on our Pi. We have also used Nginx for our reverse proxy server that redirects traffic coming in from the public internet, which will come to later here [](05-VPN%20and%20Reverse%20Proxy%20Server.md.md#NginX%20Reverse%20Proxy%20Server)
+We will be using [NginX](https://www.nginx.com/)  which is a web serving software. You can use Nginx to create various types of servers. We will be creating a simple static server using Nginx on our Pi. We have also used Nginx for our reverse proxy server that redirects traffic coming in from the public internet, which will come to later here [[05-VPN and Reverse Proxy Server.md.md#NginX Reverse Proxy Server]]
 
 Back to the server set up on our pi! 
 
 # NGINX
 
-We will put nginx on our pi! To do this we will need to be working on our pi. To enter the pi we will use ssh [](01-Set%20up%20Pi%20for%20local%20Network%20Access.md.md#Security%20via%20SSH%20Keys).
+We will put nginx on our pi! To do this we will need to be working on our pi. To enter the pi we will use ssh [[01-Set up Pi for local Network Access.md.md#Security via SSH Keys]].
 
 Once in the pi, we will install the open source nginx from the command line using apt, there are [many other ways to install](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/). apt is a tool which allows you to download and install packages onto your device. 
 

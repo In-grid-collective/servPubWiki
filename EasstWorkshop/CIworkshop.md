@@ -52,7 +52,6 @@ PW: goodlife
 ---
 # Intro In-grid
 In-grid is a trans\*feminist collective of artists/educators/technologists working in and around digital infrastructures. In-grid has been working together since 2019, and is made up of a fluid group of people dispersed globally.
-![[in-gridGroup.png]]
 
 ---
 # Combined Panel
@@ -114,7 +113,6 @@ Lets give a little context of working with computers
 
 ### GUI
 
-![gui.png](./media/gui.png)
 
 So most people are probably used to working through a **graphical user interface** (GUI), which is a relatively recent way of interfacing with a computer. This is great for accessibility but also tends to scope and direct the abilities and capacities you have on your computer, as in there are only so many buttons or things you can show in a communicable way. 
 
@@ -398,7 +396,7 @@ Now we are all `sudo` we can initiate a shared session to work in together.
 
 To do this we use:
 ```shell
-tmux new -s <name>
+tmux new -s hugs
 ```
 
 Now we need to name our collective space. If we think back\*forward in this workshop, what are the intentions, dynamics and relations we want to collectively name this space with?
@@ -408,7 +406,7 @@ Now we need to name our collective space. If we think back\*forward in this work
 
 Now we have an active session we can join it by just typing:
 ``` shell
-tmux a -t <name>
+tmux a -t hugs
 ```
 
 > Rember we have to be sudo to join this!
