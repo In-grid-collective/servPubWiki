@@ -40,7 +40,7 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 
 register with certbot
 ``` shell
-certbot register
+sudo certbot register
 ```
 
 you will then enter emails and agree to terms and bits.
