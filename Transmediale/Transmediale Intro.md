@@ -99,10 +99,10 @@ _In-grid is a group of many - these are the members who are actively involved in
 ---
 
 # Resources:
-| _From CCI_ | _From In-grid_ | _From Systerserver_ |
-| ---- | ---- | ---- |
-| x2 raspberry pies & peripherals | Screens & peripherals | Public IP / Server (Jean) |
-| SD cards & 4G dongle | Space + electricity | Rosa Manual - (Varia, HYPHA, LURK, esc, Feminist Hack Meetings, Constant) |
+| _From CCI_                      | _From In-grid_        | _From Systerserver_                                                       |
+| ------------------------------- | --------------------- | ------------------------------------------------------------------------- |
+| x2 raspberry pies & peripherals | Screens & peripherals | Public IP / Server (Jean)                                                 |
+| SD cards & 4G dongle            | Space + electricity   | Rosa Manual - (Varia, HYPHA, LURK, esc, Feminist Hack Meetings, Constant) |
 
 
 ---
