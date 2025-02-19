@@ -1,0 +1,33 @@
+== Tmux installation ==
+
+Tmux is a terminal multiplexer, for collective editing in a terminal. We use it a lot when we want to enable more than one person to be able to write in the console as we are working. Only one person can type at a time, but it makes it easier to take turns and watch along while someone else codes. It also can be used to detach processes from their controlling terminals, allowing remote sessions to remain active without being visible. See more at [https://github.com/tmux/tmux/wiki the TMUX git repo]
+
+Again, we are going to install this on the server (the pi). To use it you must be SSHed into the server as above [[01-Set up Pi for local Network Access.md.md#Security via SSH Keys]].
+
+So, assuming you are SSHed into your server, follow these steps.
+
+To install:
+
+<source lang="shell">apt-get install tmux</source>
+To create a new tmux session sign into the user under which you would like the session to be registered (in our case sudo). We would do this by executing the command:
+
+<source lang="shell">sudo su</source>
+Usually you will be asked for a password, which is your user password. See [[01.2 Creating Users#Adding Users]] to learn more about creating users with sudo access.
+
+== Creating &amp; joining a TMUX session ==
+
+A tmux session is a shared terminal session where all those connected can input and execute commands synchronously.
+
+To create a session run the following command while naming your session, by replacing <code>[name]</code> with a name of your choice :
+
+<source lang="shell">tmux new -s [name]  </source>
+example:` tmux new -s mySession
+
+To join the session when SSHed onto a server use the following command replacing <code>[name]</code> with the name of the session:
+
+<source lang="shell">tmux a -t [name] </source>
+example: <code>tmux a -t mySession</code>
+
+<code>Note: Everyone in a Tmux session is acting as the same user. However we can create split screens and multiple panes within Tmux so different people can work on different things.</code>
+
+Reference and troubleshooting: https://www.howtogeek.com/devops/how-to-get-started-and-use-tmux/ [https://tmuxcheatsheet.com/ TMUX cheatsheet]

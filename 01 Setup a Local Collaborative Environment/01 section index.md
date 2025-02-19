@@ -1,7 +1,7 @@
 
 ### Description of this section
 
- ![[Pasted image 20231108164245.png]]
+ ![[Local IP.png]]
 
 **Section 01** will cover the steps necessary for setting up a local collaborative environment. In practical terms, this means setting up a Raspberry pi which a number of users can access in order to work together.
 

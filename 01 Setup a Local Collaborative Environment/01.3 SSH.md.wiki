@@ -1,0 +1,246 @@
+Secure Shell (SSH) is a network protocol that lets users securely access and manage servers and computers (like our pi) remotely.
+
+We will use SSH a lot to remotely control our collaborative environment, work together on files, and manage our network infrastructure.
+
+SSH uses Client-sever architecture, which means that it divides tasks between clients and servers. The client is the device that requests information from a device, the sever is the device that provides that information.
+
+In our case our Pi is our Server, and our personal laptop or device we want to use to access the pi, is the client.
+
+== Setting up SSH ==
+
+=== Installing SSH server &amp; client: ===
+
+Most devices now come with OpenSSH installed as default, but just in case, this is how you can install the tool using command line:
+
+# The server package is installed on the SBC/Pi like so (using bash):
+
+<source lang="shell">sudo apt install openssh-server</source>
+<ol start="2" style="list-style-type: decimal;">
+<li>and the client package is installed on your laptop:</li></ol>
+
+<source lang="shell">sudo apt install openssh-client</source>
+If you are installing ssh for windows or mac rather than a raspberry pi, refer to<code>[[NA- Installing SSH on other devices.md.md|NA- Installing SSH on other devices]]</code> although you’ll likely already have it installed!
+
+== Change Default PW: ==
+
+We want to change the default PW for the pi, if we have not already set one we want to keep when we made our root user (see [[01.1 Hardware and OS#Setting up the OS Armbian]]).
+
+Defaults are - Username: Pi - PW: raspberry
+
+If you do not know the username, you can use this command in the pi terminal and it will display it. There is no need to know what the current password is in order to change it.
+
+<source lang="bash">whoami</source>
+Change password by running the following command:
+
+<source lang="shell">sudo passwd pi</source>
+It will respond:
+
+<source lang="shell">Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully</source>
+Do take note of the password as you will need it to log in in person and via SSH.
+
+== Update &amp; upgrade system repos: ==
+
+Before we start, it’s good practice to update our system repos so we have the latest package releases.
+
+On the server, execute the two follow commands:
+
+<source lang="shell">sudo apt-get update</source>
+and
+
+<source lang="shell">sudo apt-get upgrade</source>
+== Enabling SSH ==
+
+We need to set our pi up so that we have SSH enabled i.e. we can request information from a client.
+
+On the the server, execute:
+
+<source lang="shell">sudo raspi-config</source>
+This launches a configuration tool via the terminal.
+
+Alternatively, you can go to the “config” window through the Pi’s interface.
+
+Look for ''Interfacing Options'', find SSH and enable it then click OK to exit and finish.
+
+<blockquote>[!note] While you are here it is also worthwhile to enable VNC. This allows you to set up a remote desktop. This is handy as you won’t need to find a screen, keyboard or mouse for the pi. You can find documentation on remote access for pi `[https://translate.google.com/website?sl=auto&tl=en&hl=en&u=https://www.raspberrypi.org/documentation/remote-access/ssh/README.md here]
+</blockquote>
+== Using SSH ==
+
+=== SSH requirements: ===
+
+# The client and the server need to be using the same router to access the internet i.e. on the same wifi.
+# The IP address of the server
+
+<code>Note: If you are moving around, get a dongle, tether form your phone data package or &quot;share wifi&quot; form your laptop.</code>
+
+=== Finding the IP address of the server ===
+
+One way to find the server IP address is through using this command line on the device (in our case the pi):
+
+<source lang="shell">hostname -I</source>
+Alternatively, scan the network from the client (laptop) using the command <code>nmap</code>.
+
+<code>nmap</code> requires that you know the IP address of the network your on. You can easily find this from your network settings on your laptop. The first three numbers of your network IP will be the same on the pi, but you have to tell the scanner to traverse all possible options for the last number.
+
+Assuming that your network IP is 192.168.0.0, the command you would run is:
+
+<source lang="shell">nmap 192.168.0.0/24</source>
+<blockquote>[!note] In IP addressing, /24 refers to a subnet mask that consists of 24 bits set to 1 and 8 bits set to 0. This corresponds to a range of IP addresses from 0.0. 0.0 to 255.255. 255.255, with the first 24 bits representing the network portion of the address and the last 8 bits representing the host portion. This translates to 256 potential IP addresses within that subnet.
+</blockquote>
+You can also use a network scanning app (on a phone) and it should come up.
+
+'''Pro tip: Don’t scan the network in a building with over 200 devices like I did.'''
+
+== Connecting from a client: ==
+
+Now that we have the IP address, any computer using the same internet connection can request to SSH into the Pi through these commands:
+
+<source lang="shell">ssh pi@<pi ip></source>
+eg.
+
+<source lang="shell">ssh pi@100.10.1.90</source>
+You are now “logging into” the pi, so the password requested here is the one we setup earlier for the pi i.e. the password for the root user.
+
+You should now see your terminal username change from your laptop’s local user to something like:
+
+<source lang="shell">pi@raspberry~$.</source>
+To exit out of the pi type:
+
+<source lang="shell">exit</source>
+Hit enter. You will need to have exited the pi before setting up your ssh key.
+
+== Security via SSH Keys ==
+
+SSH Keys are user specific and are used in addition to a shared login password to make it more secure than traditional usernames and passwords. To make this method of access truly secure we will need to eventually disable password-only login.
+
+You could think of the shared password as the Lock, and the private password is the Key. Keys are non-transferrable and have to be generated per user.
+
+To generate a key each user must execute this command on their laptop:
+
+<source lang="shell">ssh-keygen -t rsa</source>
+This will generate a pair of public and private keys. You will then need to fill in the information requested (most of it is optional so you can leave it blank) and set a password ('''not optional'''). Part of this process will be choosing where to save your key pair.
+
+You’ll receive something like this:
+
+<pre>$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/me/.ssh/id_rsa):`
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/me/.ssh/id_rsa.
+Your public key has been saved in /home/dave/.ssh/id_rsa.pub.
+The key fingerprint is:
+ef:69:3b:9e:3b:2d:99:0d:ac:57:4e:b2:92:82:bd:9f me@hostname
+The key's randomart image is:
++--[ RSA 2048]----+
+|                 |
+|                 |
+|                 |
+|                 |
+|        S.       |
+|         .+ o    |
+|     o   o.%     |
+|    . o +oXo+    |
+|      .+E=B*     
++-----------------+` </pre>
+The shared key is the:
+
+<code>id_rsa.pub</code>
+
+and the private Key is the:
+
+<code>id_rsa</code>
+
+Make note of the path to your id_rsa.pub, we’ll need it in the next step.
+
+The public key, lock (shared password) and password now needs to be copied over to the raspberry pi. Do this via this command (replacing the first bracket with the path to the id_rsa.pub, and the second to the Pis IP address, which we found earlier):
+
+<source lang="shell">ssh-copy-id -i <path to id_rsa.pub> pi@<ip address of pi></source>
+Remember that the pi might now have a different name thats not “pi” so you should address it accordingly (don’t deadname your pis). See [[01.1 Hardware and OS#Changing the host name]]
+
+If you are using windows 10 refer to this post for an alternative to ssh-copy-id https://chrisjhart.com/Windows-10-ssh-copy-id/
+
+Because the Key system is not yet in place, it will ask us for the pi password we setup at the beginning of config, so insert that here and hit enter.
+
+This should copy over the key.
+
+To test that is works, try to SSH into the pi again. This time it should ask for the Lock and your private Key. The command to SSH is still the same:
+
+<source lang="shell">ssh pi@<ip of pi></source>
+If you need to do any SSH key trouble shooting, or if you want to see the contents of the authorised keys file on the pi you can cd into the invisible ssh folder to list (ls) out the files. Running the command cat &lt; filename &gt; will log out the contents of the file:
+
+<source lang="shell">cd /.ssh
+ls
+cat authorized_key</source>
+== More than one SSH KEY ==
+
+If you machine already has an SSH key, or you’d like to generate more for different servers you can do that by customising the name of the file of the public key. So instead of “id_rsa.pub” the file name can another name.
+
+Ideally this name would match the server you want to use that key for. eg: “id_rsa_server_name.pub”. To do this use only the first half of the keygen command:
+
+<source lang="shell">ssh-keygen</source>
+This will tell you that it is generating a key, but will then also ask you to specify the file name:
+
+<source lang="shell">Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/Admin/.ssh/id_rsa):</source>
+The second line already gives you the path, copy/paste that and add to it the file name. Here we are giving it the name “id_rsa_server_name”:
+
+<source lang="shell">/Users/Admin/.ssh/id_rsa_server_name</source>
+The next steps are the same: enter a passphrase and you will have the path of your key.
+
+You can navigate through your finder to the /.ssh file inside your user folder. You will see all the public key files there. To share your public key, you still need to copy it over to the server using the same command as above:
+
+<source lang="shell">ssh-copy-id -i <path/to/id_rsa.pub> user@<ip address of pi></source>
+== SSHing while having multiple keys ==
+
+When SSHing into the server from a machine that has several keys, you have to specify which key you want to use to ssh. To do this, you should include the directory path to your PRIVATE key:
+
+<source lang="shell">ssh -i <path/id_rsa_anotherkey.pub> <user>@<server address></source>
+You should now be prompted for your personal password.
+
+== Disabling password only access ==
+
+Only do this after everyone who need to access the pi has uploaded their Keys!
+
+It is also recommended that you keep one person ssh’d in at all times during testing this, so if you do something wrong you can unlock it again.`
+
+To disable password access, you will need to edit the config file on the pi. Access the config file by running. <code>sudo nano</code> opens the file and lets you amend its contents:
+
+<source lang="shell">sudo nano -l /etc/ssh/sshd_config</source>
+And in that file, uncomment the phrase ‘PasswordAuthentication’ on line 57 and set to ‘no’, then save and exit:
+
+<pre class="config">PasswordAuthentication no</pre>
+The following commands save your changes and then exit out of the file:
+
+<pre class="comands">(ctrl + 0)
+(Ctrl + X)</pre>
+Then restart the SSH connection:
+
+<source lang="shell">sudo service ssh restart</source>
+== Forgotten your ssh pass phrase???? ==
+
+Like George did . . . ooooops, that was silly. Maybe get a password manager (like George did after).
+
+==== Step 1. Find a friend who has access. ====
+
+Find someone who can get access to the server and has '''sudo''' permissions. Then ask them if they can help for a minute. #### Step 2. Create a new set of ssh keys
+
+You will need to create a new set of keys on the device you plan to SSH from. See [[Documentation_01-Local Config#Security via SSH Keys]] for more info on how to do this, or simply create a new key:
+
+<source lang="shell">ssh-keygen -t rsa</source>
+==== Step 3. Copy over the new key ====
+
+Send the <code>id_rsa.pub</code> (however you named it) file to your friend with access, do not send the private key (a.k.a. <code>id_rsa</code>) . They will then copy over the new public key to the server using:
+
+<source lang="shell">ssh-copy-id -i <path to id_rsa.pub> pi@<ip address of pi></source>
+To test that is works, try to SSH into the pi again. This time it should ask for the Lock and your private Key. The command to SSH is still the same:
+
+<source lang="shell">ssh pi@<ip of pi></source>
+== Troubleshooting SSH ==
+
+Here are some links we found useful when troubleshooting SSH Keys
+
+https://betterprogramming.pub/how-to-set-up-multiple-ssh-keys-ae6688f76570 - a guide explaining how to set up multiple SSH keys
+
+https://homebrewserver.club/demystifying-ssh.html#troubleshooting-ssh - a guide to troubleshooting failed login attempts via ssh

@@ -1,0 +1,28 @@
+== Setting up the OS: Armbian ==
+
+We need to start by setting up the raspberry pi with the right operating system (os). We do this by downloading an appropriate Armbian image for your Raspberry Pi model, then use a flashing tool to write the image onto your SD card. The Rosa Server Guide recommends [https://www.armbian.com/rpi4b/ Armbian OS] so that’s what we chose to use.
+
+We won’t go into the details of flashing an SD card, but you can find out more about this process here: https://raspberrytips.com/armbian-on-raspberry-pi/
+
+After flashing the Armbian disk image on the SD card, insert the SD into your Raspberry pi, plug the Pi in and then just follow the prompts on screen. This process will usually include setting a root password, and creating a user.
+
+If for any reason (like a power cut or accidental un-plugging) you have to enter the Armbian default username and password before you can boot the OS. It is usually:
+
+* blank user name
+* pw: 1234
+
+=== Changing the host name ===
+
+We can change the hostname from the default (in our case it was rpi4) to your chosen name (in our case pubdoc, which we did during workshop 26 June 2023) by editing the files inside the file /etc/hostname
+
+We do so with this command:
+
+<source lang="shell">hostnamectl hostname <newname></source>
+As we mentioned, we chose to name the server pubdoc, so:
+
+<source lang="shell">hostnamectl hostname pubdoc</source>
+We then run the following command to show the status and confirm the the name of the hostname:
+
+<source lang="shell">hostnamectl status</source>
+<blockquote>[!note] It is possible to edit the hostname from settings, but it makes sense for us to do it in via command line as we’re going to be doing a couple of things from here.<code>1. Click the Raspberry Pi in the top right corner of your desktop</code> 2. Click Preferences &gt; Raspberry Pi Configuration<code>3. Enter a new name in the hostname field and click Ok.</code> 4. Click yes when prompted to reboot`
+</blockquote>

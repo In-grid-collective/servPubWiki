@@ -129,7 +129,7 @@ We will start with an overview of servpub to introduce different elements of int
 
 SSH or Secure Shell is a network communication protocol that enables two computers to communicate. We will use SSH to access the Pi remotely via the local network
 
-![[Pasted image 20231108164245.png]]
+![[Local IP.png]]
 *Image courtesy of Mara, Systerserver*
 
 --

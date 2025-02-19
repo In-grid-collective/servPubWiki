@@ -1,0 +1,18 @@
+=== Description of this section ===
+
+[[Pasted image 20231108164245.png]]
+
+'''Section 01''' will cover the steps necessary for setting up a local collaborative environment. In practical terms, this means setting up a Raspberry pi which a number of users can access in order to work together.
+
+The section covers:
+
+* [[01.0.5 Users, collective work, names]]
+** Here we discuss some of the things you might want to bare in mind when beginning collective working, like naming convention and user permissions
+* [[01.1 Hardware and OS]]
+** Setting up a single board computer (SBC)/Raspberry pi with an operating system/Armbian
+* [[01.2 Creating Users]]
+** How to create users for your SBC and assign permissions
+* [[01.3 SSH]]
+** Setting up SSH in order to access your SBC remotely
+* [[01.4 TMUX]]
+** Installing and using a multiplexer for co-working
