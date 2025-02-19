@@ -1,5 +1,5 @@
 
-These docs describe the process of setting up the Servpub project infrastructure, which includes wiki4print, the server which hosts these docs. These docs act not only as a resource as to how to take up and hack these things yourself, but also to present alongside this the histories, networks and inspirations that have led us to this infrastructure's existence. 
+These docs make up the process and steps that made up the back-end of our technical configuration. They act not only as a resource as to how to take up and hack these things yourself, but also to present alongside this the histories, networks and inspirations that have led us to this infrastructure's existence.
 
 ### Access
 
@@ -20,13 +20,32 @@ If you would like to follow along, the following are necessary:
 
 ### Note on terms
 
-Throughout these docs we'll be referring to the server and the client. The client-server model in this context
+Throughout these docs we'll be referring to the server and the client. The client-server model in this context refers to a structure where tasks/workloads are distributed between the provider of a resource of service, and clients, who want to access that resource.
 
-
+When we come to talk about [[01.3 SSH|SSH]]:
 
 - Server = Raspberry Pi/SBC (Single board computer)
-- Client = your laptop
+	The server which holds the files/resources etc you want to access
+- Client = your laptop, 
+	- which you are using to access those files/resources
+
+Later, we talk about [[02 Section Index|Local server setup]]. In this case this is a client-server protocol where:
+
+* Server = Raspberry Pi/SBC
+	* An http-server which holds files/resources you want to access
+* Client = A device with access to the same local network as the Pi
+	* which will access those files/resources via a web browser
+
+This is confusing. We discussed how we might unpack this terminology, in a way which is critical but also legible and appropriate for the function we have assigned these docs. We came to the conclusion we will keep it simple here, but we do discuss this in more detail in the book chapter Praxis Doubling if you would like to read more on this.
 
 
-- Summary of the step for setting up tuxic.. Winnie
-- Explain that there is a set of terms that are useful to understand - link to the static IP and Domain setup doc. 
+### Tuxic & domains
+
+The first step that we took in this process was the purchase of the servpub.net domain name from [tuxic.nl](https://tuxic.nl/), we have therefore placed some introductory information about setting up domain names here.
+
+
+
+- [ ] Why we have put this here Winnie first step, can we include some writing that Winnie is doing about Tuxic for platform infrastructure? Radical reference? started drafting, see below
+- [ ] Summary of the step for setting up tuxic.. Do we have any info about setting up the A record and pointing it to Jean's static IP. So maybe we just mention that we pointed the domain A record to the static IP. 
+- [ ] Add link to Network terminology
+- [ ] 
