@@ -1,12 +1,12 @@
-# Tinc
-
-Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Find out [more](https://www.tinc-vpn.org/) from their site.
-
-- [ ] what is a vpn! 
 
 >[!error] Deprecated
 >Tinc is becoming deprecated . . . . this means these docs aren't very maintainable as this software will become insecure and start to break. Why have them here? well it is partly to show a key resource in the making of this project, and one that has been shared and reused in different contexts. It is also to show the history of why we are using these software, which you can read under [[03 Section Index#Why Tinc?|Why Tinc?]]
 
+# VPN
+
+Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. There are many other VPN software but as the name suggests they provide a way to create a private network virtually on top of existing networks. This means that as long as we have one public IP, on a software level we can start to construct a networks between devices, and ones that can hold and support the infrastructures and services we need. As we see more in the sections below there is a history of using these networks to enable servers to be autonomous, moving and crossing institutional and geopolitical boundaries.
+
+Find out more about Tinc and VPNs from [their site](https://www.tinc-vpn.org/).
 
 ## Why Tinc?
 
@@ -40,6 +40,6 @@ Below is the order of the Install pages:
 If you want to install on Windows, it may be better to run tinc from a Ubuntu console [like this](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
 # todos
 
-- [ ] maybe more info on what a vpn is
+- [x] maybe more info on what a vpn is
 - [x] more conceptual critique of tinc and how we are working with it.
 - [x] describe clearer the different routes for comp and server.
