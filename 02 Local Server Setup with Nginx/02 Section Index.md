@@ -7,8 +7,6 @@ This section will take us through all steps needed to install, configure and imp
 > A server is a computer that provides information to other computers called "clients" on a network. Servers can provide various functionalities, called "services", such as sharing data or resources among multiple clients. 
 > In our case, we are using a server to "serve" a simple website to the network locally and on the public internet. NGINX does this by handling the static content delivery, of our website files including HTML, CSS and images. We will setup these in the coming section.
 
-- [x] What is NGINX/server, short explanaition
-
 NGINX has many other uses, and in the [[04.1 NginX for Reverse Proxy|Reverse Proxy]] section of this guide, we will use it again to setup different parts of the network.
 ## Section Contents:
 [[02.1 NginX]]
