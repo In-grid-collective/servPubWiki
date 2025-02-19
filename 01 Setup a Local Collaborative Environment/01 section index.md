@@ -34,9 +34,9 @@ Throughout these docs we'll be referring to the server and the client:
 
 
 
-- [ ] Should the users and collective work be here?
+- [x] Should the users and collective work be here?
 - [x] Make appendix section, make intro section
-- [ ] General notes, more guiding language
+- [x] General notes, more guiding language
 - [x] Terminal bash in the appendix
 - [ ] Find link to the rosa server manual
 - [ ] Can we link to our platform infra workshop here?
