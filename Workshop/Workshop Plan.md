@@ -79,9 +79,9 @@ To-do:
 - [ ] Documentation of ServPub pending completion:
 	- [ ] Becky: NginX (ongoing) and automation
 	- [[03-Analog Interlude.md.md| ]]
-	- [[04-Static IP & Domain Setup.md.md| ]]
-	- [[04-Static IP & Domain Setup.md.md| ]]
-	- [[04-Static IP & Domain Setup.md.md| ]]
+	- [[04-Static IP & Domain Setup| ]]
+	- [[04-Static IP & Domain Setup| ]]
+	- [[04-Static IP & Domain Setup| ]]
 	- [ ] Add proper / full credits for Rosa Manual.
 	- [ ] Draft a "this is what you need to do before the workshop if you want to follow along with the terminal activity"
 	- [[NA-Terminal Unix Commands Cheat Sheet.md.md| ]]

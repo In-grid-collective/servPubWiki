@@ -26,7 +26,7 @@ fig by Mara from Systerserver
 - [ ] Documentation of ServPub pending completion:
 	- [ ] Becky: NginX and automation
 	- [[03-Analog Interlude.md.md|x]]
-	- [[04-Static IP & Domain Setup.md.md| ]]
+	- [[04-Static IP & Domain Setup| ]]
 	- [x] redirecting http to https 
 	- [x] how to replace lost SSH
 - [x] Put documentation (even as draft) on Systerservers Git

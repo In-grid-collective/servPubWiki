@@ -27,7 +27,7 @@
 		{"id":"22fb221f84bb4d1f","type":"text","text":"# 02 Section Index\n- Intro \n- list of pages\n","x":80,"y":183,"width":250,"height":308},
 		{"id":"8b406c06e656cd0e","type":"text","text":"# Appendix Section\n- Other applications to host\n- \"NA\" files\n- unix commands\n- systemctl?\n- tinc on windows and mac\n* booting with armbian? ","x":-1540,"y":1500,"width":594,"height":280},
 		{"id":"33690321817dc73a","type":"text","text":"# 03.2 wiki4print\n- wiki2print\n- wikimedia\n- PHP","x":-1540,"y":1800,"width":340,"height":386},
-		{"id":"5c11024295a3d3a2","type":"file","file":"Old Notes + tutorials/04-Static IP & Domain Setup.md","x":-1156,"y":1800,"width":420,"height":480},
+		{"id":"5c11024295a3d3a2","type":"file","file":"00/00.1 Static IP & Domain Setup.md","x":-1156,"y":1800,"width":420,"height":480},
 		{"id":"ebc348d45d54b30f","type":"file","file":"Old Notes + tutorials/NA-Local hotspot & DNS Spoofingsetup.md","x":-580,"y":1940,"width":440,"height":400},
 		{"id":"e7a628587dacf8df","type":"text","text":"# Side-quest Section\n- Local Hotspot\n- DNS spoofing\n- suggested tools to host\n","x":-580,"y":1500,"width":440,"height":260},
 		{"id":"c614d0ff49554c50","type":"file","file":"Workshop/01-ServPub Outline.md","x":-40,"y":1880,"width":400,"height":400},

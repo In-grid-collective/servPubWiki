@@ -17,3 +17,4 @@ NGINX has many other uses, and in the [[04.1 NginX for Reverse Proxy|Reverse Pro
 - [ ] this is post-rewording. check now.
 - [x] too many links out? -keep, are helpful.
 - [ ] linear stream vs linking to further sections?
+- [ ] We can put a link to the certbot stuff her IF you are setting up a static server that is connected to a static IP online, and not doing a VPN. 
