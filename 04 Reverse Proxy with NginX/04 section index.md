@@ -24,6 +24,6 @@ Below is an overview of information needed for this section:
 - [ ] what a reverse proxy is
 	- [ ] radical reference
 	- [ ] check the Nginx for reverse proxy section
-- [ ] add explanation about https / ssl 
+- [x] add explanation about https / certifcates
 	- [x] link out to network terminology to explain https
 
