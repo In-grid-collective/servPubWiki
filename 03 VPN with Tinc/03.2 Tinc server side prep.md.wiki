@@ -1,0 +1,102 @@
+= Tinc: creating the initial network and inviting nodes =
+
+== Use UFW to open a firewall ==
+
+In this step, you will set up the default firewall ufw on all your server. You’ll add OpenSSH service, tinc VPN port, then start and enable ufw firewall.
+
+If it isn’t installed you can install with:
+
+<source lang="bash">sudo apt-get install ufw</source>
+First, add the OpenSSH service using the ufw command below. An output ‘'''Rules updated'''’ confirms that the new rule was added to ufw.
+
+<source lang="shell">sudo ufw allow OpenSSH</source>
+Add the port 655 that will be used by tinc VPN by entering the following command.
+
+<source lang="shell">sudo ufw allow 655</source>
+Now run the following ufw command to start and enable the ufw firewall. When prompted, input y to confirm and press ENTER to proceed.
+
+<source lang="shell">sudo ufw enable</source>
+Check its status with
+
+<source lang="shell">sudo ufw status</source>
+It should now show: - OpenSSH - 655 - maybe other ports
+
+== Configuring Tinc ==
+
+Tinc stores all configuration in <code>/usr/local/etc/tinc</code>.
+
+Tinc allows multiple private networks to be defined, each is a subfolder with the name of the network, e.g. <code>/usr/local/etc/tinc/&lt;net-name&gt;</code> (If you mess something up, you can restart by deleting the files that are there).
+
+This step only has to happen once on the server hosting the vpn. In our case, it was performed on [https://systerserver.net/ systerserver’s] Jean.
+
+We will: 1. Create a virtual network, our’s was named <code>systerserver</code> on the public node. 2. Get the public node to create <code>invite</code> links for other nodes. 3. Add those new nodes with tinc’s <code>join</code> command to use the invite link.
+
+Syntax:
+
+<source lang="shell">sudo tinc -n <NETNAME> init <NODENAME></source>
+So we did:
+
+<source lang="shell">sudo tinc -n systerserver init servpub</source>
+=== Add a subnet IP for you hub ===
+
+Then on the server we will set the VPN ip address in the 10.10.12.x subnet, using the command below and the IP assigned to them.
+
+Syntax:
+
+<source lang="shell">sudo tinc -n <NETWORK NAME> add subnet <IP></source>
+So we did:
+
+<source lang="shell">sudo tinc -n systerserver add subnet 10.10.12.0</source>
+=== Edit tinc-up: ===
+
+This will setup you IP and visibility on the network.
+
+On your machine, go to the configuration folder if you’re not already there:
+
+<source lang="shell">cd /usr/local/etc/tinc/<NETNAME></source>
+you can use <code>ls -a</code> to see all files in there, then edit the file called tinc-up. We are using nano to do our text editing.
+
+via nano:
+
+<source lang="shell">sudo nano tinc-up</source>
+Once the file is open, edit it so it looks like this, filling in the correct details:
+
+<pre class="tinc-up">#!/bin/sh
+echo 'Unconfigured tinc-up script, please edit '$0'!'
+#ifconfig $INTERFACE &lt;your vpn IP address&gt; netmask &lt;netmask of whole VPN&gt;</pre>
+For Servepub it would look like:
+
+<pre>#!/bin/sh 
+#echo 'Unconfigured tinc-up script, please edit '$0'!' 
+ifconfig $INTERFACE 10.10.12.0 netmask 255.255.255.0</pre>
+=== Test ===
+
+To test and run the service with debug:
+
+<source lang="shell">sudo tincd -n systerserver -D</source>
+== Invite nodes to network ==
+
+To add a new node to the network you need to assign them a subnet IP for the VPN. From our settings our VPN IP will be 10.10.12.x (i.e. 10.10.12.1)
+
+Create a file to keep your list of private addresses. We use a file called <code>vpn-records</code> in <code>/usr/local/etc/tinc/</code>
+
+Your file might look something like:
+
+<pre>10.10.12.0 ---- Hub
+10.10.12.1 ---- servpub
+10.12.12.2---- wiki4</pre>
+=== Make invite link ===
+
+TO mak an invite link we name the net we want to add it to and the name of that new node.
+
+Syntax:
+
+<source lang="shell">sudo tinc -n <NETNAME> invite <NODENAME></source>
+So we did:
+
+<source lang="shell">sudo tinc -n systerserver invite servepub</source>
+It will ask for your host’s external IP, press enter to use the default.
+
+The invite generated will be a long string of letters and numbers. It can then be used on the new node to be added to the network.
+
+Example of given code: <code>79.91.202.97/SVuslahX7LapWXJdBzd03jNn48bPuN83jVE_23VnL</code>

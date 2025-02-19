@@ -1,0 +1,55 @@
+= Start Tinc automatically =
+
+We will now make the server and nodes (if you want them to) automatically setup and run the VPN. We are now going to get tinc to launch automatically with [https://en.wikipedia.org/wiki/Systemd systemd]
+
+== Create a systemd service file ==
+
+Systemd is a way to manage (start/stop) services like VPNs etc. Tinc is such a service.
+
+To do this you will create a new service file in the folder <code>/etc/systemd/system</code>
+
+In this case we create a special kind of service file (that has an @ in the name) that allows it to work for multiple network names.
+
+<source lang="shell">sudo nano /etc/systemd/system/tinc@.service</source>
+Inside that file, paste the following:
+
+<pre class="service">[Unit] 
+Description=Tinc (%i) 
+After=network.target 
+
+[Service] 
+Type=simple
+WorkingDirectory=/usr/local/etc/tinc
+ExecStart=/usr/local/sbin/tincd -D -n %i
+ExecReload=/usr/local/sbin/tincd -D -n %i -kHUP 
+TimeoutStopSec=5 
+Restart=always 
+RestartSec=60 
+
+[Install] 
+WantedBy=multi-user.target</pre>
+== Starting Tinc service ==
+
+Now we can start it with the command below:
+
+Syntac:
+
+<source lang="shell">sudo systemctl start tinc@<NETNAME></source>
+so we did:
+
+<source lang="shell">sudo systemctl start tinc@systerserver</source>
+== Start service automatically ==
+
+To make the VPN start automatically we enable it with:
+
+Syntax:
+
+<source lang="shell">sudo systemctl enable tinc@<NETNAME></source>
+So we did:
+
+<source lang="shell">sudo systemctl enable tinc@systerserver</source>
+== Debug if any tinc servers are running ==
+
+If you are having issues you can debug with:
+
+<source lang="shell">systemctl --type=service | grep tinc</source>
