@@ -2,8 +2,10 @@
 
 Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Find out [more](https://www.tinc-vpn.org/) from their site.
 
->[!error] Depreciated
->Tinc is becoming depreciated . . . . this means these docs aren't very maintainable as this software will become insecure and start to break. Why have them here? well it is partly to show a key resource in the making of this project, and one that has been shared and reused in different contexts. It is also to show the history of why we are using these software, which you can read under [[03 Section Index#Why Tinc?|Why Tinc?]]
+- [ ] what is a vpn! 
+
+>[!error] Deprecated
+>Tinc is becoming deprecated . . . . this means these docs aren't very maintainable as this software will become insecure and start to break. Why have them here? well it is partly to show a key resource in the making of this project, and one that has been shared and reused in different contexts. It is also to show the history of why we are using these software, which you can read under [[03 Section Index#Why Tinc?|Why Tinc?]]
 
 
 ## Why Tinc?
@@ -16,7 +18,6 @@ Other groups have also built from this configuration. Below is a list of other r
 - XPub docs - [Tinc VPN install](https://pzwiki.wdka.nl/mediadesign/Tinc)
 - Lurk docs - [Tinc VPN install](https://things.bleu255.com/runyourown/VPN_with_Tinc)
 - Psaroskala zines - [Making a private server ambulant](https://psaroskalazines.gr/pdf/rosa_beta_25_jan_23.pdf)
-
 
 ## To Install!
 
@@ -31,9 +32,9 @@ Below is the order of the Install pages:
 	- You need to install tinc for all nodes, both server and client(s).
 - [[03.2 Tinc server side prep]] 
 	- Make these edits just to the serve/hub
-- [[03.3 Tinc Join]]
+- [[03.3 Tinc Client Join]]
 	- Follow this to add nodes to the network.
-- [[03.4 Tinc Start]]
+- [[03.4 Tinc Automation]]
 	- setup on all devices you want the VPN to automatically run.
 
 If you want to install on Windows, it may be better to run tinc from a Ubuntu console [like this](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
