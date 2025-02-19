@@ -1,0 +1,43 @@
+= Install instructions for Linux: =
+
+This Install needs to be done on all nodes of the network exactly the same, no matter if it is the server/hub or a node. ## Install Dependencies
+
+We will be using apt to install development tools and dependencies before we download the source code of Tinc.
+
+First we will download essential packages to compile Tinc as a sudo user.
+
+<source lang="shell">sudo apt install build-essential automake libssl-dev liblzo2-dev libbz2-dev zlib1g-dev libncurses5-dev libreadline-dev net-tools wget</source>
+== Download Tinc ==
+
+Navigate into a tmp folder. - (Note: I was getting errors running the configure file in the tmp folder)
+
+<source lang="shell">cd /tmp</source>
+Download tinc 1.1 with wget and uncompres the downloaded item to a folder with tar.
+
+<source lang="shell">wget https://www.tinc-vpn.org/packages/tinc-1.1pre17.tar.gz 
+tar xvf tinc-1.1pre17.tar.gz</source>
+== Install from source ==
+
+Navigate into the folder and run the configure file to set tinc up.
+
+<source lang="shell">cd tinc-1.1pre17 
+sh ./configure </source>
+Install Tinc!
+
+<source lang="shell">make 
+sudo make install</source>
+== Config Settings ==
+
+Once installed, create a configuration directory. All configurations of tinc will happen in this folder. Using tinc subcommands (like invite / join), result in changes to the files in this folder.
+
+<source lang="shell">sudo mkdir -p /usr/local/etc/tinc/</source>
+we also need to make a folder to hold the pid (working file)
+
+<source lang="shell">sudo mkdir -p /usr/local/var/run/</source>
+== Tinc App Image ==
+
+The tinc executable is installed in
+
+<code>/usr/local/sbin/tinc</code>
+
+This means that you can only run tinc as sudo, since sbin directory saves binary executables that can be ran only by sudo (s+bin)

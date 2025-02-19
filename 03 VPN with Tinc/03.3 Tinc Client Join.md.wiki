@@ -1,0 +1,56 @@
+= Tinc: Joining a network =
+
+You should have the following to join a network: - Tinc installed - An invite link (e.g. <code>79.91.202.97/SVublahX7LapWXJdBzd03jNn48bxuN83jVE_23VnL</code>) - A network name (e.g. <code>systerserver</code>) - A VPN IP (e.g. <code>10.10.12.1</code>)
+
+== Join VPN network ==
+
+To join the network use:
+
+Syntax:
+
+<source lang="shell">sudo tinc -n <NETNAME> join <invite code></source>
+so we did:
+
+<source lang="shell">sudo tinc -n systerserver join 79.91.202.97/SVublahX7LapWXJdBzd03jNn48bxuN83jVE_23VnL</source>
+== Add a subnet IP for you node ==
+
+On the new node we will set the VPN ip address in the 10.10.12.x subnet, using the command below and the IP assigned to them.
+
+Syntax:
+
+<source lang="shell">sudo tinc -n <NETWORK NAME> add subnet <IP></source>
+So we did:
+
+<source lang="shell">sudo tinc -n systerserver add subnet 10.10.12.1</source>
+== Edit tinc-up: ==
+
+This will setup you IP and visibility on the network.
+
+Go to the configuration folder if you’re not already there:
+
+<source lang="shell">cd /usr/local/etc/tinc/<NETNAME></source>
+you can use <code>ls -a</code> to see all files in there, then edit the file called tinc-up. We are using nano to do our text editing.
+
+via nano:
+
+<source lang="shell">sudo nano tinc-up</source>
+Once the file is open, edit it so it looks like this, filling in the correct details:
+
+<pre class="tinc-up">#!/bin/sh
+#echo 'Unconfigured tinc-up script, please edit '$0'!'
+#ifconfig $INTERFACE &lt;your vpn IP address&gt; netmask &lt;netmask of whole VPN&gt;</pre>
+For servepub it would look like:
+
+<pre>#!/bin/sh 
+#echo 'Unconfigured tinc-up script, please edit '$0'!' 
+ifconfig $INTERFACE 10.10.12.1 netmask 255.255.255.0</pre>
+== Test ==
+
+To test and run the service with debug:
+
+<source lang="shell">sudo tincd -n systerserver -D</source>
+== Ping node ==
+
+Now we should be able to ping the other nodes 🤞
+
+<source lang="sh">ping 10.12.12.0</source>
