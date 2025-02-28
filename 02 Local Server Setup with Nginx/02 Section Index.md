@@ -13,7 +13,7 @@ NGINX has many other uses, and in the [[04.1 NginX for Reverse Proxy|Reverse Pro
 - Install and access files
 [[02.2 Static NginX]]
 - Setting up HTML files and NGINX config
-[[02.3 Systemctl_autotmation_]]
+[[02.3 Systemctl and autotmation]]
 - Creating some automated tasks to restart on reboot
 
 - [x] This intro needs re-wording to make clear what we're doing here.
