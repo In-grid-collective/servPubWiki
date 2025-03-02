@@ -16,8 +16,4 @@ NGINX has many other uses, and in the [[04.1 NginX for Reverse Proxy|Reverse Pro
 [[02.3 Systemctl and autotmation]]
 - Creating some automated tasks to restart on reboot
 
-- [x] This intro needs re-wording to make clear what we're doing here.
-- [ ] this is post-rewording. check now.
-- [x] too many links out? -keep, are helpful.
-- [x] linear stream vs linking to further sections?
 - [ ] We can put a link to the certbot stuff here IF you are setting up a static server that is connected to a static IP online, and not doing a VPN. 

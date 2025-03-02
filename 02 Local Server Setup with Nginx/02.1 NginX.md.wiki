@@ -1,0 +1,70 @@
+<span id="nginx"></span>
+= NGINX =
+
+We will install nginx on our pi, this is the software that will make our pi into our ''server''. To do this we need to be working on the pi, so we will use [[01-Set up Pi for local Network Access.md.md#Security via SSH Keys|SSH]] to access the pi from our personal machine.
+
+<blockquote>[!REMINDER] Reminder: Working on the pi Go to section [[01.3 SSH#Connecting from a client|01.3 SSH Connecting from a client]] to recap how to login to the server via SSH
+</blockquote>
+Once you are logged in to your user on the pi, we will install nginx from the command line. We will use <code>apt</code> , which is a command-line utility that uses the Advanced Package Tool to download and install packages onto your device.
+
+In the terminal, run the command:
+
+<syntaxhighlight lang="shell">apt install nginx</syntaxhighlight>
+<span id="file-locations"></span>
+== File locations ==
+
+Packages are saved by default in your user’s home directory. The NginX software will also be saved inside the <code>etc</code> directory. We will work in here soon when we setup the config file of the server, for now just take note of where it is. The directory path is printed below:
+
+<syntaxhighlight lang="shell">cd /etc/nginx</syntaxhighlight>
+Once NGINX is installed, it will create a few default HTML files that display a default webpage. This is a very simple static website. NGINX will save the website files in the <code>var</code> directory path below. We will work in here to edit our HTML index page.
+
+<syntaxhighlight lang="shell">cd /var/www/html </syntaxhighlight>
+Take a note of these two locations as we will be jumping between them in the coming steps. ## Viewing the static site
+
+Inside the <code>/var/www/html</code> the default html document will be named <code>index.nginx-debian.html</code> which you can see if you run the <code>ls</code> command while in the directory.
+
+This website can be viewing locally by any machine that is on the same network as the server (previous referred to as the pi). To do this, paste the servers IP address in the browser of a local machine (like the laptop you are using to do this setup). ## Configuring the static site
+
+The default configuration file for this simple static site can be found here (remember this is where nginx is saved) inside teh sites-enabled folder:
+
+<syntaxhighlight lang="shell">cd /etc/nginx/sites-enabled</syntaxhighlight>
+Here you will see that you have a configuration for the default server, you can open that up to look at it by running the <code>nano</code> command:
+
+<pre>nano default</pre>
+<blockquote>[!important] '''DO NOT''' simply edit this default configuration file. Instead set up your own folder within the <code>sites-enabled</code> directory to start serving your custom static site.
+</blockquote>
+For now, have a look at the contents of the default config file. Here is a shortened version of what you should see with some added comments:
+
+<syntaxhighlight lang="nginx">
+server {
+        # 80 the default port for listening for http traffic
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        # the root folder that your website will be served out of
+        root /var/www/html;
+
+        # Allowed file formats for the index / home page
+        index index.html index.htm index.nginx-debian.html;
+
+        # The server name that you would set
+        server_name _;
+
+        # A location directive for any incoming URI requests
+        location / {
+
+                # First attempt to serve request as file, then as directory,
+                # then fall back to displaying a 404 not found error
+                try_files $uri $uri/ =404;
+        }
+        
+ }</syntaxhighlight>
+This server block is where we will define our server set up in our own config file. For reference. ### Make your own .conf
+
+To make a new file use the <code>touch</code> command in terminal. Make sure you are in the right folder before you do this:
+
+<syntaxhighlight lang="shell">cd /etc/nginx/sites-enabled
+touch yoursite.conf</syntaxhighlight>
+The following steps will go through how to edit the config file to serve your own static website. ### NginX debug
+
+This [https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/ Pitfalls and Common Mistakes guide] should serve as a good resource to double check any changes you make. this [https://nginx.org/en/docs/beginners_guide.html nginx beginners guide does a good job of introducing the fundamentals].

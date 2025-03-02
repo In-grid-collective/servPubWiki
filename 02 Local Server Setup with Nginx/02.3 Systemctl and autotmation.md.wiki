@@ -2,14 +2,7 @@ All the NGINX configuration we just setup should be saved and good to go. Next t
 
 Luckily NGINX does this by default, but here is how it works:
 
-```shell
-systemctl enable nginx
-```
+<syntaxhighlight lang="shell">systemctl enable nginx</syntaxhighlight>
+To check if it is running:
 
-To check if it is running: 
-
-```shell
-service nginx status
-```
-
-
+<syntaxhighlight lang="shell">service nginx status</syntaxhighlight>

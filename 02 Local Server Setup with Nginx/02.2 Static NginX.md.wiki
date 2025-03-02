@@ -1,0 +1,110 @@
+<span id="customising-an-nginx-site"></span>
+= Customising an NGINX Site =
+
+We are going to create a custom .conf file and point it to a new location on your the server where the site files will live.
+
+In the previous section, we took note of two locations: <code>/etc/nginx/sites-enabled/</code> where the .conf file is saved, and <code>/var/www</code> where the default html files are saved.
+
+Before we create the custom .conf file, we must create the html location that it will serve the website files from. ### Create your website
+
+We are now going to make a simple index.html page at the path that you specified in the .conf file, e.g. <code>/var/www/yoursite</code> from above.
+
+<syntaxhighlight lang="shell">cd /var/www </syntaxhighlight>
+Next make a new directory to match the name of your site that you set as the root path:
+
+<syntaxhighlight lang="shell">sudo mkdir <yoursite></syntaxhighlight>
+Change directory into that new folder:
+
+<syntaxhighlight lang="shell">cd <yoursite></syntaxhighlight>
+Now make your index.html using the touch command:
+
+<syntaxhighlight lang="shell">sudo touch index.html</syntaxhighlight>
+Open it up to edit in your command line text editor of choice. We will use nano:
+
+<syntaxhighlight lang="shell">sudo nano index.html</syntaxhighlight>
+You can copy this starter index.html page for a quick test:
+
+<syntaxhighlight lang="html"><!DOCTYPE html>  
+<html>  
+<head>  
+  <title>Your Site Title</title>  
+</head>  
+<body>  
+  
+    <p>
+        The content of your website.
+    </p>
+  
+</body>  
+</html></syntaxhighlight>
+<span id="create-a-custom-.conf-for-you-site"></span>
+=== Create a custom .conf for you site ===
+
+Now we will navigate to the where the NGINX config files are saved and create a new one to point to the new custom html website we just made.
+
+Make a copy of the default file and rename that copy. In the below example, remove the triangle brackets and write the name you want to give your site. For this guide we will use <code>&lt;yoursite&gt;</code> as a placeholder.
+
+<syntaxhighlight lang="shell">cd /etc/nginx/sites-enabled/
+cp -i default.conf <yoursite>.conf</syntaxhighlight>
+Note that the new file is created in the same directory. We will now move the default config file to <code>sites-available</code> which is where you can keep any configuration files for sites that are not currently active.
+
+<syntaxhighlight lang="shell">mv -i default.conf /etc/nginx/sites-available</syntaxhighlight>
+<blockquote>[!NOTE] Notice that we are using the <code>-i</code> option after the copy and move commands. This makes the command interactive and asks the terminal to check before executing in case you made any mistakes.
+</blockquote>
+<span id="editing-your-custom-.config-file"></span>
+=== Editing your custom .config file ===
+
+Make sure your in <code>sites-enabled</code>, lets edit our .conf file:
+
+<syntaxhighlight lang="shell">nano <yoursite>.conf</syntaxhighlight>
+<syntaxhighlight lang="nginx">
+server {
+        # 80 the default port for listening for http traffic
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        # the root folder that your website will be served out of
+        root /var/www/yoursite;
+
+        # Allowed file formats for the index / home page
+        index index.html index.htm;
+
+        # The server name that you would set
+        server_name yoursite.local;
+
+        # A location directive for any incoming URI requests
+        location / {
+
+                # First attempt to serve request as file, then as directory,
+                # then fall back to displaying a 404 not found error
+                try_files $uri $uri/ =404;
+        }
+        
+ }</syntaxhighlight>
+You can now remove the default config:
+
+<syntaxhighlight lang="shell">rm default</syntaxhighlight>
+<span id="creating-a-symbolic-link"></span>
+=== Creating a symbolic link ===
+
+As you start creating and hosting several projects, you should work on editing all your files in <code>/sites-available</code> folder. NGINX looks for the configuration files in <code>/sites-enabled</code> but we do not want to duplicate our files. Instead we will create a symbolic link (also called a symlink) to point to the file in <code>/sites-available</code>.
+
+First, lets make sure we move our <code>&lt;yourproject&gt;.conf</code> to <code>/sites-available</code>:
+
+<syntaxhighlight lang="shell">cd /etc/nginx/sites-available ls
+mv <yourproject>.conf /etc/nginx/sites-enabled</syntaxhighlight>
+Now lets make create the symbolic link. <code>ln</code> is the link command and the <code>-s</code> option specifies that it should be a symbolic link.
+
+<syntaxhighlight lang="bash">sudo ln -s ../sites-available/<conf-name>.conf ./sites-enabled/</syntaxhighlight>
+<span id="restart-and-reload-nginx"></span>
+=== Restart and reload nginx ===
+
+We need to reload NGINX to apply the changes we made :
+
+<syntaxhighlight lang="shell">nginx -s reload</syntaxhighlight>
+To see the nginx options you can always do the help command:
+
+<syntaxhighlight lang="shell">nginx -h</syntaxhighlight>
+Test that your site is up and available by going to the IP of your pi in your web browser! You can now edit the html file with new content to update what content is being served by your Nginx web server.
+
+* [https://servpub.net/ ServPub]
