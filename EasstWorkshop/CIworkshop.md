@@ -45,9 +45,9 @@ background: rgb(79,9,121); background: linear-gradient(180deg, rgba(79,9,121,1) 
 # Collective Infrastructures Panel
 #### Practicing Protocols workshop
 
-Please login to this wifi network: GL-MT300N-V2-cf0
+Please login to this wifi network: 
 
-PW: goodlife
+PW: 
 
 ---
 # Intro In-grid
@@ -306,10 +306,7 @@ eg.
 ssh ci@192.168.8.120
 ```
 
-You are now "logging into" the pi, so it will ask for the password here and that is `iloveinfra`
-
-> [!question] Prompt
-> Input password to pi user
+You are now "logging into" the pi, so it will ask for the password here and that is . . . . . . 
 
 ---
 ## Are we in there?
@@ -470,15 +467,11 @@ This will open the file in the terminal.
 
 From here we can then add text and images using basic HTML syntax.
 
-For the time being we are going to just add fun bits to see it work, as we have some more protocols to write and add.
-
 So for now add a message or paste in some ascii art with the help of these links:
 
 [ascii text gen](http://www.patorjk.com/software/taag/)
 
 [ascii image gen](https://www.ascii-art-generator.org/)
-
-> [!tip] Remember to paste in with a right click!
 
 ---
 ## Seeing our page!

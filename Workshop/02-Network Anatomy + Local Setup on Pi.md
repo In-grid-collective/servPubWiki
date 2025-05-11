@@ -107,7 +107,6 @@ We will start with an overview of servpub to introduce different elements of int
 
 ---
 
-
 ![[slideAsset 5.png]]
 --
 
